@@ -30,7 +30,7 @@
 	<span
 		class="text-xs text-muted-foreground tabular-nums group-hover:hidden [@media(pointer:coarse)]:hidden"
 	>
-		{percent !== null ? `${percent}%` : isPaused ? 'Paused' : ''}
+		{percent !== null ? `${percent}%` : isPaused ? 'En pausa' : ''}
 	</span>
 
 	<div class="hidden group-hover:flex [@media(pointer:coarse)]:flex">
@@ -40,7 +40,7 @@
 			iconSize="h-4 w-4"
 			onclick={() => void modelsStore.status.toggleDownload(option.model)}
 			stopPropagationOnClick
-			tooltip={isPaused ? 'Resume downloading' : 'Pause downloading'}
+			tooltip={isPaused ? 'Reanudar descarga' : 'Pausar descarga'}
 			tooltipAsTitle
 		/>
 	</div>

@@ -55,7 +55,7 @@
 	{open}
 	{section}
 	spinIconWhenActive
-	title="Runtime info"
+	title="Información del entorno"
 >
 	{#snippet children(meta, _ctx)}
 		{#if meta?.errorMessage}
@@ -119,7 +119,7 @@
 			</div>
 		{:else}
 			<div class="rounded bg-muted/20 p-2 text-xs text-muted-foreground/70 italic">
-				Waiting for runtime info...
+				Esperando información del entorno...
 			</div>
 		{/if}
 	{/snippet}

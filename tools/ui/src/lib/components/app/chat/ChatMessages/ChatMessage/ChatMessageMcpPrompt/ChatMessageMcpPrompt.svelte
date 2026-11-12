@@ -21,7 +21,7 @@
 </script>
 
 <div
-	aria-label="MCP Prompt message with actions"
+	aria-label="Mensaje de prompt MCP con acciones"
 	class="group flex flex-col items-end gap-3 md:gap-2 {className}"
 	role="group"
 >

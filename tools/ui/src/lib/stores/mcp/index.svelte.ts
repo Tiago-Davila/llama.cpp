@@ -160,7 +160,7 @@ class MCPStore implements McpHealthHost {
 			if (content) {
 				mcpResourceStore.updateAttachmentContent(attachment.id, content);
 			} else {
-				mcpResourceStore.updateAttachmentError(attachment.id, 'Failed to read resource');
+				mcpResourceStore.updateAttachmentError(attachment.id, 'No se pudo leer el recurso');
 			}
 		} catch (error) {
 			const message = error instanceof Error ? error.message : String(error);
@@ -357,7 +357,7 @@ class MCPStore implements McpHealthHost {
 
 		const connection = this.connections.get(serverName);
 
-		if (!connection) throw new Error(`Server "${serverName}" is not connected`);
+		if (!connection) throw new Error(`El servidor "${serverName}" no está conectado`);
 
 		try {
 			return await MCPService.callTool(connection, { arguments: args, name: toolName }, signal);
@@ -367,7 +367,7 @@ class MCPStore implements McpHealthHost {
 
 				const newConnection = this.connections.get(serverName);
 
-				if (!newConnection) throw new Error(`Failed to reconnect to "${serverName}"`);
+				if (!newConnection) throw new Error(`No se pudo reconectar con "${serverName}"`);
 
 				return MCPService.callTool(newConnection, { arguments: args, name: toolName }, signal);
 			}
@@ -1229,7 +1229,7 @@ class MCPStore implements McpHealthHost {
 		if (successCount === 0 && serverEntries.length > 0) {
 			this.updateState({
 				connectedServers: [],
-				error: 'All MCP server connections failed',
+				error: 'Fallaron todas las conexiones a servidores MCP',
 				isInitializing: false,
 				toolCount: 0
 			});

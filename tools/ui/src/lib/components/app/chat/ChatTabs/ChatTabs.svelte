@@ -61,14 +61,14 @@
 				? [
 						{
 							icon: Square,
-							label: 'Stop generation',
+							label: 'Detener generación',
 							onclick: () => void chatStore.stopGenerationForChat(id)
 						}
 					]
 				: []),
 			{
 				icon: X,
-				label: 'Close tab',
+				label: 'Cerrar pestaña',
 				onclick: () => handleClose(id),
 				separator: isLoading,
 				// the shortcut closes the active tab only
@@ -77,13 +77,13 @@
 			{
 				disabled: others.length === 0,
 				icon: ListX,
-				label: 'Close other tabs',
+				label: 'Cerrar las demás pestañas',
 				onclick: () => void tabsStore.closeMany(others, id, activeId, view)
 			},
 			{
 				disabled: toTheRight.length === 0,
 				icon: ArrowRightToLine,
-				label: 'Close tabs to the right',
+				label: 'Cerrar pestañas a la derecha',
 				onclick: () => void tabsStore.closeMany(toTheRight, id, activeId, view)
 			}
 		];
@@ -127,7 +127,7 @@
 </script>
 
 <nav
-	aria-label="Open conversations"
+	aria-label="Conversaciones abiertas"
 	class={[
 		'group sticky pl-1 top-0 z-10 hidden md:block chat-top-fade transition-[padding] duration-200 ease-in-out pt-3.25',
 		uiStore.isSidebarExpanded

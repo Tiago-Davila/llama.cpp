@@ -216,7 +216,7 @@
 				<label class="flex cursor-pointer items-center gap-2" for="discover-draft-sidecars">
 					<Checkbox bind:checked={withDraft} id="discover-draft-sidecars" />
 
-					Download model with a
+					Descargar modelo con un
 				</label>
 
 				<Select.Root
@@ -226,7 +226,7 @@
 					value={draftKind}
 				>
 					<Select.Trigger
-						aria-label="Draft type"
+						aria-label="Tipo de borrador"
 						class={draftKindReadonly
 							? 'disabled:cursor-default disabled:opacity-100 [&_svg]:hidden'
 							: ''}
@@ -244,7 +244,7 @@
 					</Select.Content>
 				</Select.Root>
 
-				<label class="cursor-pointer" for="discover-draft-sidecars">draft sidecar</label>
+				<label class="cursor-pointer" for="discover-draft-sidecars">modelo borrador</label>
 			</div>
 		{/if}
 	</section>

@@ -333,7 +333,7 @@ export { default as DialogChatError } from './DialogChatError.svelte';
  * - FileX icon indicating file error
  * - List of empty file names in monospace font
  * - Explanation of what happened and why
- * - Single "Got it" dismiss button
+ * - Single "Entendido" dismiss button
  *
  * @example
  * ```svelte
@@ -362,7 +362,7 @@ export { default as DialogEmptyFileAlert } from './DialogEmptyFileAlert.svelte';
  * - File name in monospace with contextual error messages
  * - Summary of supported file types for the current model
  * - Scrollable content area for large error lists
- * - Single "Got it" dismiss button
+ * - Single "Entendido" dismiss button
  *
  * @example
  * ```svelte

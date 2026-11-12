@@ -107,7 +107,7 @@
 			<div class="space-y-2 py-1">
 				<div class="flex items-baseline justify-between gap-3 text-sm">
 					<span class="text-muted-foreground">
-						{isDownloadPaused ? 'Paused at' : 'Downloaded'}
+						{isDownloadPaused ? 'En pausa en' : 'Descargado'}
 					</span>
 
 					<span class="font-mono text-xs tabular-nums text-muted-foreground">
@@ -117,7 +117,7 @@
 							{HuggingFaceService.formatFileSize(downloadProgress?.totalBytes ?? 0)}
 							({downloadPercent}%)
 						{:else}
-							Waiting for progress...
+							Esperando progreso...
 						{/if}
 					</span>
 				</div>
@@ -205,6 +205,6 @@
 		variant="ghost"
 	>
 		<Trash2 class="h-4 w-4" />
-		Delete this model from disk
+		Eliminar este modelo del disco
 	</Button>
 {/snippet}

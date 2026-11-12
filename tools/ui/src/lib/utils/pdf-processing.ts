@@ -37,11 +37,11 @@ async function getFileAsBuffer(file: File): Promise<ArrayBuffer> {
 			if (event.target?.result) {
 				resolve(event.target.result as ArrayBuffer);
 			} else {
-				reject(new Error('Failed to read file.'));
+				reject(new Error('No se pudo leer el archivo.'));
 			}
 		};
 		reader.onerror = () => {
-			reject(new Error('Failed to read file.'));
+			reject(new Error('No se pudo leer el archivo.'));
 		};
 		reader.readAsArrayBuffer(file);
 	});
@@ -78,7 +78,7 @@ export async function convertPDFToText(file: File): Promise<string> {
 		console.error('Error converting PDF to text:', error);
 
 		throw new Error(
-			`Failed to convert PDF to text: ${error instanceof Error ? error.message : 'Unknown error'}`
+			`No se pudo convertir el PDF a texto: ${error instanceof Error ? error.message : 'Error desconocido'}`
 		);
 	}
 }
@@ -130,7 +130,7 @@ export async function convertPDFToImage(file: File, scale: number = 1.5): Promis
 		console.error('Error converting PDF to images:', error);
 
 		throw new Error(
-			`Failed to convert PDF to images: ${error instanceof Error ? error.message : 'Unknown error'}`
+			`No se pudo convertir el PDF a imágenes: ${error instanceof Error ? error.message : 'Error desconocido'}`
 		);
 	}
 }

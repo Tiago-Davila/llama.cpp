@@ -22,17 +22,17 @@
 			<AlertDialog.Title class="flex items-center gap-2">
 				<FileX class="h-5 w-5 text-destructive" />
 
-				Empty Files Detected
+				Se detectaron archivos vacíos
 			</AlertDialog.Title>
 
 			<AlertDialog.Description>
-				The following files are empty and have been removed from your attachments:
+				Los siguientes archivos están vacíos y se quitaron de los adjuntos:
 			</AlertDialog.Description>
 		</AlertDialog.Header>
 
 		<div class="space-y-3 text-sm">
 			<div class="rounded-lg bg-muted p-3">
-				<div class="mb-2 font-medium">Empty Files:</div>
+				<div class="mb-2 font-medium">Archivos vacíos:</div>
 
 				<ul class="list-inside list-disc space-y-1 text-muted-foreground">
 					{#each emptyFiles as fileName (fileName)}
@@ -42,20 +42,20 @@
 			</div>
 
 			<div>
-				<div class="mb-2 font-medium">What happened:</div>
+				<div class="mb-2 font-medium">Qué pasó:</div>
 
 				<ul class="list-inside list-disc space-y-1 text-muted-foreground">
-					<li>Empty files cannot be processed or sent to the AI model</li>
+					<li>Los archivos vacíos no se pueden procesar ni enviar al modelo</li>
 
-					<li>These files have been automatically removed from your attachments</li>
+					<li>Estos archivos se quitaron automáticamente de los adjuntos</li>
 
-					<li>You can try uploading files with content instead</li>
+					<li>Podés subir archivos con contenido</li>
 				</ul>
 			</div>
 		</div>
 
 		<AlertDialog.Footer>
-			<AlertDialog.Action onclick={() => handleOpenChange(false)}>Got it</AlertDialog.Action>
+			<AlertDialog.Action onclick={() => handleOpenChange(false)}>Entendido</AlertDialog.Action>
 		</AlertDialog.Footer>
 	</AlertDialog.Content>
 </AlertDialog.Root>

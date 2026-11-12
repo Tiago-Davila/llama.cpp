@@ -18,7 +18,7 @@
 			{/if}
 
 			<Alert.Title class="flex items-center justify-between">
-				<span>{isLoadingModel ? 'Loading model' : 'Server unavailable'}</span>
+				<span>{isLoadingModel ? 'Cargando modelo' : 'Servidor no disponible'}</span>
 
 				{#if !isLoadingModel}
 					<button
@@ -27,7 +27,7 @@
 						onclick={() => serverStore.fetch()}
 					>
 						<RefreshCw class="h-3 w-3 {serverStore.loading ? 'animate-spin' : ''}" />
-						{serverStore.loading ? 'Retrying...' : 'Retry'}
+						{serverStore.loading ? 'Reintentando...' : 'Reintentar'}
 					</button>
 				{/if}
 			</Alert.Title>

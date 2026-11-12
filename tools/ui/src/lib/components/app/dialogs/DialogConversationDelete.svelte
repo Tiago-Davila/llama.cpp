@@ -13,12 +13,12 @@
 
 <DialogConfirmation
 	bind:open
-	cancelText="Cancel"
-	confirmText="Delete"
-	description="Are you sure you want to delete this conversation? This action cannot be undone and will permanently remove all messages in this conversation."
+	cancelText="Cancelar"
+	confirmText="Eliminar"
+	description="¿Seguro que querés eliminar esta conversación? Esta acción no se puede deshacer y borrará todos sus mensajes."
 	icon={Trash2}
 	{onCancel}
 	{onConfirm}
-	title="Delete Conversation"
+	title="Eliminar conversación"
 	variant="destructive"
 />

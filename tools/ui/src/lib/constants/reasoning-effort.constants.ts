@@ -6,29 +6,29 @@ import type { ReasoningEffortLevel } from '$lib/types';
  * Keys match the ReasoningEffort enum values for type-safe lookups.
  */
 export const REASONING_EFFORT_LABELS: Record<string, string> = {
-	[ReasoningEffort.DEFAULT]: 'Default',
-	[ReasoningEffort.HIGH]: 'High',
-	[ReasoningEffort.LOW]: 'Low',
-	[ReasoningEffort.MAX]: 'Max',
-	[ReasoningEffort.MEDIUM]: 'Medium',
+	[ReasoningEffort.DEFAULT]: 'Por defecto',
+	[ReasoningEffort.HIGH]: 'Alto',
+	[ReasoningEffort.LOW]: 'Bajo',
+	[ReasoningEffort.MAX]: 'Máximo',
+	[ReasoningEffort.MEDIUM]: 'Medio',
 	[ReasoningEffort.MINIMAL]: 'Minimal',
-	[ReasoningEffort.OFF]: 'Off',
-	[ReasoningEffort.XHIGH]: 'Extra High'
+	[ReasoningEffort.OFF]: 'Apagado',
+	[ReasoningEffort.XHIGH]: 'Muy alto'
 };
 
 /** Levels of every menu, ahead of the template levels or the budget levels. */
 export const REASONING_EFFORT_BASE_LEVELS: ReasoningEffortLevel[] = [
-	{ label: 'Default', value: ReasoningEffort.DEFAULT },
-	{ label: 'Off', value: ReasoningEffort.OFF }
+	{ label: 'Por defecto', value: ReasoningEffort.DEFAULT },
+	{ label: 'Apagado', value: ReasoningEffort.OFF }
 ];
 
 /** Menu of a chat template that honors no effort level: each level is a token budget. */
 export const REASONING_EFFORT_BUDGET_LEVELS: ReasoningEffortLevel[] = [
 	...REASONING_EFFORT_BASE_LEVELS,
-	{ label: 'Low', value: ReasoningEffort.LOW },
-	{ label: 'Medium', value: ReasoningEffort.MEDIUM },
-	{ label: 'High', value: ReasoningEffort.HIGH },
-	{ hasInfo: true, label: 'Max', value: ReasoningEffort.MAX }
+	{ label: 'Bajo', value: ReasoningEffort.LOW },
+	{ label: 'Medio', value: ReasoningEffort.MEDIUM },
+	{ label: 'Alto', value: ReasoningEffort.HIGH },
+	{ hasInfo: true, label: 'Máximo', value: ReasoningEffort.MAX }
 ];
 
 /**

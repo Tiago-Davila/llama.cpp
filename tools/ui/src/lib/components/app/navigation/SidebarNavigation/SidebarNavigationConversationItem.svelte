@@ -157,7 +157,7 @@
 	let groupActions = $derived<MenuAction[]>([
 		{
 			icon: FolderInput,
-			label: 'Move to group',
+			label: 'Mover a grupo',
 			onclick: handlePickGroup,
 			submenu: groupSubmenu
 		},
@@ -165,7 +165,7 @@
 			? [
 					{
 						icon: Unlink,
-						label: 'Remove from group',
+						label: 'Quitar del grupo',
 						onclick: (event: Event) => {
 							event.stopPropagation();
 							setGroup(null);
@@ -182,7 +182,7 @@
 			? [
 					{
 						icon: PanelTopOpen,
-						label: 'Open in new tab',
+						label: 'Abrir en pestaña nueva',
 						onclick: (e: Event) => {
 							e.stopPropagation();
 							openInNewTab();
@@ -192,7 +192,7 @@
 			: []),
 		{
 			icon: conversation.pinned ? PinOff : Pin,
-			label: conversation.pinned ? 'Unpin' : 'Pin',
+			label: conversation.pinned ? 'Desfijar' : 'Fijar',
 			onclick: (e: Event) => {
 				e.stopPropagation();
 				handleTogglePin();
@@ -201,14 +201,14 @@
 		},
 		{
 			icon: Pencil,
-			label: 'Edit',
+			label: 'Editar',
 			onclick: handleEdit,
 			shortcut: isActive ? SHORTCUT_EDIT_CONVERSATION : undefined
 		},
 		...groupActions,
 		{
 			icon: Download,
-			label: 'Export',
+			label: 'Exportar',
 			onclick: (e: Event) => {
 				e.stopPropagation();
 				conversationsStore.downloadConversation(conversation.id);
@@ -217,12 +217,12 @@
 		},
 		{
 			icon: ListChecks,
-			label: 'Select',
+			label: 'Seleccionar',
 			onclick: handleEnterSelectionMode
 		},
 		{
 			icon: Trash2,
-			label: 'Delete',
+			label: 'Eliminar',
 			onclick: handleDelete,
 			separator: true,
 			shortcut: isActive ? SHORTCUT_DELETE_CONVERSATION : undefined,
@@ -394,7 +394,7 @@
 					</Tooltip.Trigger>
 
 					<Tooltip.Content>
-						<p>See parent conversation</p>
+						<p>Ver conversación original</p>
 					</Tooltip.Content>
 				</Tooltip.Root>
 			{/if}
@@ -403,7 +403,7 @@
 				<Tooltip.Root>
 					<Tooltip.Trigger>
 						<div
-							aria-label="Stop generation"
+							aria-label="Detener generación"
 							class="stop-button flex {ICON_CLASS_DEFAULT} shrink-0 cursor-pointer items-center justify-center rounded text-muted-foreground transition-colors hover:text-foreground"
 							onclick={handleStop}
 							onkeydown={(e) => e.key === 'Enter' && handleStop(e)}
@@ -417,7 +417,7 @@
 					</Tooltip.Trigger>
 
 					<Tooltip.Content>
-						<p>Stop generation</p>
+						<p>Detener generación</p>
 					</Tooltip.Content>
 				</Tooltip.Root>
 			{/if}
@@ -448,7 +448,7 @@
 	<SidebarNavigationGroupSubmenu
 		currentGroupId={groupId}
 		{kind}
-		label="Move to group"
+		label="Mover a grupo"
 		onClose={close}
 		onSelect={setGroup}
 	/>

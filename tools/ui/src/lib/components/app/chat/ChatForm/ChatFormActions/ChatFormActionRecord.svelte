@@ -29,7 +29,7 @@
 	// tappable, so a tap can say why
 	const showWarning = $derived(hasAudioModality && !isRecording && !!micWarning);
 	const tooltip = $derived(
-		!hasAudioModality ? 'Current model does not support audio' : showWarning ? micWarning : null
+		!hasAudioModality ? 'El modelo actual no admite audio' : showWarning ? micWarning : null
 	);
 </script>
 
@@ -48,10 +48,10 @@
 			>
 				<span class="sr-only"
 					>{isRecording
-						? 'Stop recording'
+						? 'Detener grabación'
 						: showWarning
 							? `Recording unavailable: ${micWarning}`
-							: 'Start recording'}</span
+							: 'Iniciar grabación'}</span
 				>
 
 				{#if isRecording}

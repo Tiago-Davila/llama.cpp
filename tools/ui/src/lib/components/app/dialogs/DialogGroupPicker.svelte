@@ -40,7 +40,7 @@
 <!-- a column, so on a phone the list starts under the search and takes the rest of the screen -->
 <Dialog.Root onOpenChange={(open) => !open && close()} open={options !== null}>
 	<Dialog.Content class="flex flex-col gap-0 overflow-hidden p-0 md:max-w-md!">
-		<Dialog.Title class="sr-only">Move to group</Dialog.Title>
+		<Dialog.Title class="sr-only">Mover a grupo</Dialog.Title>
 
 		<div class="p-2">
 			<SearchInput
@@ -49,7 +49,7 @@
 				onKeyDown={(event) => {
 					if (event.key === 'Enter' && newGroupName) void createAndSelect();
 				}}
-				placeholder="Search or create a group"
+				placeholder="Buscar o crear un grupo"
 				size="sm"
 			/>
 		</div>
@@ -66,7 +66,7 @@
 				<Plus class="h-4 w-4 shrink-0" />
 
 				<span class="min-w-0 truncate">
-					{newGroupName ? `Create "${newGroupName}"` : 'New group'}
+					{newGroupName ? `Create "${newGroupName}"` : 'Nuevo grupo'}
 				</span>
 			</button>
 
@@ -87,7 +87,7 @@
 					</button>
 				{/each}
 			{:else if newGroupName}
-				<p class="px-2 py-2 text-sm text-muted-foreground">No matching groups</p>
+				<p class="px-2 py-2 text-sm text-muted-foreground">No hay grupos que coincidan</p>
 			{/if}
 		</div>
 	</Dialog.Content>

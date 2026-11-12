@@ -37,7 +37,7 @@
 				asPlainText
 			);
 
-			await copyToClipboard(clipboardContent, 'Message copied to clipboard');
+			await copyToClipboard(clipboardContent, 'Mensaje copiado al portapapeles');
 		},
 
 		delete: async (message: DatabaseMessage) => {

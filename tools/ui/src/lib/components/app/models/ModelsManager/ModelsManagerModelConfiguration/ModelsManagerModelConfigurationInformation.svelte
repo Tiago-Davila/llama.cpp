@@ -38,11 +38,11 @@
 		{
 			isCopyable: true,
 			isMono: true,
-			label: 'File Path',
+			label: 'Ruta del archivo',
 			value: serverProps?.model_path ?? null
 		},
 		{
-			label: 'Context Size',
+			label: 'Tamaño de contexto',
 			// the server reports the context it runs with once the model is loaded; until
 			// then the listing, or the Hub, says what the model can take
 			value: serverProps
@@ -53,27 +53,27 @@
 						? `${formatNumber(gguf.context_length)} tokens`
 						: null
 		},
-		{ label: 'Model Size', value: meta?.size ? formatFileSize(meta.size) : null },
+		{ label: 'Tamaño del modelo', value: meta?.size ? formatFileSize(meta.size) : null },
 		{
-			label: 'Parameters',
+			label: 'Parámetros',
 			value: meta?.n_params
 				? formatParameters(meta.n_params)
 				: (option.parsedId?.params ?? (hubParameters ? formatParameters(hubParameters) : null))
 		},
-		{ label: 'Embedding Size', value: meta?.n_embd ? formatNumber(meta.n_embd) : null },
+		{ label: 'Tamaño de embedding', value: meta?.n_embd ? formatNumber(meta.n_embd) : null },
 		{
-			label: 'Vocabulary Size',
+			label: 'Tamaño del vocabulario',
 			value: meta?.n_vocab ? `${formatNumber(meta.n_vocab)} tokens` : null
 		},
-		{ isBadge: true, label: 'Quantization', value: quant },
+		{ isBadge: true, label: 'Cuantización', value: quant },
 		{
 			isBadge: true,
-			label: 'Architecture',
+			label: 'Arquitectura',
 			value: (meta?.architecture as string) ?? gguf?.architecture ?? null
 		},
 		{
 			isBadge: true,
-			label: 'Draft sidecars',
+			label: 'Modelos borrador',
 			value:
 				draftSidecars.length > 0
 					? draftSidecars.map((badge) => badge.kind.toUpperCase()).join(', ')
@@ -81,19 +81,19 @@
 		},
 		{
 			isCopyable: true,
-			label: 'Draft repo',
+			label: 'Repositorio borrador',
 			value: draftSidecars[0]?.repo ?? null
 		},
 		{
 			isBadge: true,
-			label: 'Draft quant',
+			label: 'Cuantización borrador',
 			value: draftSidecars[0]?.quant ?? null
 		},
 		{
-			label: 'Parallel Slots',
+			label: 'Slots paralelos',
 			value: serverProps?.total_slots != null ? String(serverProps.total_slots) : null
 		},
-		{ isMono: true, label: 'Build Info', value: serverProps?.build_info ?? null }
+		{ isMono: true, label: 'Versión', value: serverProps?.build_info ?? null }
 	] satisfies Array<{
 		isBadge?: boolean;
 		isCopyable?: boolean;
@@ -110,7 +110,7 @@
 
 <div class="space-y-0">
 	<div class="flex items-center gap-3 border-b border-border/30 py-2.5">
-		<span class="text-sm text-muted-foreground">Model</span>
+		<span class="text-sm text-muted-foreground">Modelo</span>
 
 		<span class="ml-auto flex min-w-0 flex-1 items-center gap-2">
 			<span class="min-w-0 flex-1 overflow-x-auto font-mono text-xs whitespace-nowrap">
@@ -118,7 +118,7 @@
 			</span>
 
 			<ActionIconCopyToClipboard
-				ariaLabel="Copy model name to clipboard"
+				ariaLabel="Copiar nombre del modelo"
 				canCopy
 				text={option.model}
 			/>
@@ -151,7 +151,7 @@
 
 					{#if row.isCopyable}
 						<ActionIconCopyToClipboard
-							ariaLabel="Copy value to clipboard"
+							ariaLabel="Copiar valor"
 							canCopy
 							text={row.value}
 						/>
@@ -163,13 +163,13 @@
 
 	{#if visibleRows.length === 0}
 		<p class="py-2.5 text-sm text-muted-foreground">
-			The model reports its metadata once it is loaded.
+			El modelo informa sus metadatos cuando está cargado.
 		</p>
 	{/if}
 
 	{#if modalities.length > 0}
 		<div class="flex items-center gap-3 border-b border-border/30 py-2.5 last:border-b-0">
-			<span class="text-sm text-muted-foreground">Modalities</span>
+			<span class="text-sm text-muted-foreground">Modalidades</span>
 
 			<span class="ml-auto flex flex-wrap gap-1"><BadgesModality {modalities} /></span>
 		</div>
@@ -178,20 +178,20 @@
 
 {#if !serverProps}
 	<p class="pt-2 text-xs text-muted-foreground">
-		/props values - file path, slots, build info - appear once the model is loaded. Reading this
-		page never loads a model.
+		Los valores de /props (ruta del archivo, slots, versión) aparecen cuando el modelo está
+		cargado. Ver esta página nunca carga un modelo.
 	</p>
 {/if}
 
 <div class="mt-4">
 	<CollapsibleSection triggerClass={sectionTrigger}>
 		{#snippet trigger()}
-			<span class="text-sm font-medium">Chat Template</span>
+			<span class="text-sm font-medium">Plantilla de chat</span>
 		{/snippet}
 
 		<pre
 			class="mt-1 rounded-md bg-muted/50 p-2 text-xs whitespace-pre-wrap">{serverProps?.chat_template ??
 				gguf?.chat_template ??
-				'Shown once the model is loaded.'}</pre>
+				'Se muestra cuando el modelo está cargado.'}</pre>
 	</CollapsibleSection>
 </div>

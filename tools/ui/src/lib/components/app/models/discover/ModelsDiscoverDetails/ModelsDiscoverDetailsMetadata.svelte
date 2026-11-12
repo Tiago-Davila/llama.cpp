@@ -33,20 +33,20 @@
 <div class="flex flex-wrap items-center gap-1.5">
 	{#if gguf?.total}
 		<ModelsDiscoverDetailsMetadataItem
-			label="Model size"
+			label="Tamaño del modelo"
 			value="{formatParameters(gguf.total)} params"
 		/>
 	{/if}
 
 	{#if gguf?.context_length}
 		<ModelsDiscoverDetailsMetadataItem
-			label="Context"
+			label="Contexto"
 			value={gguf.context_length.toLocaleString()}
 		/>
 	{/if}
 
 	{#if gguf?.architecture}
-		<ModelsDiscoverDetailsMetadataItem label="Architecture" value={gguf.architecture} />
+		<ModelsDiscoverDetailsMetadataItem label="Arquitectura" value={gguf.architecture} />
 	{/if}
 
 	{#if gguf?.chat_template}
@@ -57,12 +57,12 @@
 			variant="tertiary"
 		>
 			<MessageSquareCode class="size-3" />
-			Chat template
+			Plantilla de chat
 		</Button>
 	{/if}
 
 	{#if licenseTag}
-		<ModelsDiscoverDetailsMetadataItem label="License" value={licenseTag} />
+		<ModelsDiscoverDetailsMetadataItem label="Licencia" value={licenseTag} />
 	{/if}
 
 	{#if details.gated === true}

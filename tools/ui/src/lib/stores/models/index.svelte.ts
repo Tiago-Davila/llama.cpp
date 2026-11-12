@@ -458,7 +458,7 @@ class ModelsStore implements ModelPropsHost, ModelStatusHost {
 
 		const option = this.models.find((model) => model.id === modelId);
 
-		if (!option) throw new Error('Selected model is not available');
+		if (!option) throw new Error('El modelo seleccionado no está disponible');
 
 		this.updating = true;
 		this.error = null;
@@ -759,7 +759,7 @@ class ModelsStore implements ModelPropsHost, ModelStatusHost {
 			}
 		} catch (error) {
 			this.models = [];
-			this.error = error instanceof Error ? error.message : 'Failed to load models';
+			this.error = error instanceof Error ? error.message : 'No se pudieron cargar los modelos';
 
 			throw error;
 		} finally {

@@ -55,15 +55,15 @@
 		<AlertDialog.Header>
 			<AlertDialog.Title class="flex items-center gap-2">
 				<Pencil class="h-5 w-5" />
-				Rename conversation
+				Renombrar conversación
 			</AlertDialog.Title>
 
-			<AlertDialog.Description>Choose a new title for this conversation.</AlertDialog.Description>
+			<AlertDialog.Description>Elegí un nuevo título para esta conversación.</AlertDialog.Description>
 		</AlertDialog.Header>
 
 		<form class="space-y-2 pt-2 pb-4" onsubmit={handleSubmit}>
 			<label class="text-sm font-medium text-muted-foreground" for="conversation-rename-input">
-				Conversation title
+				Título de la conversación
 			</label>
 
 			<Input
@@ -73,15 +73,15 @@
 				autocorrect="off"
 				id="conversation-rename-input"
 				maxlength={200}
-				placeholder="Conversation title"
+				placeholder="Título de la conversación"
 				spellcheck={false}
 			/>
 		</form>
 
 		<AlertDialog.Footer>
-			<AlertDialog.Cancel>Cancel</AlertDialog.Cancel>
+			<AlertDialog.Cancel>Cancelar</AlertDialog.Cancel>
 
-			<Button disabled={!canSubmit} onclick={handleSubmit} type="button">Save</Button>
+			<Button disabled={!canSubmit} onclick={handleSubmit} type="button">Guardar</Button>
 		</AlertDialog.Footer>
 	</AlertDialog.Content>
 </AlertDialog.Root>

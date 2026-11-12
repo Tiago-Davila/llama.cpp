@@ -127,7 +127,7 @@ export async function parseFilesToMessageExtras(
 
 					// Show toast notification to user
 					toast.warning(
-						'PDF setting changed: Non-vision model detected, PDFs will be processed as text instead of images.',
+						'Se cambió la configuración de PDF: el modelo no tiene visión, los PDF se procesarán como texto.',
 						{
 							duration: 5000
 						}

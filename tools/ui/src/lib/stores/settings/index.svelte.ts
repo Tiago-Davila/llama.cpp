@@ -34,7 +34,7 @@ class SettingsStore {
 	private isFirstVisit = false;
 
 	/**
-	 * Whether the saved config differs from what "Reset to Default" would apply
+	 * Whether the saved config differs from what "Restablecer" would apply
 	 */
 	get hasCustomSettings(): boolean {
 		const propsDefaults = this.getServerDefaults();
@@ -118,7 +118,7 @@ class SettingsStore {
 
 	/**
 	 * Reset all parameters to their default values (from props)
-	 * This is used by the "Reset to Default" functionality
+	 * This is used by the "Restablecer" functionality
 	 * Prioritizes Server defaults from /props, falls back to UI defaults
 	 */
 	forceSyncWithServerDefaults(): void {
@@ -196,7 +196,7 @@ class SettingsStore {
 		if (!browser) return;
 
 		if (!data || !data.config) {
-			throw new Error('Invalid settings data: missing config');
+			throw new Error('Datos de configuración inválidos: falta la configuración');
 		}
 
 		// Restore config (theme is included in config)
@@ -216,7 +216,7 @@ class SettingsStore {
 		// Apply theme for immediate visual feedback
 		setMode(this.config[SETTINGS_KEYS.THEME] as ColorMode);
 
-		console.log('Settings imported successfully');
+		console.log('Configuración importada');
 	}
 
 	/**
@@ -319,7 +319,7 @@ class SettingsStore {
 
 		// UI settings are the admin's defaults for new users: applied once on
 		// the first visit, never on later loads, so the user's config can
-		// diverge. "Reset to Default" is the explicit way back to the baseline.
+		// diverge. "Restablecer" is the explicit way back to the baseline.
 		// A first visit config carries factory values only, so a key that
 		// already diverges here was set by the user before the baseline could
 		// be reached, through the API key splash, and stays theirs.
@@ -435,7 +435,7 @@ class SettingsStore {
 	}
 
 	/**
-	 * Values applied by "Reset to Default": admin ui_settings first, then server
+	 * Values applied by "Restablecer": admin ui_settings first, then server
 	 * defaults from /props for sampling params, then the factory defaults
 	 */
 	private getResetValues(): Record<string, unknown> {

@@ -57,7 +57,7 @@
 		bind:ref={filterInput}
 		bind:value={filter}
 		class="w-full md:w-auto md:max-w-64"
-		placeholder="Search your models"
+		placeholder="Buscar en tus modelos"
 		size={deviceStore.isMobile ? 'default' : 'sm'}
 	/>
 
@@ -76,7 +76,7 @@
 		>
 			<X class="h-3.5 w-3.5" />
 
-			Clear filters
+			Limpiar filtros
 		</Button>
 	{/if}
 

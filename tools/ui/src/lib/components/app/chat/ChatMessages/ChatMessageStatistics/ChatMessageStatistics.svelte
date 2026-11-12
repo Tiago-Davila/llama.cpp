@@ -174,8 +174,8 @@
 			{#if hasPromptStats || isLive}
 				{@render viewButton({
 					icon: BookOpenText,
-					label: 'Reading',
-					tooltipText: 'Processing',
+					label: 'Lectura',
+					tooltipText: 'Procesamiento',
 					view: ChatMessageStatsView.READING
 				})}
 			{/if}
@@ -183,24 +183,24 @@
 			{@render viewButton({
 				disabled: isGenerationDisabled,
 				icon: Sparkles,
-				label: 'Generation',
-				tooltipText: isGenerationDisabled ? 'Waiting for tokens...' : 'Generation',
+				label: 'Generación',
+				tooltipText: isGenerationDisabled ? 'Esperando tokens...' : 'Generación',
 				view: ChatMessageStatsView.GENERATION
 			})}
 
 			{#if hasAgenticStats}
 				{@render viewButton({
 					icon: Wrench,
-					label: 'Tools',
-					tooltipText: 'Tool calls',
+					label: 'Herramientas',
+					tooltipText: 'Llamadas a herramientas',
 					view: ChatMessageStatsView.TOOLS
 				})}
 
 				{#if !hideSummary}
 					{@render viewButton({
 						icon: Layers,
-						label: 'Summary',
-						tooltipText: 'Agentic summary',
+						label: 'Resumen',
+						tooltipText: 'Resumen agéntico',
 						view: ChatMessageStatsView.SUMMARY
 					})}
 				{/if}

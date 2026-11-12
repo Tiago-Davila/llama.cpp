@@ -32,7 +32,7 @@
 <ToolCallBlock {isStreaming} meta={editFileMeta} {onToggle} {open} {section}>
 	{#snippet titleSnippet()}
 		<span class="flex min-w-0 flex-wrap items-baseline gap-x-1">
-			<span class="shrink-0 text-muted-foreground">Edit file</span>
+			<span class="shrink-0 text-muted-foreground">Editar archivo</span>
 
 			<span class="flex min-w-0 items-baseline gap-1.5">
 				<span class="min-w-0 overflow-x-auto font-mono" title={editFileMeta?.filePath}>
@@ -59,7 +59,7 @@
 			{#each editDiffs as diffLines, ei (ei)}
 				<div class={ei === 0 ? '' : 'mt-3'}>
 					<div class="mb-1.5 text-xs text-muted-foreground/70 italic">
-						Edit {ei + 1}&nbsp;of&nbsp;{editFileBody.edits.length}
+						Cambio {ei + 1}&nbsp;de&nbsp;{editFileBody.edits.length}
 					</div>
 
 					<div style:max-height={MAX_HEIGHT_CODE_BLOCK} class="diff-block">
@@ -101,10 +101,10 @@
 			/>
 		{:else if ctx.isStreaming}
 			<div class="rounded bg-muted/20 p-2 text-xs text-muted-foreground/70 italic">
-				Receiving arguments...
+				Recibiendo argumentos...
 			</div>
 		{:else}
-			<div class="rounded bg-muted/20 p-2 text-xs text-muted-foreground/70 italic">No edits</div>
+			<div class="rounded bg-muted/20 p-2 text-xs text-muted-foreground/70 italic">Sin cambios</div>
 		{/if}
 	{/snippet}
 </ToolCallBlock>

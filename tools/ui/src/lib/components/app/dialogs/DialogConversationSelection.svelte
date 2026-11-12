@@ -42,16 +42,14 @@
 		<Dialog.Content class="z-1000001 max-w-2xl">
 			<Dialog.Header>
 				<Dialog.Title>
-					Select Conversations to {mode === 'export' ? 'Export' : 'Import'}
+					Seleccionar conversaciones para {mode === 'export' ? 'exportar' : 'importar'}
 				</Dialog.Title>
 
 				<Dialog.Description>
 					{#if mode === 'export'}
-						Choose which conversations you want to export. Selected conversations will be downloaded
-						as a JSON file.
+						Elegí qué conversaciones exportar. Se descargarán como un archivo JSON.
 					{:else}
-						Choose which conversations you want to import. Selected conversations will be merged
-						with your existing conversations.
+						Elegí qué conversaciones importar. Se sumarán a tus conversaciones actuales.
 					{/if}
 				</Dialog.Description>
 			</Dialog.Header>

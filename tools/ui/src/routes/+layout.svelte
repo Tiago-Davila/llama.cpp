@@ -396,7 +396,7 @@
 					<GlassKey
 						class="sidebar-reveal-pin-top fixed top-(--corner-control-top) left-4 z-30"
 						icon={MenuIcon}
-						label={uiStore.isSidebarExpanded ? 'Collapse navigation' : 'Expand navigation'}
+						label={uiStore.isSidebarExpanded ? 'Contraer navegación' : 'Expandir navegación'}
 						onclick={toggleSidebar}
 					/>
 				</div>
@@ -445,7 +445,7 @@
 		{/if}
 	</div>
 
-	<ModeWatcher />
+	<ModeWatcher defaultMode="dark" />
 
 	<Toaster closeButton richColors />
 

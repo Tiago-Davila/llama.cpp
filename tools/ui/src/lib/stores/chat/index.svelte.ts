@@ -105,7 +105,7 @@ class ChatStore implements ChatStreamHost, ChatFlowsHost {
 
 	/**
 	 * Abort the current agentic flow signal without clearing loading state.
-	 * Used by "Send immediately" to force the agentic loop to exit so that
+	 * Used by "Enviar ahora" to force the agentic loop to exit so that
 	 * the pending steering message can be re-sent.
 	 *
 	 * Any tool calls captured mid-stream are dropped before the abort so the
@@ -133,7 +133,7 @@ class ChatStore implements ChatStreamHost, ChatFlowsHost {
 	): Promise<DatabaseMessage> {
 		const activeConv = conversationsStore.activeConversation;
 
-		if (!activeConv) throw new Error('No active conversation');
+		if (!activeConv) throw new Error('No hay una conversación activa');
 
 		let parentId: string | null = null;
 
@@ -359,7 +359,7 @@ class ChatStore implements ChatStreamHost, ChatFlowsHost {
 	async createAssistantMessage(parentId?: string): Promise<DatabaseMessage> {
 		const activeConv = conversationsStore.activeConversation;
 
-		if (!activeConv) throw new Error('No active conversation');
+		if (!activeConv) throw new Error('No hay una conversación activa');
 
 		return await DatabaseService.createMessageBranch(
 			{
@@ -856,7 +856,7 @@ class ChatStore implements ChatStreamHost, ChatFlowsHost {
 
 			this.showErrorDialog({
 				contextInfo,
-				message: error instanceof Error ? error.message : 'Unknown error',
+				message: error instanceof Error ? error.message : 'Error desconocido',
 				type: dialogType
 			});
 		}
@@ -1151,7 +1151,7 @@ class ChatStore implements ChatStreamHost, ChatFlowsHost {
 			onError: async (error: Error) => {
 				if (isAbortError(error)) {
 					cleanupStreamingState();
-					// If aborted with a pending message (e.g. "Send immediately"), re-send it
+					// If aborted with a pending message (e.g. "Enviar ahora"), re-send it
 					const pending = this.consumePendingMessage(convId);
 
 					if (pending) {
@@ -1698,7 +1698,7 @@ class ChatStore implements ChatStreamHost, ChatFlowsHost {
 				abortController.signal
 			);
 
-			if (truncated) throw new Error('The output limit cut the compaction summary');
+			if (truncated) throw new Error('El límite de salida cortó el resumen de compactación');
 
 			if (!summary.trim()) {
 				await rollback();
@@ -1727,7 +1727,7 @@ class ChatStore implements ChatStreamHost, ChatFlowsHost {
 			} else {
 				console.error('Failed to compact conversation:', error);
 				this.showErrorDialog({
-					message: error instanceof Error ? error.message : 'Unknown error',
+					message: error instanceof Error ? error.message : 'Error desconocido',
 					type: ErrorDialogType.SERVER
 				});
 			}

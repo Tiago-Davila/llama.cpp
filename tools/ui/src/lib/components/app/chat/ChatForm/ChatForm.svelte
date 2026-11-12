@@ -113,7 +113,7 @@
 		onUploadedFileRemove,
 		onUploadedFilesChange,
 		onValueChange,
-		placeholder = 'Type a message...',
+		placeholder = 'Escribí un mensaje...',
 		showAddButton = true,
 		showModelSelector = true,
 		singleRow = false,
@@ -596,7 +596,7 @@
 		}
 
 		if (!audioRecorder || !recordingSupported) {
-			console.warn('Audio recording not supported');
+			console.warn('La grabación de audio no está disponible');
 
 			return;
 		}
@@ -610,7 +610,7 @@
 
 				onFilesAdd?.([audioFile]);
 			} catch (error) {
-				console.error('Failed to stop recording:', error);
+				console.error('No se pudo detener la grabación:', error);
 			}
 		} else {
 			try {
@@ -718,7 +718,7 @@
 				icon={isExpanded ? Minimize : Maximize}
 				iconSize={ICON_CLASS_DEFAULT}
 				onclick={expansion.toggle}
-				tooltip={isExpanded ? 'Collapse editor' : 'Expand editor'}
+				tooltip={isExpanded ? 'Contraer editor' : 'Expandir editor'}
 			/>
 		{/if}
 

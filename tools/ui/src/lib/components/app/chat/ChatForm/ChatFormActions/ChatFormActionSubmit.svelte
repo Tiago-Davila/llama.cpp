@@ -26,7 +26,7 @@
 		type="submit"
 		{...props}
 	>
-		<span class="sr-only">Send</span>
+		<span class="sr-only">Enviar</span>
 
 		<ArrowUp class="h-12 w-12" />
 	</Button>

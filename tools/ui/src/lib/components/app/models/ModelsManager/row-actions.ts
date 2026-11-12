@@ -20,7 +20,7 @@ export function modelRowActions(
 		? [
 				{
 					icon: Compass,
-					label: 'See in Discover',
+					label: 'Ver en Descubrir',
 					onclick: () => uiStore.openModelsDiscover(repoOf(option.model)),
 					separator: true
 				}
@@ -36,12 +36,12 @@ export function modelRowActions(
 		return [
 			{
 				icon: isPaused ? MODEL_DOWNLOAD_ICONS.resume : MODEL_DOWNLOAD_ICONS.pause,
-				label: isPaused ? 'Resume downloading' : 'Pause downloading',
+				label: isPaused ? 'Reanudar descarga' : 'Pausar descarga',
 				onclick: () => void modelsStore.status.toggleDownload(option.model)
 			},
 			{
 				icon: Trash2,
-				label: isPaused ? 'Delete from disk' : 'Cancel download',
+				label: isPaused ? 'Eliminar del disco' : 'Cancelar descarga',
 				onclick: () => onDelete(option),
 				separator: true,
 				variant: 'destructive' as const
@@ -56,13 +56,13 @@ export function modelRowActions(
 	return [
 		{
 			icon: favorite ? HeartOff : Heart,
-			label: favorite ? 'Remove from favorites' : 'Add to favorites',
+			label: favorite ? 'Quitar de favoritos' : 'Agregar a favoritos',
 			onclick: () => modelsStore.toggleFavorite(option.model)
 		},
 		{
 			disabled: removeBlockedReason !== null,
 			icon: Trash2,
-			label: 'Delete from disk',
+			label: 'Eliminar del disco',
 			onclick: () => onDelete(option),
 			separator: true,
 			tooltip: removeBlockedReason ?? undefined,
@@ -70,7 +70,7 @@ export function modelRowActions(
 		},
 		{
 			icon: isHidden ? Eye : EyeOff,
-			label: isHidden ? 'Unhide model' : 'Hide model',
+			label: isHidden ? 'Mostrar modelo' : 'Ocultar modelo',
 			onclick: () => modelsStore.toggleHidden(option.id),
 			separator: true
 		},

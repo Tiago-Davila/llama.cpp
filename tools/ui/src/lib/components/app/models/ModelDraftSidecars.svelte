@@ -33,7 +33,7 @@
 {#each badges as badge (badge.kind + (badge.quant ?? ''))}
 	<span
 		class={MODEL_VARIANT_BADGE_CLASS}
-		title="{badge.kind.toUpperCase()} draft model{badge.quant ? ` at ${badge.quant}` : ''}"
+		title="Modelo borrador {badge.kind.toUpperCase()}{badge.quant ? ` en ${badge.quant}` : ''}"
 	>
 		{badge.kind}
 	</span>

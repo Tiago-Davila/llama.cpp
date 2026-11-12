@@ -94,10 +94,10 @@
 		>
 			{#if isCompacting}
 				<Loader2 class="h-3.5 w-3.5 animate-spin" />
-				Compacting...
+				Compactando...
 			{:else}
 				<FoldVertical class="h-3.5 w-3.5" />
-				Compact conversation
+				Compactar conversación
 			{/if}
 		</Button>
 	{/if}
@@ -130,7 +130,7 @@
 			</span>
 		</div>
 	{:else}
-		<div class="text-xs text-muted-foreground">No context info available</div>
+		<div class="text-xs text-muted-foreground">No hay información de contexto</div>
 	{/if}
 
 	{#if gauge.hasAnyUsage}
@@ -153,10 +153,10 @@
 	<Drawer.Root bind:open={gaugePopup.open}>
 		<Drawer.Content>
 			<Drawer.Header>
-				<Drawer.Title>Context</Drawer.Title>
+				<Drawer.Title>Contexto</Drawer.Title>
 
 				<Drawer.Description class="sr-only">
-					Context window usage of the model the chat runs
+					Uso de la ventana de contexto del modelo del chat
 				</Drawer.Description>
 			</Drawer.Header>
 
@@ -180,7 +180,7 @@
 	>
 		<div class="flex flex-col gap-2 px-2 py-1.5">
 			<div class="flex items-center gap-2">
-				<span class="font-medium">Context</span>
+				<span class="font-medium">Contexto</span>
 
 				<span class="text-muted-foreground">·</span>
 

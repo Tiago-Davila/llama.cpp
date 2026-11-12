@@ -83,12 +83,12 @@
 			const file = getPdfFile();
 
 			if (!file) {
-				throw new Error('No PDF file available for conversion');
+				throw new Error('No hay un PDF disponible para convertir');
 			}
 
 			pdfImages = await convertPDFToImage(file);
 		} catch (error) {
-			pdfImagesError = error instanceof Error ? error.message : 'Failed to load PDF images';
+			pdfImagesError = error instanceof Error ? error.message : 'No se pudieron cargar las imágenes del PDF';
 		} finally {
 			pdfImagesLoading = false;
 		}
@@ -111,12 +111,12 @@
 			const file = getPdfFile();
 
 			if (!file) {
-				throw new Error('No PDF file available for text extraction');
+				throw new Error('No hay un PDF disponible para extraer texto');
 			}
 
 			pdfText = await convertPDFToText(file);
 		} catch (error) {
-			pdfTextError = error instanceof Error ? error.message : 'Failed to extract PDF text';
+			pdfTextError = error instanceof Error ? error.message : 'No se pudo extraer el texto del PDF';
 		} finally {
 			pdfTextLoading = false;
 		}
@@ -145,7 +145,7 @@
 		{:else}
 			<FileText class="mr-1 {ICON_CLASS_DEFAULT}" />
 		{/if}
-		Text
+		Texto
 	</Button>
 
 	<Button
@@ -161,7 +161,7 @@
 		{:else}
 			<Eye class="mr-1 {ICON_CLASS_DEFAULT}" />
 		{/if}
-		Pages
+		Páginas
 	</Button>
 </div>
 
@@ -169,20 +169,20 @@
 	<Alert.Root class="mb-4 max-w-4xl">
 		<Info class={ICON_CLASS_DEFAULT} />
 
-		<Alert.Title>Preview only</Alert.Title>
+		<Alert.Title>Solo vista previa</Alert.Title>
 
 		<Alert.Description>
 			<span class="inline-flex">
-				The selected model does not support vision. Only the extracted
+				El modelo seleccionado no admite visión. Solo se enviará al modelo el
 				<!-- svelte-ignore a11y_click_events_have_key_events -->
 				<!-- svelte-ignore a11y_no_static_element_interactions -->
 				<span
 					class="mx-1 cursor-pointer underline"
 					onclick={() => (pdfViewMode = PdfViewMode.TEXT)}
 				>
-					text
+					texto
 				</span>
-				will be sent to the model.
+				extraído.
 			</span>
 		</Alert.Description>
 	</Alert.Root>
@@ -190,30 +190,30 @@
 
 {#if pdfViewMode === PdfViewMode.TEXT}
 	{#if pdfTextLoading}
-		{@render loadingStatus('Extracting PDF text...')}
+		{@render loadingStatus('Extrayendo texto del PDF...')}
 	{:else if pdfTextError}
-		{@render status('Failed to extract PDF text', pdfTextError)}
+		{@render status('No se pudo extraer el texto del PDF', pdfTextError)}
 	{:else if pdfText}
 		<div class="px-4 pb-4">
 			<SyntaxHighlightedCode class="max-w-4xl" code={pdfText} {language} maxHeight="none" />
 		</div>
 	{:else}
-		{@render status('No text found in this PDF')}
+		{@render status('No se encontró texto en este PDF')}
 	{/if}
 {:else if pdfImagesLoading}
-	{@render loadingStatus('Converting PDF to images...')}
+	{@render loadingStatus('Convirtiendo el PDF en imágenes...')}
 {:else if pdfImagesError}
-	{@render status('Failed to load PDF images', pdfImagesError)}
+	{@render status('No se pudieron cargar las imágenes del PDF', pdfImagesError)}
 {:else if pdfImages.length > 0}
 	{#each pdfImages as image, index (index)}
-		<p class="mb-2 text-sm text-white/50">Page {index + 1}</p>
+		<p class="mb-2 text-sm text-white/50">Página {index + 1}</p>
 
-		<img alt="PDF Page {index + 1}" class="mx-auto max-w-[85vw] rounded-lg shadow-lg" src={image} />
+		<img alt="Página {index + 1} del PDF" class="mx-auto max-w-[85vw] rounded-lg shadow-lg" src={image} />
 
 		<div class="h-4"></div>
 	{/each}
 {:else}
-	{@render status('No PDF pages available')}
+	{@render status('No hay páginas del PDF disponibles')}
 {/if}
 
 {#snippet loadingStatus(message: string)}

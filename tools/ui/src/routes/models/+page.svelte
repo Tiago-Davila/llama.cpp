@@ -15,12 +15,12 @@
 			return;
 		}
 
-		modelsStore.fetch().catch((error) => console.error('Unable to load models:', error));
+		modelsStore.fetch().catch((error) => console.error('No se pudieron cargar los modelos:', error));
 	});
 </script>
 
 <svelte:head>
-	<title>Models - {APP_NAME}</title>
+	<title>Modelos - {APP_NAME}</title>
 </svelte:head>
 
 <div
@@ -28,10 +28,10 @@
 >
 	<div class="flex items-start gap-4">
 		<div class="flex min-w-0 flex-col gap-1">
-			<h1 class="text-2xl font-semibold tracking-tight">Models</h1>
+			<h1 class="text-2xl font-semibold tracking-tight">Modelos</h1>
 
 			<p class="text-sm text-muted-foreground">
-				Load, configure and remove the models this server can run.
+				Cargá, configurá y quitá los modelos que este servidor puede ejecutar.
 			</p>
 		</div>
 
@@ -44,7 +44,7 @@
 			>
 				<DISCOVER_ICON class="h-3.5 w-3.5" />
 
-				Discover Models
+				Descubrir modelos
 			</Button>
 		{/if}
 	</div>

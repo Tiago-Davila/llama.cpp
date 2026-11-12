@@ -52,7 +52,7 @@ export function useToolsPanel(): UseToolsPanelReturn {
 			return `To enable Server Tools you need to run llama-server with ${CLI_FLAGS.TOOLS} all or ${CLI_FLAGS.TOOLS} <name> flag. To see MCP Tools you need to add / enable MCP Server(s).`;
 		}
 
-		// Other errors — return null so UI shows "Failed to load tools"
+		// Other errors — return null so UI shows "No se pudieron cargar las herramientas"
 		if (toolsStore.error) return null;
 
 		return `To enable Server Tools you need to run llama-server with ${CLI_FLAGS.TOOLS} all or ${CLI_FLAGS.TOOLS} <name> flag. To see MCP Tools you need to add / enable MCP Server(s).`;

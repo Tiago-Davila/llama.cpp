@@ -145,7 +145,7 @@
 			onPromptLoadComplete?.(placeholderId, result);
 		} catch (error) {
 			const errorMessage =
-				error instanceof Error ? error.message : 'Unknown error executing prompt';
+				error instanceof Error ? error.message : 'Error desconocido al ejecutar el prompt';
 
 			onPromptLoadError?.(placeholderId, errorMessage);
 		}
@@ -406,12 +406,12 @@
 	{:else}
 		<ChatFormPickerList
 			bind:searchQuery={internalSearchQuery}
-			emptyMessage="No MCP prompts available"
+			emptyMessage="No hay prompts MCP disponibles"
 			{isLoading}
 			itemKey={(prompt) => prompt.serverName + ':' + prompt.name}
 			items={filteredPrompts}
 			{scrollTrigger}
-			searchPlaceholder="Search prompts..."
+			searchPlaceholder="Buscar prompts..."
 			{selectedIndex}
 			{showSearchInput}
 		>

@@ -3,6 +3,8 @@
 	import ChatScreenDialogsAndAlerts from './ChatScreenDialogsAndAlerts.svelte';
 	import ChatScreenGreeting from './ChatScreenGreeting.svelte';
 	import ChatScreenMobileHeader from './ChatScreenMobileHeader.svelte';
+	import GradientAscii from '$lib/components/app/misc/GradientAscii/GradientAscii.svelte';
+	import { GRADIENT_ASCII_ROSE } from '$lib/components/app/misc/GradientAscii/gradient-ascii';
 	import { disableScrollHandling, onNavigate } from '$app/navigation';
 	import { page } from '$app/state';
 	import {
@@ -61,6 +63,11 @@
 	let isFormMoving = $state(false);
 	let isFormHeldAtBottom = $state(false);
 	let isFormLifted = $derived(isFormCentered && !isFormHeldAtBottom);
+	// text in the composer: the ASCII background under a new chat's form shows only while it is empty
+	let composerMessage = $state('');
+	let showAsciiBackground = $derived(
+		isFormLifted && !uiStore.isComposerExpanded && composerMessage.length === 0
+	);
 	let formWrapper: HTMLElement | undefined = $state();
 	let chatScreenForm: ChatScreenForm | undefined = $state();
 	let activeErrorDialog = $derived(chatStore.errorDialogState);
@@ -378,6 +385,7 @@
 
 			<ChatScreenForm
 				bind:this={chatScreenForm}
+				bind:message={composerMessage}
 				bind:uploadedFiles={fileUpload.uploadedFiles}
 				class="pointer-events-auto conversation-chat-form"
 				disabled={hasPropsError || chatStore.isEditing()}
@@ -388,6 +396,22 @@
 				onStop={() => chatStore.stopGeneration()}
 				onSystemPromptAdd={handleSystemPromptAdd}
 			/>
+
+			<!-- a new chat on desktop: ASCII glow under the form, fades out on the first typed character.
+			     Fixed to the screen's bottom, so it never adds to the page's scroll height -->
+
+			{#if isFormLifted && !deviceStore.isMobile}
+				<div
+					style:mask-image="linear-gradient(to bottom, transparent, black 30%)"
+					aria-hidden="true"
+					class={[
+						'pointer-events-none fixed inset-x-0 bottom-0 h-[calc(var(--chat-form-drop,40dvh)+1rem)] transition-opacity duration-500 ease-out',
+						showAsciiBackground ? 'opacity-100' : 'opacity-0'
+					]}
+				>
+					<GradientAscii {...GRADIENT_ASCII_ROSE} paused={!showAsciiBackground} />
+				</div>
+			{/if}
 		</div>
 	</div>
 {/if}

@@ -78,7 +78,7 @@
 					iconSize="h-4 w-4"
 					onclick={() => modelsStore.status.load(option.model)}
 					stopPropagationOnClick
-					tooltip="Retry loading model"
+					tooltip="Reintentar carga del modelo"
 					tooltipAsTitle
 				/>
 			{:else if isLoaded || isSleeping}
@@ -88,7 +88,7 @@
 					iconSize="h-4 w-4"
 					onclick={() => modelsStore.status.unload(option.model)}
 					stopPropagationOnClick
-					tooltip="Unload model"
+					tooltip="Descargar de memoria"
 					tooltipAsTitle
 				/>
 			{:else}
@@ -98,7 +98,7 @@
 					iconSize="h-4 w-4"
 					onclick={() => modelsStore.status.load(option.model)}
 					stopPropagationOnClick
-					tooltip="Load model"
+					tooltip="Cargar modelo"
 					tooltipAsTitle
 				/>
 			{/if}

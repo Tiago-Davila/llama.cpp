@@ -111,7 +111,7 @@
 	srLabel="Open command picker"
 >
 	<ChatFormPickerList
-		emptyMessage="No matching command"
+		emptyMessage="No hay comandos que coincidan"
 		isLoading={false}
 		itemKey={(command) => command.name}
 		items={filteredCommands}

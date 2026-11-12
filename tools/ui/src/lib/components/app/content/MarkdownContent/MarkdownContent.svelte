@@ -670,7 +670,7 @@
 
 					<div class="code-block-actions">
 						<ActionIconCopyToClipboard
-							ariaLabel="Diagram incomplete"
+							ariaLabel="Diagrama incompleto"
 							canCopy={false}
 							text={incompleteCodeBlock.code}
 						/>
@@ -678,7 +678,7 @@
 				</div>
 
 				<div class="mermaid-loading-placeholder">
-					<span class="mermaid-loading-text">Generating diagram...</span>
+					<span class="mermaid-loading-text">Generando diagrama...</span>
 				</div>
 			</div>
 		{:else if streamingSvgCode !== null}
@@ -688,7 +688,7 @@
 
 					<div class="code-block-actions">
 						<ActionIconCopyToClipboard
-							ariaLabel="Diagram incomplete"
+							ariaLabel="Diagrama incompleto"
 							canCopy={false}
 							text={incompleteCodeBlock.code}
 						/>
@@ -703,7 +703,7 @@
 					</div>
 				{:else}
 					<div class="mermaid-loading-placeholder">
-						<span class="mermaid-loading-text">Rendering svg...</span>
+						<span class="mermaid-loading-text">Generando SVG...</span>
 					</div>
 				{/if}
 			</div>

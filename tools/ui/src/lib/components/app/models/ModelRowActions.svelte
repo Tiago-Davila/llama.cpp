@@ -30,7 +30,7 @@
 			icon={Info}
 			iconSize="h-4 w-4"
 			onclick={() => uiStore.openModelDetails(option.id)}
-			tooltip="Manage model"
+			tooltip="Administrar modelo"
 			tooltipAsTitle
 		/>
 	</span>
@@ -43,7 +43,7 @@
 					icon={Heart}
 					iconSize="h-4 w-4"
 					onclick={() => modelsStore.toggleFavorite(option.model)}
-					tooltip="Remove from favorites"
+					tooltip="Quitar de favoritos"
 					tooltipAsTitle
 				/>
 			</span>
@@ -54,7 +54,7 @@
 					icon={HeartOff}
 					iconSize="h-4 w-4"
 					onclick={() => modelsStore.toggleFavorite(option.model)}
-					tooltip="Remove from favorites"
+					tooltip="Quitar de favoritos"
 					tooltipAsTitle
 				/>
 			</span>
@@ -66,7 +66,7 @@
 				icon={Heart}
 				iconSize="h-4 w-4"
 				onclick={() => modelsStore.toggleFavorite(option.model)}
-				tooltip="Add to favorites"
+				tooltip="Agregar a favoritos"
 				tooltipAsTitle
 			/>
 		</span>

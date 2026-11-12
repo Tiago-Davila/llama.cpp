@@ -70,16 +70,16 @@
 
 	// the heading's "more actions" dropdown and its right-click menu offer the same actions
 	const actions: MenuAction[] = [
-		{ icon: SquarePen, label: 'New chat', onclick: () => void startChat() },
+		{ icon: SquarePen, label: 'Nuevo chat', onclick: () => void startChat() },
 		{
 			icon: Pencil,
-			label: 'Rename',
+			label: 'Renombrar',
 			onclick: () => uiStore.openGroupDialog({ groupId: group.id }),
 			separator: true
 		},
 		{
 			icon: Trash2,
-			label: 'Delete',
+			label: 'Eliminar',
 			onclick: () => (confirmDeleteOpen = true),
 			separator: true,
 			variant: 'destructive'
@@ -119,7 +119,7 @@
 							icon={Plus}
 							iconSize="h-3 w-3"
 							onclick={() => void startChat()}
-							tooltip="New chat in group"
+							tooltip="Nuevo chat en el grupo"
 						/>
 
 						<DropdownMenuActions
@@ -147,7 +147,7 @@
 						onclick={() => void startChat()}
 						type="button"
 					>
-						Start a chat in this group
+						Iniciar un chat en este grupo
 					</button>
 				</li>
 			{/each}
@@ -166,11 +166,11 @@
 </SidebarNavigationDropZone>
 
 <DialogConfirmation
-	confirmText="Delete"
-	description="Its chats stay in your history, outside any group."
+	confirmText="Eliminar"
+	description="Sus chats quedan en tu historial, fuera de cualquier grupo."
 	onCancel={() => (confirmDeleteOpen = false)}
 	onConfirm={handleDelete}
 	open={confirmDeleteOpen}
-	title="Delete {group.name}?"
+	title="¿Eliminar {group.name}?"
 	variant="destructive"
 />

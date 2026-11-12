@@ -108,13 +108,13 @@
 
 					{#if isCustomRealTime}
 						<button
-							aria-label="Reset to default"
+							aria-label="Restablecer valor por defecto"
 							class="absolute top-1/2 right-2 inline-flex h-5 w-5 -translate-y-1/2 items-center justify-center rounded transition-colors hover:bg-muted"
 							onclick={() => {
 								settingsStore.resetParameterToServerDefault(field.key);
 								onConfigChange(field.key, '');
 							}}
-							title="Reset to default"
+							title="Restablecer valor por defecto"
 							type="button"
 						>
 							<RotateCcw class="h-3 w-3" />
@@ -162,7 +162,7 @@
 						/>
 
 						<Label class="cursor-pointer text-sm font-normal" for="showSystemMessage">
-							Show system message in conversations
+							Mostrar mensaje del sistema en las conversaciones
 						</Label>
 					</div>
 				{/if}
@@ -220,13 +220,13 @@
 
 						{#if isCustomRealTime}
 							<button
-								aria-label="Reset to default"
+								aria-label="Restablecer valor por defecto"
 								class="absolute top-1/2 right-8 inline-flex h-5 w-5 -translate-y-1/2 items-center justify-center rounded transition-colors hover:bg-muted"
 								onclick={() => {
 									settingsStore.resetParameterToServerDefault(field.key);
 									onConfigChange(field.key, '');
 								}}
-								title="Reset to default"
+								title="Restablecer valor por defecto"
 								type="button"
 							>
 								<RotateCcw class="h-3 w-3" />

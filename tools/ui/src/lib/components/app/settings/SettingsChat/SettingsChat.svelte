@@ -111,7 +111,7 @@
 			try {
 				JSON.parse(localConfig.customJson);
 			} catch (error) {
-				alert('Invalid JSON in custom parameters. Please check the format and try again.');
+				alert('JSON inválido en los parámetros personalizados. Revisá el formato e intentá de nuevo.');
 				console.error(error);
 
 				return;
@@ -137,7 +137,7 @@
 						processedConfig[field] = numValue;
 					}
 				} else {
-					alert(`Invalid numeric value for ${field}. Please enter a valid number.`);
+					alert(`Valor numérico inválido para ${field}. Ingresá un número válido.`);
 
 					return;
 				}
@@ -191,7 +191,7 @@
 
 									<Button onclick={() => window.location.reload()} variant="outline">
 										<RefreshCw class="h-3 w-3" />
-										Reload app
+										Recargar aplicación
 									</Button>
 								</div>
 							{/if}
@@ -200,7 +200,7 @@
 				</div>
 
 				<div class="mt-8 border-t border-border/30 pt-6 pb-6">
-					<p class="text-xs text-muted-foreground">Settings are saved in browser's localStorage</p>
+					<p class="text-xs text-muted-foreground">La configuración se guarda en el almacenamiento local del navegador</p>
 				</div>
 			</div>
 

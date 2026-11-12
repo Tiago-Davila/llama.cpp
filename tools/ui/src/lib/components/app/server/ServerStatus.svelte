@@ -28,7 +28,7 @@
 	}
 
 	function getStatusText() {
-		if (loading) return 'Connecting...';
+		if (loading) return 'Conectando...';
 
 		if (error) return 'Connection Error';
 

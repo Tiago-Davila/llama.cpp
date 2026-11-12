@@ -59,10 +59,10 @@
 
 			showSettingsExportSummary = true;
 			showSettingsImportSummary = false;
-			toast.success('Settings exported');
+			toast.success('Configuración exportada');
 		} catch (err) {
 			console.error('Failed to export settings:', err);
-			toast.error('Failed to export settings');
+			toast.error('No se pudo exportar la configuración');
 		}
 	}
 
@@ -87,7 +87,7 @@
 					const data = JSON.parse(text);
 
 					if (!data || typeof data !== 'object' || !data.config) {
-						toast.error('Invalid settings file: missing config');
+						toast.error('Archivo de configuración inválido: falta la configuración');
 
 						return;
 					}
@@ -96,17 +96,17 @@
 
 					showSettingsImportSummary = true;
 					showSettingsExportSummary = false;
-					toast.success('Settings imported successfully');
+					toast.success('Configuración importada');
 				} catch (err) {
 					console.error('Failed to import settings:', err);
-					toast.error('Failed to import settings');
+					toast.error('No se pudo importar la configuración');
 				}
 			};
 
 			input.click();
 		} catch (err) {
 			console.error('Failed to open file picker:', err);
-			toast.error('Failed to open file picker');
+			toast.error('No se pudo abrir el selector de archivos');
 		}
 	}
 
@@ -115,7 +115,7 @@
 			const allConversations = conversationsStore.conversations;
 
 			if (allConversations.length === 0) {
-				toast.info('No conversations to export');
+				toast.info('No hay conversaciones para exportar');
 
 				return;
 			}
@@ -133,7 +133,7 @@
 			showExportDialog = true;
 		} catch (err) {
 			console.error('Failed to load conversations:', err);
-			alert('Failed to load conversations');
+			alert('No se pudieron cargar las conversaciones');
 		}
 	}
 
@@ -155,7 +155,7 @@
 			showExportDialog = false;
 		} catch (err) {
 			console.error('Export failed:', err);
-			alert('Failed to export conversations');
+			alert('No se pudieron exportar las conversaciones');
 		}
 	}
 
@@ -177,7 +177,7 @@
 					const importedData = await ConversationTransferService.parseImportFile(file);
 
 					if (importedData.length === 0) {
-						throw new Error('No conversations found in file');
+						throw new Error('No se encontraron conversaciones en el archivo');
 					}
 
 					fullImportData = importedData;
@@ -185,17 +185,17 @@
 					messageCountMap = createMessageCountMap(importedData);
 					showImportDialog = true;
 				} catch (err: unknown) {
-					const message = err instanceof Error ? err.message : 'Unknown error';
+					const message = err instanceof Error ? err.message : 'Error desconocido';
 
 					console.error('Failed to parse file:', err);
-					alert(`Failed to parse file: ${message}`);
+					alert(`No se pudo leer el archivo: ${message}`);
 				}
 			};
 
 			input.click();
 		} catch (err) {
 			console.error('Import failed:', err);
-			alert('Failed to import conversations');
+			alert('No se pudieron importar las conversaciones');
 		}
 	}
 
@@ -214,7 +214,7 @@
 			// lists what was written and the toast accounts for the rest.
 			if (skipped.length > 0) {
 				toast.info(
-					`Skipped ${skipped.length} conversation${skipped.length === 1 ? '' : 's'} already in your library`
+					`Se omitieron ${skipped.length} ${skipped.length === 1 ? 'conversación' : 'conversaciones'} que ya tenías`
 				);
 			}
 
@@ -224,7 +224,7 @@
 			showImportDialog = false;
 		} catch (err) {
 			console.error('Import failed:', err);
-			alert('Failed to import conversations. Please check the file format.');
+			alert('No se pudieron importar las conversaciones. Revisá el formato del archivo.');
 		}
 	}
 
@@ -233,7 +233,7 @@
 			const allConversations = conversationsStore.conversations;
 
 			if (allConversations.length === 0) {
-				toast.info('No conversations to delete');
+				toast.info('No hay conversaciones para eliminar');
 
 				return;
 			}
@@ -241,7 +241,7 @@
 			showDeleteDialog = true;
 		} catch (err) {
 			console.error('Failed to load conversations for deletion:', err);
-			toast.error('Failed to load conversations');
+			toast.error('No se pudieron cargar las conversaciones');
 		}
 	}
 
@@ -261,54 +261,54 @@
 </script>
 
 <div in:fade={{ duration: 150 }} class="space-y-12">
-	<SettingsGroup title="Conversations">
+	<SettingsGroup title="Conversaciones">
 		<SettingsChatImportExportSection
 			IconComponent={Download}
 			buttonText="Export conversations"
-			description="Download your conversations as a ZIP of JSONL files. This includes all messages, attachments, and conversation history."
+			description="Descargá tus conversaciones como un ZIP de archivos JSONL. Incluye todos los mensajes, adjuntos e historial."
 			onclick={handleExportClick}
-			summary={{ items: exportedConversations, show: showExportSummary, verb: 'Exported' }}
-			title="Export"
+			summary={{ items: exportedConversations, show: showExportSummary, verb: 'Exportadas' }}
+			title="Exportar"
 		/>
 
 		<SettingsChatImportExportSection
 			IconComponent={Upload}
 			buttonText="Import conversations"
-			description="Import one or more conversations from a previously exported ZIP or JSONL file. This will merge with your existing conversations."
+			description="Importá una o más conversaciones desde un ZIP o JSONL exportado. Se sumarán a tus conversaciones actuales."
 			onclick={handleImportClick}
-			summary={{ items: importedConversations, show: showImportSummary, verb: 'Imported' }}
-			title="Import"
+			summary={{ items: importedConversations, show: showImportSummary, verb: 'Importadas' }}
+			title="Importar"
 		/>
 
 		<SettingsChatImportExportSection
 			IconComponent={Trash2}
 			buttonClass="text-destructive-foreground justify-start justify-self-start bg-destructive hover:bg-destructive/80 md:w-auto"
-			buttonText="Delete all conversations"
+			buttonText="Eliminar todas las conversaciones"
 			buttonVariant="destructive"
-			description="Permanently delete all conversations and their messages. This action cannot be undone. Consider exporting your conversations first if you want to keep a backup."
+			description="Eliminar de forma permanente todas las conversaciones y sus mensajes. Esta acción no se puede deshacer. Si querés un respaldo, exportalas primero."
 			onclick={handleDeleteAllClick}
-			title="Delete All"
+			title="Eliminar todo"
 			titleClass="text-destructive"
 		/>
 	</SettingsGroup>
 
-	<SettingsGroup title="Settings">
+	<SettingsGroup title="Configuración">
 		<SettingsChatImportExportSection
 			IconComponent={Download}
 			buttonText="Export settings"
-			description="Export your chat settings and preferences as a JSON file."
+			description="Exportá tu configuración y preferencias como un archivo JSON."
 			onclick={handleSettingsExport}
-			summary={{ items: [], show: showSettingsExportSummary, verb: 'Exported' }}
-			title="Export"
+			summary={{ items: [], show: showSettingsExportSummary, verb: 'Exportadas' }}
+			title="Exportar"
 		/>
 
 		<SettingsChatImportExportSection
 			IconComponent={Upload}
 			buttonText="Import settings"
-			description="Import chat settings from a previously exported JSON file. This will merge with your existing settings."
+			description="Importá la configuración desde un JSON exportado. Se combinará con tu configuración actual."
 			onclick={handleSettingsImport}
-			summary={{ items: [], show: showSettingsImportSummary, verb: 'Imported' }}
-			title="Import"
+			summary={{ items: [], show: showSettingsImportSummary, verb: 'Importadas' }}
+			title="Importar"
 		/>
 	</SettingsGroup>
 </div>
@@ -340,12 +340,12 @@
 
 <DialogConfirmation
 	bind:open={showDeleteDialog}
-	cancelText="Cancel"
-	confirmText="Delete All"
-	description="Are you sure you want to delete all conversations? This action cannot be undone and will permanently remove all your conversations and messages."
+	cancelText="Cancelar"
+	confirmText="Eliminar todo"
+	description="¿Seguro que querés eliminar todas las conversaciones? Esta acción no se puede deshacer y borrará todas tus conversaciones y mensajes."
 	icon={Trash2}
 	onCancel={handleDeleteAllCancel}
 	onConfirm={handleDeleteAllConfirm}
-	title="Delete all conversations"
+	title="Eliminar todas las conversaciones"
 	variant="destructive"
 />

@@ -32,20 +32,20 @@
 				{:else}
 					<Shield class="h-5 w-5 text-destructive" />
 				{/if}
-				Export Settings
+				Exportar configuración
 			</AlertDialog.Title>
 
 			<AlertDialog.Description>
 				{#if includeSensitiveData}
 					<p class="text-amber-500">
-						Warning: This export will include sensitive data such as API keys and MCP server custom
-						headers (e.g., authorization tokens). Do not share this file with anyone you don't
-						trust.
+						Atención: esta exportación incluye datos sensibles como claves de API y encabezados de
+						servidores MCP (por ej., tokens de autorización). No compartas este archivo con nadie
+						de quien no confíes.
 					</p>
 				{:else}
 					<p>
-						Sensitive data (API keys, MCP server custom headers) will not be included in the export
-						to protect your credentials.
+						Los datos sensibles (claves de API, encabezados de servidores MCP) no se incluyen en la
+						exportación para proteger tus credenciales.
 					</p>
 				{/if}
 			</AlertDialog.Description>
@@ -59,24 +59,24 @@
 				for="include-sensitive"
 			>
 				{#if includeSensitiveData}
-					<span class="text-destructive">Include sensitive data (not recommended)</span>
+					<span class="text-destructive">Incluir datos sensibles (no recomendado)</span>
 				{:else}
-					<span>Include sensitive data</span>
+					<span>Incluir datos sensibles</span>
 				{/if}
 			</Label>
 		</div>
 
 		<AlertDialog.Footer>
-			<AlertDialog.Cancel onclick={onCancel}>Cancel</AlertDialog.Cancel>
+			<AlertDialog.Cancel onclick={onCancel}>Cancelar</AlertDialog.Cancel>
 
 			<AlertDialog.Action
 				class="bg-destructive text-white hover:bg-destructive/80"
 				onclick={onConfirm}
 			>
 				{#if includeSensitiveData}
-					Export Anyway
+					Exportar igual
 				{:else}
-					Export Without Sensitive Data
+					Exportar sin datos sensibles
 				{/if}
 			</AlertDialog.Action>
 		</AlertDialog.Footer>

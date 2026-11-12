@@ -38,7 +38,7 @@
 	{#snippet children(_meta, ctx)}
 		{#if ctx.isStreamingCall}
 			<div class="mb-2 flex items-center gap-2 text-xs text-muted-foreground/70">
-				<span>Input</span>
+				<span>Entrada</span>
 
 				{#if ctx.isStreaming}
 					<Loader2 class="h-3 w-3 animate-spin" />
@@ -54,20 +54,20 @@
 				/>
 			{:else if ctx.isStreaming}
 				<div class="rounded bg-muted/20 p-2 text-xs text-muted-foreground/70 italic">
-					Receiving arguments...
+					Recibiendo argumentos...
 				</div>
 			{:else}
 				<div
 					class="rounded bg-yellow-500/10 p-2 text-xs text-yellow-600 italic dark:text-yellow-400"
 				>
-					Response was truncated
+					La respuesta fue truncada
 				</div>
 			{/if}
 		{:else}
 			{@const showInput = Boolean(section.toolArgs)}
 			{#if showInput}
 				<div class="mb-1.5 flex items-center gap-2 text-xs text-muted-foreground/70">
-					<span>Input</span>
+					<span>Entrada</span>
 				</div>
 
 				<SyntaxHighlightedCode
@@ -83,7 +83,7 @@
 					? 'mt-4 mb-1.5 flex items-center gap-2 text-xs text-muted-foreground/70'
 					: 'mb-1.5 flex items-center gap-2 text-xs text-muted-foreground/70'}
 			>
-				<span>Output</span>
+				<span>Salida</span>
 
 				{#if ctx.isPending}
 					<Loader2 class="h-3 w-3 animate-spin" />
@@ -92,7 +92,7 @@
 
 			{#if ctx.isPending}
 				<div class="rounded bg-muted/20 p-2 text-xs text-muted-foreground/70 italic">
-					Waiting for result...
+					Esperando el resultado...
 				</div>
 			{:else if section.toolResult}
 				{#if outputKind === ToolResultKind.JSON}
@@ -119,7 +119,7 @@
 												src={createBase64DataUrl(audioMimeType, line.media.base64Data)}
 												type={audioMimeType}
 											/>
-											Your browser does not support the audio element.
+											Tu navegador no admite audio.
 										</audio>
 									</div>
 								{:else}
@@ -135,7 +135,7 @@
 					</div>
 				{/if}
 			{:else}
-				<div class="rounded bg-muted/20 p-2 text-xs text-muted-foreground/70 italic">No output</div>
+				<div class="rounded bg-muted/20 p-2 text-xs text-muted-foreground/70 italic">Sin salida</div>
 			{/if}
 		{/if}
 	{/snippet}

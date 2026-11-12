@@ -30,7 +30,7 @@ export function capImageDataURLSize(
 			const mimeType = mimeMatch[1] as MimeTypeImage;
 
 			if (!Object.values(MimeTypeImage).includes(mimeType)) {
-				return reject(new Error(`Unsupported image MIME type: ${mimeType}`));
+				return reject(new Error(`Tipo de imagen no admitido: ${mimeType}`));
 			}
 
 			const orientation = isJpegMimeType(mimeType)
@@ -73,7 +73,7 @@ export function capImageDataURLSize(
 			};
 
 			img.onerror = () => {
-				reject(new Error('Failed to load image.'));
+				reject(new Error('No se pudo cargar la imagen.'));
 			};
 
 			img.src = base64UrlImage;

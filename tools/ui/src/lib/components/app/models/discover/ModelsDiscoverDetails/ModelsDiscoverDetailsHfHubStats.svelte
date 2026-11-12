@@ -26,6 +26,6 @@
 	{/if}
 
 	{#if details.lastModified}
-		<span>Updated {HuggingFaceService.formatRelativeTime(details.lastModified)}</span>
+		<span>Actualizado {HuggingFaceService.formatRelativeTime(details.lastModified)}</span>
 	{/if}
 </div>

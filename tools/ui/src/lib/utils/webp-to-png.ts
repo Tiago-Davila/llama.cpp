@@ -41,7 +41,7 @@ export function webpBase64UrlToPngDataURL(
 			};
 
 			img.onerror = () => {
-				reject(new Error('Failed to load WebP image. Ensure the WebP data is valid.'));
+				reject(new Error('No se pudo cargar la imagen WebP. Verificá que sea válida.'));
 			};
 
 			img.src = base64UrlWebp;

@@ -109,7 +109,7 @@
 		onSubmit={handleSubmit}
 		onUploadedFileRemove={handleUploadedFileRemove}
 		onValueChange={editCtx.setContent}
-		placeholder="Edit your message..."
+		placeholder="Editá tu mensaje..."
 		showAddButton={editCtx.messageRole === MessageRole.USER}
 		showModelSelector={editCtx.messageRole === MessageRole.USER}
 		value={editCtx.editedContent}
@@ -122,7 +122,7 @@
 			<Switch bind:checked={saveWithoutRegenerate} class="scale-75" id="save-only-switch" />
 
 			<label class="cursor-pointer text-xs text-muted-foreground" for="save-only-switch">
-				Update without re-sending
+				Actualizar sin reenviar
 			</label>
 		</div>
 	{:else if isAssistantMessage}
@@ -130,7 +130,7 @@
 			<Switch bind:checked={branchAfterEdit} class="scale-75" id="branch-after-edit" />
 
 			<label class="cursor-pointer text-xs text-muted-foreground" for="branch-after-edit">
-				Branch conversation after edit
+				Bifurcar la conversación al editar
 			</label>
 		</div>
 	{:else}
@@ -140,18 +140,18 @@
 	<Button class="h-7 px-3 text-xs" onclick={attemptCancel} size="sm" variant="ghost">
 		<X class="mr-1 h-3 w-3" />
 
-		Cancel
+		Cancelar
 	</Button>
 </div>
 
 <DialogConfirmation
 	bind:open={showDiscardDialog}
-	cancelText="Keep editing"
-	confirmText="Discard"
-	description="You have unsaved changes. Are you sure you want to discard them?"
+	cancelText="Seguir editando"
+	confirmText="Descartar"
+	description="Tenés cambios sin guardar. ¿Seguro que querés descartarlos?"
 	icon={AlertTriangle}
 	onCancel={() => (showDiscardDialog = false)}
 	onConfirm={editCtx.cancel}
-	title="Discard changes?"
+	title="¿Descartar cambios?"
 	variant="destructive"
 />

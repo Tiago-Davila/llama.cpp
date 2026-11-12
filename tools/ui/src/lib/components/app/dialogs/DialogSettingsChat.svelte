@@ -28,7 +28,7 @@
 			<Dialog.Title class="flex items-center gap-2">
 				<Settings class="h-5 w-5" />
 
-				<span>Settings</span>
+				<span>Configuración</span>
 			</Dialog.Title>
 
 			<!-- the body is flush with the dialog, so the corner close needs its own inset -->
@@ -37,7 +37,7 @@
 			>
 				<X class="size-4" />
 
-				<span class="sr-only">Close</span>
+				<span class="sr-only">Cerrar</span>
 			</Dialog.Close>
 		</Dialog.Header>
 

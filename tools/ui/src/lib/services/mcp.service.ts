@@ -291,7 +291,7 @@ export class MCPService {
 		// Phase: Initializing
 		onPhase?.(
 			MCPConnectionPhase.INITIALIZING,
-			this.createLog(MCPConnectionPhase.INITIALIZING, 'Sending initialize request...')
+			this.createLog(MCPConnectionPhase.INITIALIZING, 'Enviando solicitud de inicio...')
 		);
 
 		// The SDK timeout only covers the initialize request, not transport.start(),
@@ -307,7 +307,7 @@ export class MCPService {
 			const handshakeDeadline = new Promise<never>((_, reject) => {
 				handshakeTimer = setTimeout(() => {
 					void transport.close().catch(() => {});
-					reject(new Error(`Connection timed out after ${Math.round(handshakeTimeoutMs / 1000)}s`));
+					reject(new Error(`Se agotó el tiempo de conexión después de ${Math.round(handshakeTimeoutMs / 1000)}s`));
 				}, handshakeTimeoutMs);
 			});
 
@@ -372,7 +372,7 @@ export class MCPService {
 			MCPConnectionPhase.CAPABILITIES_EXCHANGED,
 			this.createLog(
 				MCPConnectionPhase.CAPABILITIES_EXCHANGED,
-				'Capabilities exchanged successfully',
+				'Capacidades intercambiadas correctamente',
 				MCPLogLevel.INFO,
 				{
 					serverCapabilities,
@@ -390,7 +390,7 @@ export class MCPService {
 		// Phase: Listing tools
 		onPhase?.(
 			MCPConnectionPhase.LISTING_TOOLS,
-			this.createLog(MCPConnectionPhase.LISTING_TOOLS, 'Listing available tools...')
+			this.createLog(MCPConnectionPhase.LISTING_TOOLS, 'Listando herramientas disponibles...')
 		);
 
 		if (import.meta.env.DEV && import.meta.env.VITE_DEBUG) {
@@ -1219,13 +1219,13 @@ export class MCPService {
 				!config.useProxy
 			) {
 				hints.push(
-					'The page is running over HTTPS but the MCP server is HTTP. Browsers often block this as mixed content; enable the proxy or use HTTPS/WSS for the MCP server.'
+					'La página usa HTTPS pero el servidor MCP usa HTTP. Los navegadores suelen bloquearlo como contenido mixto; activá el proxy o usá HTTPS/WSS en el servidor MCP.'
 				);
 			}
 
 			if (window.location.origin !== targetUrl.origin && !config.useProxy) {
 				hints.push(
-					'This is a cross-origin browser request. If the server is reachable from curl or Node but not from the browser, missing CORS headers are the most likely cause.'
+					'Es una solicitud entre orígenes. Si el servidor responde desde curl o Node pero no desde el navegador, lo más probable es que falten encabezados CORS.'
 				);
 			}
 		}
@@ -1238,7 +1238,7 @@ export class MCPService {
 
 		if (config.credentials && config.credentials !== 'omit') {
 			hints.push(
-				'Credentials are enabled for this connection. Cross-origin credentialed requests need Access-Control-Allow-Credentials: true and cannot use a wildcard Access-Control-Allow-Origin.'
+				'Esta conexión usa credenciales. Las solicitudes entre orígenes con credenciales necesitan Access-Control-Allow-Credentials: true y no pueden usar un comodín en Access-Control-Allow-Origin.'
 			);
 		}
 

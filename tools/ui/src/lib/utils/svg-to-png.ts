@@ -41,7 +41,7 @@ export function svgBase64UrlToPngDataURL(
 			};
 
 			img.onerror = () => {
-				reject(new Error('Failed to load SVG image. Ensure the SVG data is valid.'));
+				reject(new Error('No se pudo cargar el SVG. Verificá que sea válido.'));
 			};
 
 			img.src = base64UrlSvg;

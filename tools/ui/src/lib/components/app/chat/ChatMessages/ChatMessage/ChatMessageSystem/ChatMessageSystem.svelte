@@ -76,7 +76,7 @@
 </script>
 
 <div
-	aria-label="System message with actions"
+	aria-label="Mensaje del sistema con acciones"
 	class="group flex flex-col items-end gap-3 md:gap-2 {className}"
 	role="group"
 >
@@ -90,7 +90,7 @@
 					editCtx.setContent(e.currentTarget.value);
 				}}
 				onkeydown={handleEditKeydown}
-				placeholder="Edit system message..."
+				placeholder="Editar mensaje del sistema..."
 				style="max-height: var(--max-message-height);"
 				value={editCtx.editedContent}
 			></textarea>
@@ -99,7 +99,7 @@
 				<Button class="h-8 px-3" onclick={editCtx.cancel} size="sm" variant="outline">
 					<X class="mr-1 h-3 w-3" />
 
-					Cancel
+					Cancelar
 				</Button>
 
 				<Button
@@ -110,7 +110,7 @@
 				>
 					<Check class="mr-1 h-3 w-3" />
 
-					Save
+					Guardar
 				</Button>
 			</div>
 		</div>
@@ -163,7 +163,7 @@
 										size="sm"
 										variant="outline"
 									>
-										Show full system message
+										Ver mensaje del sistema completo
 									</Button>
 								</div>
 							{/if}
@@ -180,7 +180,7 @@
 									size="sm"
 									variant="outline"
 								>
-									Collapse System Message
+									Contraer mensaje del sistema
 								</Button>
 							</div>
 						{/if}

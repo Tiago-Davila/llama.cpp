@@ -115,12 +115,12 @@ export async function processFilesToChatUploaded(
 				const currentConfig = settingsStore.config;
 
 				if (hasVisionSupport && !currentConfig.pdfAsImage) {
-					toast.info(`You can enable parsing PDF as images with vision models.`, {
+					toast.info(`Con modelos con visión podés procesar los PDF como imágenes.`, {
 						action: {
-							label: 'Enable PDF as Images',
+							label: 'Procesar PDF como imágenes',
 							onClick: () => {
 								settingsStore.updateConfig(SETTINGS_KEYS.PDF_AS_IMAGE, true);
-								toast.success('PDF parsing as images enabled!', {
+								toast.success('¡Procesamiento de PDF como imágenes activado!', {
 									duration: 3000
 								});
 							}
@@ -136,7 +136,7 @@ export async function processFilesToChatUploaded(
 					const wavBlob = await convertToWav(file);
 
 					if (wavBlob.type !== MimeTypeAudio.WAV) {
-						toast.error(`Failed to decode audio file ${file.name}`);
+						toast.error(`No se pudo decodificar el audio ${file.name}`);
 
 						continue;
 					}
@@ -175,7 +175,7 @@ export async function processFilesToChatUploaded(
 				}
 			}
 		} catch (error) {
-			console.error('Error processing file', file.name, error);
+			console.error('Error al procesar el archivo', file.name, error);
 			results.push(base);
 		}
 	}

@@ -130,7 +130,7 @@
 		>
 			{@render dividerRow()}
 
-			<span class="sr-only">Toggle content</span>
+			<span class="sr-only">Mostrar/ocultar contenido</span>
 		</Collapsible.Trigger>
 	{:else}
 		<Collapsible.Trigger
@@ -152,7 +152,7 @@
 				)}
 			/>
 
-			<span class="sr-only">Toggle content</span>
+			<span class="sr-only">Mostrar/ocultar contenido</span>
 		</Collapsible.Trigger>
 	{/if}
 

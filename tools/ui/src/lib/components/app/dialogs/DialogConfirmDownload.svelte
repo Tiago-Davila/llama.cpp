@@ -22,18 +22,18 @@
 	// destructive confirmations identically.
 	const COPY = {
 		[ModelDownloadConfirmAction.CANCEL]: {
-			cancelText: 'Keep downloading',
-			confirmText: 'Cancel download',
+			cancelText: 'Seguir descargando',
+			confirmText: 'Cancelar descarga',
 			description: (name: string) =>
 				`This stops the download of ${name} and removes the partial files. Pause it instead to keep the progress.`,
-			title: 'Cancel download'
+			title: 'Cancelar descarga'
 		},
 		[ModelDownloadConfirmAction.DELETE]: {
-			cancelText: 'Keep model',
-			confirmText: 'Delete',
+			cancelText: 'Conservar modelo',
+			confirmText: 'Eliminar',
 			description: (name: string) =>
 				`This permanently removes ${name} from disk. You can download it again later.`,
-			title: 'Delete model'
+			title: 'Eliminar modelo'
 		}
 	} as const;
 

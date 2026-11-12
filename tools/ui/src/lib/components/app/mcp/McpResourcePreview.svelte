@@ -52,10 +52,10 @@
 			if (result) {
 				content = result;
 			} else {
-				error = 'Failed to load resource content';
+				error = 'No se pudo cargar el contenido del recurso';
 			}
 		} catch (e) {
-			error = e instanceof Error ? e.message : 'Unknown error';
+			error = e instanceof Error ? e.message : 'Error desconocido';
 		} finally {
 			isLoading = false;
 		}
@@ -79,7 +79,7 @@
 		<div class="flex flex-col items-center justify-center gap-2 py-8 text-muted-foreground">
 			<FileText class="h-8 w-8 opacity-50" />
 
-			<span class="text-sm">Select a resource to preview</span>
+			<span class="text-sm">Seleccioná un recurso para ver la vista previa</span>
 		</div>
 	{:else}
 		<div class="flex items-start justify-between gap-2">
@@ -95,7 +95,7 @@
 
 			<div class="flex items-center gap-1">
 				<ActionIconCopyToClipboard
-					ariaLabel="Copy content"
+					ariaLabel="Copiar contenido"
 					canCopy={!isLoading && !!getResourceTextContent(content)}
 					text={getResourceTextContent(content)}
 				/>
@@ -105,7 +105,7 @@
 					disabled={isLoading || !getResourceTextContent(content)}
 					onclick={handleDownload}
 					size="sm"
-					title="Download content"
+					title="Descargar contenido"
 					variant="ghost"
 				>
 					<Download class="h-3.5 w-3.5" />
@@ -135,7 +135,7 @@
 				{#each blobContent as blob (blob.uri)}
 					{#if isImageMimeType(blob.mimeType ?? MimeTypeApplication.OCTET_STREAM)}
 						<img
-							alt="Resource content"
+							alt="Contenido del recurso"
 							class="max-w-full rounded"
 							src={createBase64DataUrl(
 								blob.mimeType ?? MimeTypeApplication.OCTET_STREAM,
@@ -146,13 +146,13 @@
 						<div class="flex items-center gap-2 rounded bg-muted p-2 text-sm text-muted-foreground">
 							<FileText class={ICON_CLASS_DEFAULT} />
 
-							<span>Binary content ({blob.mimeType || 'unknown type'})</span>
+							<span>Contenido binario ({blob.mimeType || 'unknown type'})</span>
 						</div>
 					{/if}
 				{/each}
 
 				{#if !textContent && blobContent.length === 0}
-					<div class="py-4 text-center text-sm text-muted-foreground">No content available</div>
+					<div class="py-4 text-center text-sm text-muted-foreground">No hay contenido disponible</div>
 				{/if}
 			{/if}
 		</div>

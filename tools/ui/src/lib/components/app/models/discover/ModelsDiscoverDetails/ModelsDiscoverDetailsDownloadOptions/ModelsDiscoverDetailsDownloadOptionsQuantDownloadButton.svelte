@@ -61,9 +61,9 @@
 
 	let tooltipText = $derived(
 		entry.isDownloading
-			? 'Pause downloading'
+			? 'Pausar descarga'
 			: entry.isPaused
-				? 'Resume downloading'
+				? 'Reanudar descarga'
 				: entry.isDownloaded
 					? `Delete ${downloadLabel}`
 					: entry.isFailed
@@ -159,7 +159,7 @@
 		{#if percent !== null}
 			<span class="mr-1 tabular-nums">{percent}%</span>
 		{:else if entry.isPaused}
-			<span>Paused</span>
+			<span>En pausa</span>
 		{:else}
 			<span>{HuggingFaceService.formatFileSize(downloadBytes)}</span>
 		{/if}
@@ -197,7 +197,7 @@
 	     so the two icons line up exactly; the X turns destructive on its hover -->
 	<button
 		{...props}
-		aria-label="Cancel downloading"
+		aria-label="Cancelar descarga"
 		class="relative grid h-3.5 w-3.5 shrink-0 cursor-pointer items-center justify-center text-muted-foreground/70"
 		onclick={() => onRequestCancel?.(entry.repoWithTag)}
 		type="button"
@@ -223,7 +223,7 @@
 			<span
 				class="rounded-md bg-destructive px-1 py-0.5 text-[10px] font-semibold tracking-wide text-destructive-foreground uppercase"
 			>
-				Failed
+				Falló
 			</span>
 		{/if}
 
@@ -257,7 +257,7 @@
 	>
 		{@render tooltipTrigger(tooltipText, pauseResumeChip)}
 
-		{@render tooltipTrigger('Cancel downloading', cancelChip)}
+		{@render tooltipTrigger('Cancelar descarga', cancelChip)}
 
 		{#if percent !== null}
 			<ModelDownloadProgressBar

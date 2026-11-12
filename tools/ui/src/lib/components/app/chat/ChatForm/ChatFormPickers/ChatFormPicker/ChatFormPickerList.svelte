@@ -38,7 +38,7 @@
 		items,
 		onSearchClose,
 		scrollTrigger,
-		searchPlaceholder = 'Search...',
+		searchPlaceholder = 'Buscar...',
 		searchQuery = $bindable(),
 		selectedIndex,
 		showSearchInput,

@@ -257,7 +257,7 @@ export { default as ChatFormCurrentWorkingDirectory } from './ChatForm/ChatFormC
  * **ChatFormPickerMcpPrompts** - MCP prompt selection interface
  *
  * Floating picker for browsing and selecting MCP Server Prompts.
- * Triggered by typing `/` in the chat input or choosing `MCP Prompt` option in ChatFormActionAddDropdown.
+ * Triggered by typing `/` in the chat input or choosing `Prompt MCP` option in ChatFormActionAddDropdown.
  * Loads prompts from connected MCP servers and allows users to select and configure them.
  *
  * **Architecture:**
@@ -699,7 +699,7 @@ export { default as ChatScreenForm } from './ChatScreen/ChatScreenForm.svelte';
 export { default as ChatScreenServerError } from './ChatScreen/ChatScreenServerError.svelte';
 
 /**
- * Stream resume status indicator. Shows a small "Reconnecting to the stream..."
+ * Stream resume status indicator. Shows a small "Reconectando..."
  * banner with a spinner while `chatStore.streamConnectionState` is `resuming`,
  * i.e. after a dropped connection is reattaching to the live SSE replay buffer.
  * Renders nothing otherwise. Shown inside ChatScreen only on an active conversation route.

@@ -70,7 +70,7 @@
 						<span class="truncate text-xs text-muted-foreground">{baseModels.join(', ')}</span>
 
 						<a
-							aria-label="View base model on HuggingFace"
+							aria-label="Ver modelo base en HuggingFace"
 							class="shrink-0 text-muted-foreground transition-colors hover:text-foreground"
 							href={HuggingFaceService.getModelUrl(baseModels[0])}
 							rel="noopener noreferrer"
@@ -93,7 +93,7 @@
 		>
 			<img alt="" class="h-3.5 w-3.5" src="{base}/recommended-mcp/huggingface.ico" />
 
-			View on Hugging Face
+			Ver en Hugging Face
 
 			<ExternalLink class="size-3.5" />
 		</Button>

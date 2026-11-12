@@ -91,7 +91,7 @@
 </script>
 
 <div class="space-y-4">
-	<SearchInput bind:value={searchQuery} placeholder="Search conversations..." />
+	<SearchInput bind:value={searchQuery} placeholder="Buscar conversaciones..." />
 
 	<div class="flex items-center justify-between text-sm text-muted-foreground">
 		<span>
@@ -115,9 +115,9 @@
 							/>
 						</th>
 
-						<th class="p-3 text-left text-sm font-medium">Conversation Name</th>
+						<th class="p-3 text-left text-sm font-medium">Nombre de la conversación</th>
 
-						<th class="w-32 p-3 text-left text-sm font-medium">Messages</th>
+						<th class="w-32 p-3 text-left text-sm font-medium">Mensajes</th>
 					</tr>
 				</thead>
 
@@ -126,9 +126,9 @@
 						<tr>
 							<td class="p-8 text-center text-sm text-muted-foreground" colspan="3">
 								{#if searchQuery}
-									No conversations found matching "{searchQuery}"
+									No se encontraron conversaciones con "{searchQuery}"
 								{:else}
-									No conversations available
+									No hay conversaciones disponibles
 								{/if}
 							</td>
 						</tr>
@@ -172,10 +172,10 @@
 	</div>
 
 	<div class="flex justify-end gap-2">
-		<Button onclick={handleCancel} variant="outline">Cancel</Button>
+		<Button onclick={handleCancel} variant="outline">Cancelar</Button>
 
 		<Button disabled={selectedIds.size === 0} onclick={handleConfirm}>
-			{mode === 'export' ? 'Export' : 'Import'} ({selectedIds.size})
+			{mode === 'export' ? 'Exportar' : 'Importar'} ({selectedIds.size})
 		</Button>
 	</div>
 </div>

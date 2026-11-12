@@ -133,10 +133,10 @@
 		}
 
 		if (!fileSearchEnabled) {
-			return 'File search is disabled - enable "Search files" in Settings > Tools to use @-mentions';
+			return 'File search is disabled - enable "Buscar archivos" in Settings > Tools to use @-mentions';
 		}
 
-		return searchError ? `Search failed - ${searchError}` : 'No matching files or folders';
+		return searchError ? `Search failed - ${searchError}` : 'No hay archivos ni carpetas que coincidan';
 	});
 
 	const showTooltip = $derived(!deviceStore.isMobile);
@@ -211,7 +211,7 @@
 		class="pointer-events-none absolute inset-0 opacity-0"
 		tabindex={-1}
 	>
-		<span class="sr-only">Open file mention picker</span>
+		<span class="sr-only">Abrir selector de archivos</span>
 	</Popover.Trigger>
 
 	<Popover.Content

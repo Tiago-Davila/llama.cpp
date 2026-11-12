@@ -12,6 +12,7 @@
 		class?: string;
 		disabled?: boolean;
 		isLoading?: boolean;
+		message?: string;
 		onFileRemove?: (fileId: string) => void;
 		onFileUpload?: (files: File[]) => void;
 		onSend?: (message: string, files?: ChatUploadedFile[]) => Promise<boolean>;
@@ -24,6 +25,7 @@
 		class: className,
 		disabled = false,
 		isLoading = false,
+		message = $bindable(''),
 		onFileRemove,
 		onFileUpload,
 		onSend,
@@ -62,7 +64,6 @@
 		};
 	});
 	let hasLoadingAttachments = $derived(uploadedFiles.some((f) => f.isLoading));
-	let message = $state('');
 	let previousIsLoading = $derived(isLoading);
 
 	const { clearDraft } = useDraftMessages({

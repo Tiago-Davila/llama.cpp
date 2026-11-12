@@ -8,8 +8,8 @@
 
 <div class="py-4 text-center text-sm text-muted-foreground">
 	{#if isLoading}
-		Loading resources...
+		Cargando recursos...
 	{:else}
-		No resources available
+		No hay recursos disponibles
 	{/if}
 </div>

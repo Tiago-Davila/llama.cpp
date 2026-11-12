@@ -28,26 +28,25 @@
 	<Button onclick={handleResetClick} variant="outline">
 		<RotateCcw class="h-3 w-3" />
 
-		Reset to default
+		Restablecer valor por defecto
 	</Button>
 {/if}
 
 <AlertDialog.Root bind:open={showResetDialog}>
 	<AlertDialog.Content>
 		<AlertDialog.Header>
-			<AlertDialog.Title>Reset Settings to Default</AlertDialog.Title>
+			<AlertDialog.Title>Restablecer configuración</AlertDialog.Title>
 
 			<AlertDialog.Description>
-				Are you sure you want to reset all settings to their default values? This will reset all
-				parameters to the values provided by the server's /props endpoint and remove all your custom
-				configurations.
+				¿Seguro que querés restablecer toda la configuración? Los parámetros vuelven a los valores
+				del endpoint /props del servidor y se borran tus ajustes personalizados.
 			</AlertDialog.Description>
 		</AlertDialog.Header>
 
 		<AlertDialog.Footer>
-			<AlertDialog.Cancel>Cancel</AlertDialog.Cancel>
+			<AlertDialog.Cancel>Cancelar</AlertDialog.Cancel>
 
-			<AlertDialog.Action onclick={handleConfirmReset}>Reset to Default</AlertDialog.Action>
+			<AlertDialog.Action onclick={handleConfirmReset}>Restablecer</AlertDialog.Action>
 		</AlertDialog.Footer>
 	</AlertDialog.Content>
 </AlertDialog.Root>

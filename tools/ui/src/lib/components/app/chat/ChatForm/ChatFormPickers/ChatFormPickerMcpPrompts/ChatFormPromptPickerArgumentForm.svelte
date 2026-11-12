@@ -67,8 +67,8 @@
 	{/if}
 
 	<div class="mt-8 flex justify-end gap-2">
-		<Button onclick={onCancel} size="sm" type="button" variant="secondary">Cancel</Button>
+		<Button onclick={onCancel} size="sm" type="button" variant="secondary">Cancelar</Button>
 
-		<Button size="sm" type="submit">Use Prompt</Button>
+		<Button size="sm" type="submit">Usar prompt</Button>
 	</div>
 </form>

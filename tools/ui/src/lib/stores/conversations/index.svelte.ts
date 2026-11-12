@@ -186,12 +186,12 @@ class ConversationsStore implements ConversationsPreferencesHost {
 
 			toast.success(
 				idsToRemove.size === 1
-					? 'Conversation deleted'
+					? 'Conversación eliminada'
 					: `${idsToRemove.size} conversations deleted`
 			);
 		} catch (error) {
 			console.error('Failed to bulk delete conversations:', error);
-			toast.error('Failed to delete conversations');
+			toast.error('No se pudieron eliminar las conversaciones');
 		}
 	}
 
@@ -207,7 +207,7 @@ class ConversationsStore implements ConversationsPreferencesHost {
 			const exported = await this.getConversationsForExport(convIds);
 
 			if (exported.length === 0) {
-				toast.error('No conversations to export');
+				toast.error('No hay conversaciones para exportar');
 
 				return;
 			}
@@ -216,12 +216,12 @@ class ConversationsStore implements ConversationsPreferencesHost {
 
 			toast.success(
 				exported.length === 1
-					? 'Conversation exported'
+					? 'Conversación exportada'
 					: `${exported.length} conversations exported`
 			);
 		} catch (error) {
 			console.error('Failed to bulk export conversations:', error);
-			toast.error('Failed to export conversations');
+			toast.error('No se pudieron exportar las conversaciones');
 		}
 	}
 
@@ -250,12 +250,12 @@ class ConversationsStore implements ConversationsPreferencesHost {
 
 			toast.success(
 				convIds.length === 1
-					? 'Conversation pin toggled'
+					? 'Fijado de conversación actualizado'
 					: `Updated pin state for ${convIds.length} conversations`
 			);
 		} catch (error) {
 			console.error('Failed to bulk toggle pin:', error);
-			toast.error('Failed to update pin state');
+			toast.error('No se pudo actualizar el fijado');
 		}
 	}
 
@@ -339,12 +339,12 @@ class ConversationsStore implements ConversationsPreferencesHost {
 			tabsStore.clear();
 			this.notifyConversationsDeleted(allIds);
 
-			toast.success('All conversations deleted');
+			toast.success('Se eliminaron todas las conversaciones');
 
 			await goto(ROUTES.START);
 		} catch (error) {
 			console.error('Failed to delete all conversations:', error);
-			toast.error('Failed to delete conversations');
+			toast.error('No se pudieron eliminar las conversaciones');
 		}
 	}
 
@@ -479,12 +479,12 @@ class ConversationsStore implements ConversationsPreferencesHost {
 
 			await goto(RouterService.chat(newConv.id));
 
-			toast.success('Conversation forked');
+			toast.success('Conversación bifurcada');
 
 			return newConv.id;
 		} catch (error) {
 			console.error('Failed to fork conversation:', error);
-			toast.error('Failed to fork conversation');
+			toast.error('No se pudo bifurcar la conversación');
 
 			return null;
 		}

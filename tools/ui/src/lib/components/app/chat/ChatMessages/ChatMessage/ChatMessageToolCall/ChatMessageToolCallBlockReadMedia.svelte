@@ -46,7 +46,7 @@
 <ToolCallBlock {isStreaming} meta={readMediaMeta} {onToggle} {open} {section}>
 	{#snippet titleSnippet()}
 		<span class="flex min-w-0 flex-wrap items-baseline gap-x-1">
-			<span class="shrink-0 text-muted-foreground">Read media</span>
+			<span class="shrink-0 text-muted-foreground">Leer multimedia</span>
 
 			<span class="min-w-0 overflow-x-auto font-mono">{readMediaMeta?.fileName}</span>
 		</span>
@@ -56,7 +56,7 @@
 		{#if section.toolResult}
 			{#if !mediaAttachment}
 				<div class="rounded bg-muted/20 p-2 text-xs text-muted-foreground/70 italic">
-					Media attachment not found in message extras
+					No se encontró el adjunto multimedia en el mensaje
 				</div>
 			{:else if mediaAttachment.type === AttachmentType.AUDIO}
 				<div class="mt-2">
@@ -65,7 +65,7 @@
 							src={createBase64DataUrl(audioMimeType, mediaAttachment.base64Data)}
 							type={audioMimeType}
 						/>
-						Your browser does not support the audio element.
+						Tu navegador no admite audio.
 					</audio>
 				</div>
 			{:else}
@@ -96,7 +96,7 @@
 			{/if}
 		{:else}
 			<div class="rounded bg-muted/20 p-2 text-xs text-muted-foreground/70 italic">
-				Waiting for media data...
+				Esperando datos multimedia...
 			</div>
 		{/if}
 	{/snippet}

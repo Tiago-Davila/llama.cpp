@@ -7,7 +7,7 @@
 		SearchInput,
 		SidebarNavigationSearchResults
 	} from '$lib/components/app';
-	import { ROUTES } from '$lib/constants';
+	import { APP_NAME, ROUTES } from '$lib/constants';
 	import { RouterService } from '$lib/services/router.service';
 	import { chatStore, conversationsStore, deviceStore } from '$lib/stores';
 
@@ -41,7 +41,7 @@
 
 		if (!conversation) return;
 
-		const newName = window.prompt('Rename conversation', conversation.name);
+		const newName = window.prompt('Renombrar conversación', conversation.name);
 
 		if (newName && newName.trim()) {
 			await conversationsStore.updateConversationName(id, newName.trim());
@@ -88,7 +88,7 @@
 </script>
 
 <svelte:head>
-	<title>Search · llama.cpp</title>
+	<title>Buscar - {APP_NAME}</title>
 </svelte:head>
 
 <div class="fixed top-0 z-10 left-0 right-0 p-2">
@@ -97,7 +97,7 @@
 		bind:value={searchQuery}
 		autofocus
 		onClose={handleBack}
-		placeholder="Search conversations..."
+		placeholder="Buscar conversaciones..."
 	/>
 </div>
 

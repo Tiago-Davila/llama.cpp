@@ -4,7 +4,7 @@
 </script>
 
 <svelte:head>
-	<title>MCP Servers - {APP_NAME}</title>
+	<title>Servidores MCP - {APP_NAME}</title>
 </svelte:head>
 
 <!-- a phone's MCP servers: the page the sidebar opens there, where a desktop or tablet opens the
@@ -13,10 +13,10 @@
 	class="mx-auto flex w-full max-w-7xl flex-col gap-6 px-4 pt-(--page-top) pb-16 max-md:pb-safe-24 md:px-8 md:pt-6"
 >
 	<div class="flex min-w-0 flex-col gap-1">
-		<h1 class="text-2xl font-semibold tracking-tight">MCP Servers</h1>
+		<h1 class="text-2xl font-semibold tracking-tight">Servidores MCP</h1>
 
 		<p class="text-sm text-muted-foreground">
-			Connect the servers whose tools, prompts and resources your chats can use.
+			Conectá los servidores cuyas herramientas, prompts y recursos pueden usar tus chats.
 		</p>
 	</div>
 

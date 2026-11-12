@@ -66,7 +66,7 @@
 </script>
 
 <div
-	aria-label="User message with actions"
+	aria-label="Mensaje del usuario con acciones"
 	class="chat-message-user group flex flex-col items-end gap-3 md:gap-2 {className}"
 	role="group"
 >

@@ -108,7 +108,7 @@
 				modelId={selectedOption.model}
 			/>
 		{:else}
-			<span class="min-w-0 font-medium">Select model</span>
+			<span class="min-w-0 font-medium">Seleccionar modelo</span>
 		{/if}
 	</span>
 
@@ -197,7 +197,7 @@
 			isEmpty={ms.isEmpty && ms.isCurrentModelInCache}
 			onSearchChange={(v) => ms.setSearchTerm(v)}
 			{onSearchKeyDown}
-			placeholder="Search models..."
+			placeholder="Buscar modelos..."
 			searchClass="bg-transparent"
 			searchValue={ms.searchTerm}
 		>
@@ -210,7 +210,7 @@
 					<DropdownMenu.Item class="gap-2" onSelect={handleManageModels}>
 						<MODEL_ICON class="h-3.5 w-3.5 shrink-0 text-muted-foreground" />
 
-						Manage models
+						Administrar modelos
 					</DropdownMenu.Item>
 				</DropdownMenu.Group>
 			{/snippet}
@@ -237,7 +237,7 @@
 					modelId={currentModel}
 				/>
 
-				<span class="ml-2 text-xs whitespace-nowrap opacity-70">(not available)</span>
+				<span class="ml-2 text-xs whitespace-nowrap opacity-70">(no disponible)</span>
 			</button>
 		{/if}
 

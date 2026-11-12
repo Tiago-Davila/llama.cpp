@@ -115,7 +115,7 @@ export { default as CollapsibleContentBlock } from './CollapsibleContentBlock.sv
  *
  * @example
  * ```svelte
- * <CollapsibleTerminalBlock bind:open title="Run command">
+ * <CollapsibleTerminalBlock bind:open title="Ejecutar comando">
  *   <pre>{output}</pre>
  * </CollapsibleTerminalBlock>
  * ```

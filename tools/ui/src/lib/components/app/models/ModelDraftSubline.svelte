@@ -6,7 +6,7 @@
 	interface Props {
 		/**
 		 * Left inset of the tree connector, tuned per surface so the elbow hangs
-		 * under the main line's avatar and "Draft model" aligns with its id.
+		 * under the main line's avatar and "Modelo borrador" aligns with its id.
 		 */
 		connectorClass?: string;
 		/** Draft sidecar kind, e.g. dflash. */
@@ -31,7 +31,7 @@
 		class="h-2.5 w-3.5 shrink-0 self-center rounded-bl-sm border-b border-l border-border/70 {connectorClass}"
 	></span>
 
-	<span class="shrink-0 text-xs text-muted-foreground">Draft model</span>
+	<span class="shrink-0 text-xs text-muted-foreground">Modelo borrador</span>
 
 	<span class={MODEL_VARIANT_BADGE_CLASS}>{kind}</span>
 
@@ -46,7 +46,7 @@
 			{#if percent !== null}
 				<span class="font-mono text-xs tabular-nums text-muted-foreground">{percent}%</span>
 			{:else if state === ModelRowDownloadState.PAUSED}
-				<span class="text-xs text-muted-foreground">Paused</span>
+				<span class="text-xs text-muted-foreground">En pausa</span>
 			{/if}
 		</span>
 	{/if}

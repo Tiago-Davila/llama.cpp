@@ -26,7 +26,7 @@ import { detectMcpTransportFromUrl } from '$lib/utils';
 function createConnectionErrorLog(message: string): MCPConnectionLog {
 	return {
 		level: MCPLogLevel.ERROR,
-		message: `Connection failed: ${message}`,
+		message: `La conexión falló: ${message}`,
 		phase: MCPConnectionPhase.ERROR,
 		timestamp: new Date()
 	};
@@ -123,7 +123,7 @@ export class MCPHealthCheckManager {
 		if (!trimmedUrl) {
 			this.setState(server.id, {
 				logs: [],
-				message: 'Please enter a server URL first.',
+				message: 'Primero ingresá la URL del servidor.',
 				status: HealthCheckStatus.ERROR
 			});
 
@@ -201,7 +201,7 @@ export class MCPHealthCheckManager {
 				await MCPService.disconnect(connection);
 			}
 		} catch (error) {
-			const message = error instanceof Error ? error.message : 'Unknown error occurred';
+			const message = error instanceof Error ? error.message : 'Ocurrió un error desconocido';
 
 			if (logs.at(-1)?.phase !== MCPConnectionPhase.ERROR) {
 				logs.push(createConnectionErrorLog(message));

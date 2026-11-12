@@ -65,18 +65,18 @@
 				{#if isDownloadPaused}
 					<Play class="h-3.5 w-3.5" />
 
-					Resume downloading
+					Reanudar descarga
 				{:else}
 					<Pause class="h-3.5 w-3.5" />
 
-					Pause downloading
+					Pausar descarga
 				{/if}
 			</Button>
 
 			<Button class="flex-1 gap-1.5" onclick={onRequestCancelDownload} {size} variant="secondary">
 				<Trash2 class="h-3.5 w-3.5" />
 
-				Cancel download
+				Cancelar descarga
 			</Button>
 		</div>
 
@@ -84,7 +84,7 @@
 			<Button class="gap-1.5" onclick={onSeeInDiscover} {size} variant="tertiary">
 				<Compass class="h-3.5 w-3.5" />
 
-				See in Discover
+				Ver en Descubrir
 			</Button>
 		{/if}
 	{:else}
@@ -94,11 +94,11 @@
 				{#if hasChat}
 					<MessageSquare class="h-3.5 w-3.5" />
 
-					Use in this chat
+					Usar en este chat
 				{:else}
 					<SquarePen class="h-3.5 w-3.5" />
 
-					Start a new chat
+					Iniciar un chat nuevo
 				{/if}
 			</Button>
 		{/if}
@@ -108,7 +108,7 @@
 				<Button class="flex-1 gap-1.5" onclick={onUseInNewChat} {size}>
 					<SquarePen class="h-3.5 w-3.5" />
 
-					Start a new chat
+					Iniciar un chat nuevo
 				</Button>
 			{/if}
 
@@ -123,15 +123,15 @@
 					{#if isLoading}
 						<Loader2 class="h-3.5 w-3.5 animate-spin" />
 
-						Loading...
+						Cargando...
 					{:else if isLoaded}
 						<Eject class="h-3.5 w-3.5" />
 
-						Unload model
+						Descargar de memoria
 					{:else}
 						<Power class="h-3.5 w-3.5" />
 
-						Load model
+						Cargar modelo
 					{/if}
 				</Button>
 			{/if}
@@ -140,7 +140,7 @@
 				<Button class="flex-1 gap-1.5" onclick={onSeeInDiscover} {size} variant="tertiary">
 					<Compass class="h-3.5 w-3.5" />
 
-					See in Discover
+					Ver en Descubrir
 				</Button>
 			{/if}
 		</div>

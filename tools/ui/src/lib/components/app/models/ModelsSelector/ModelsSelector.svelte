@@ -220,7 +220,7 @@
 				modelId={selectedOption.model}
 			/>
 		{:else}
-			<span class="min-w-0 font-medium">Select model</span>
+			<span class="min-w-0 font-medium">Seleccionar modelo</span>
 		{/if}
 	</span>
 
@@ -277,7 +277,7 @@
 					modelId={displayModel}
 				/>
 
-				<span class="ml-2 text-xs whitespace-nowrap opacity-70">(not available)</span>
+				<span class="ml-2 text-xs whitespace-nowrap opacity-70">(no disponible)</span>
 			</button>
 		{/if}
 
@@ -303,7 +303,7 @@
 	<div class="flex items-center gap-2 text-xs text-muted-foreground">
 		<Loader2 class="h-3.5 w-3.5 animate-spin" />
 
-		Loading models...
+		Cargando modelos...
 	</div>
 {:else if ms.options.length === 0 && ms.isMultiModel}
 	{#if displayModel}
@@ -314,7 +314,7 @@
 			<MODEL_ICON class="h-3.5 w-3.5 shrink-0" />
 		</span>
 	{:else}
-		<span class="text-xs text-muted-foreground">No models yet.</span>
+		<span class="text-xs text-muted-foreground">Todavía no hay modelos.</span>
 	{/if}
 {:else if ms.isMultiModel}
 	{#if isMobile}

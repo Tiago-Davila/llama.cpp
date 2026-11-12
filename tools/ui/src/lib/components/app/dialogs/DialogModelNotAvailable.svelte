@@ -35,11 +35,11 @@
 		<AlertDialog.Header>
 			<AlertDialog.Title class="flex items-center gap-2">
 				<AlertTriangle class="h-5 w-5 text-amber-500" />
-				Model Not Available
+				Modelo no disponible
 			</AlertDialog.Title>
 
 			<AlertDialog.Description>
-				The requested model could not be found. Select an available model to continue.
+				No se encontró el modelo solicitado. Seleccioná un modelo disponible para continuar.
 			</AlertDialog.Description>
 		</AlertDialog.Header>
 
@@ -52,7 +52,7 @@
 
 			{#if availableModels.length > 0}
 				<div class="text-sm">
-					<p class="mb-2 font-medium text-muted-foreground">Select an available model:</p>
+					<p class="mb-2 font-medium text-muted-foreground">Seleccioná un modelo disponible:</p>
 
 					<div class="max-h-48 space-y-1 overflow-y-auto rounded-md border p-1">
 						{#each availableModels as model (model)}
@@ -74,7 +74,7 @@
 		</div>
 
 		<AlertDialog.Footer>
-			<AlertDialog.Action onclick={() => handleOpenChange(false)}>Cancel</AlertDialog.Action>
+			<AlertDialog.Action onclick={() => handleOpenChange(false)}>Cancelar</AlertDialog.Action>
 		</AlertDialog.Footer>
 	</AlertDialog.Content>
 </AlertDialog.Root>

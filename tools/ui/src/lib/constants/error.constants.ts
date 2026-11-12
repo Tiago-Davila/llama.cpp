@@ -1,17 +1,17 @@
 export const ERROR_MESSAGES = {
 	HTTP: {
-		ACCESS_DENIED: 'Access denied',
-		GENERIC: 'Request failed',
-		INTERNAL_ERROR: 'Server error - check server logs',
-		NOT_FOUND: 'Not found',
-		TEMPORARILY_UNAVAILABLE: 'Server temporarily unavailable'
+		ACCESS_DENIED: 'Acceso denegado',
+		GENERIC: 'La solicitud falló',
+		INTERNAL_ERROR: 'Error del servidor: revisá los registros del servidor',
+		NOT_FOUND: 'No encontrado',
+		TEMPORARILY_UNAVAILABLE: 'Servidor no disponible temporalmente'
 	},
 	NETWORK: {
-		GENERIC: 'Failed to connect to server',
-		NXDOMAIN: 'Server not found - check server address',
-		REFUSED: 'Connection refused - server may be offline',
-		TIMEOUT: 'Request timed out',
-		UNREACHABLE: 'Server is not running or unreachable'
+		GENERIC: 'No se pudo conectar con el servidor',
+		NXDOMAIN: 'Servidor no encontrado: revisá la dirección',
+		REFUSED: 'Conexión rechazada: el servidor puede estar apagado',
+		TIMEOUT: 'Se agotó el tiempo de espera',
+		UNREACHABLE: 'El servidor no está en ejecución o no es accesible'
 	}
 };
 

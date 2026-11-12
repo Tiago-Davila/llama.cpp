@@ -15,7 +15,7 @@
 		{#snippet child({ props })}
 			<button
 				{...props}
-				aria-label="New chat"
+				aria-label="Nuevo chat"
 				class="backdrop-blur-lg flex h-8 w-8 mr-4 shrink-0 cursor-pointer items-center justify-center rounded-md transition-colors hover:bg-foreground/5"
 				{onclick}
 			>
@@ -25,6 +25,6 @@
 	</Tooltip.Trigger>
 
 	<Tooltip.Content>
-		<p>New chat</p>
+		<p>Nuevo chat</p>
 	</Tooltip.Content>
 </Tooltip.Root>

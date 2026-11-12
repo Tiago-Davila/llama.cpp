@@ -72,7 +72,7 @@
 			class="fixed inset-0 z-[1000] flex flex-col pt-safe pb-safe bg-transparent! shadow-none! backdrop-filter-none! outline-none"
 		>
 			<Dialog.Close
-				aria-label="Close"
+				aria-label="Cerrar"
 				class="absolute top-safe-4 right-4 z-10 cursor-pointer text-white hover:text-gray-400"
 				onclick={handleClose}
 			>

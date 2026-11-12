@@ -22,9 +22,9 @@
 
 	let { class: className = '', message, onRegenerate }: Props = $props();
 
-	const COMPACTION_HEADER = 'Conversation compacted';
-	const COMPACTION_RUNNING_LABEL = 'Compacting conversation';
-	const COMPACTION_GENERATING_LABEL = 'Generating summary';
+	const COMPACTION_HEADER = 'Conversación compactada';
+	const COMPACTION_RUNNING_LABEL = 'Compactando conversación';
+	const COMPACTION_GENERATING_LABEL = 'Generando resumen';
 
 	// The shared row context, so the summary is editable and branchable through
 	// the same actions as a chat turn.

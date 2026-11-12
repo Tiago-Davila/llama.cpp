@@ -51,7 +51,7 @@
 </script>
 
 <div
-	aria-label="Context usage"
+	aria-label="Uso del contexto"
 	class={['flex cursor-default items-center justify-center', className]}
 	data-context-gauge-trigger
 	onclick={gaugeTriggerClick}

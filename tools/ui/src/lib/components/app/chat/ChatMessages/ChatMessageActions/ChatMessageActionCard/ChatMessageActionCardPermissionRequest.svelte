@@ -20,7 +20,7 @@
 
 <ChatMessageActionCard icon={ShieldQuestion}>
 	{#snippet message()}
-		Allow use of <span class="font-semibold">{toolName}</span>{#if serverLabel}
+		Permitir el uso de <span class="font-semibold">{toolName}</span>{#if serverLabel}
 			&nbsp;from <span class="font-semibold">{serverLabel}</span>{/if}?
 	{/snippet}
 
@@ -33,13 +33,13 @@
 					size="sm"
 					variant="secondary"
 				>
-					Allow once
+					Permitir una vez
 				</Button>
 
 				<ButtonGroup.Separator />
 
 				<DropdownMenu.Trigger
-					aria-label="More allow options"
+					aria-label="Más opciones de permiso"
 					class={cn(
 						buttonVariants({ size: 'sm', variant: 'secondary' }),
 						'inline-flex cursor-pointer items-center !rounded-l-none !shadow-none !px-2'
@@ -51,13 +51,13 @@
 
 			<DropdownMenu.Content align="start" class="min-w-[8rem]">
 				<DropdownMenu.Item onclick={() => onDecision(ToolPermissionDecision.ALWAYS)}>
-					Always allow <pre>{toolName}</pre>
+					Permitir siempre <pre>{toolName}</pre>
 					tool
 				</DropdownMenu.Item>
 
 				{#if serverLabel}
 					<DropdownMenu.Item onclick={() => onDecision(ToolPermissionDecision.ALWAYS_SERVER)}>
-						Always allow all tools from {serverLabel}
+						Permitir siempre todas las herramientas de {serverLabel}
 					</DropdownMenu.Item>
 				{:else}
 					{@const source = toolsStore.getToolSource(toolName)}
@@ -66,16 +66,16 @@
 							? TOOL_SERVER_LABELS[ToolSource.SERVER]
 							: source === ToolSource.CUSTOM
 								? TOOL_SERVER_LABELS[ToolSource.CUSTOM]
-								: 'MCP Tools'}
+								: 'Herramientas MCP'}
 					<DropdownMenu.Item onclick={() => onDecision(ToolPermissionDecision.ALWAYS_SERVER)}>
-						Approve all tools from {providerName}
+						Aprobar todas las herramientas de {providerName}
 					</DropdownMenu.Item>
 				{/if}
 			</DropdownMenu.Content>
 		</DropdownMenu.Root>
 
 		<Button onclick={() => onDecision(ToolPermissionDecision.DENY)} size="sm" variant="destructive">
-			Deny
+			Denegar
 		</Button>
 	{/snippet}
 </ChatMessageActionCard>

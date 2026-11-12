@@ -23,7 +23,7 @@ export default defineConfig({
 	preset: combinePresetAndAppleSplashScreens(
 		{
 			...minimal2023Preset,
-			// llama-brand's favicons carry their own margin
+			// the FerroviasIA favicons carry their own margin
 			transparent: {
 				...minimal2023Preset.transparent,
 				padding: PWA_ASSET_GENERATOR.FAVICON_PADDING

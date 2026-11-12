@@ -26,7 +26,7 @@
 				<div class="px-3 py-4 text-center text-sm text-muted-foreground">
 					<Loader2 class="mx-auto mb-1 {ICON_CLASS_DEFAULT} animate-spin" />
 
-					Loading tools...
+					Cargando herramientas...
 				</div>
 			{:else if toolsStore.isToolsEndpointUnreachable}
 				<div class="grid gap-2.5 px-3 py-4 text-sm text-muted-foreground">
@@ -34,9 +34,9 @@
 						<Info class="mt-0.5 {ICON_CLASS_DEFAULT} shrink-0" />
 
 						<span>
-							Run llama-server with <code>{CLI_FLAGS.TOOLS}</code> flag to enable
+							Ejecutá llama-server con <code>{CLI_FLAGS.TOOLS}</code> para habilitar
 
-							<strong>Server Tools</strong>.
+							<strong>Herramientas del servidor</strong>.
 						</span>
 					</span>
 
@@ -44,14 +44,14 @@
 						<Info class="mt-0.5 {ICON_CLASS_DEFAULT} shrink-0" />
 
 						<span>
-							{hasMcpServersAvailable ? 'Enable' : 'Add'} MCP Server(s) to access
+							{hasMcpServersAvailable ? 'Habilitá' : 'Agregá'} servidor(es) MCP para acceder a
 
-							<strong>MCP Tools</strong>.
+							<strong>Herramientas MCP</strong>.
 						</span>
 					</span>
 				</div>
 			{:else if toolsStore.error}
-				<div class="px-3 py-4 text-center text-sm text-muted-foreground">Failed to load tools</div>
+				<div class="px-3 py-4 text-center text-sm text-muted-foreground">No se pudieron cargar las herramientas</div>
 			{:else if toolsPanel.noToolsInfoMessage}
 				<div class="flex gap-2 px-3 py-4 text-sm text-muted-foreground">
 					<Info class="mt-0.5 {ICON_CLASS_DEFAULT} shrink-0" />
@@ -59,7 +59,7 @@
 					<span>{toolsPanel.noToolsInfoMessage}</span>
 				</div>
 			{:else}
-				<div class="px-3 py-4 text-center text-sm text-muted-foreground">No tools available</div>
+				<div class="px-3 py-4 text-center text-sm text-muted-foreground">No hay herramientas disponibles</div>
 			{/if}
 		{:else}
 			<div class="max-h-80 overflow-y-auto p-2 pr-1">
@@ -130,7 +130,7 @@
 
 				<Tooltip.Content side="right">
 					<p>
-						{checkState.checked ? 'Disable' : 'Enable'}
+						{checkState.checked ? 'Deshabilitar' : 'Habilitar'}
 						{group.tools.length} tool{group.tools.length !== 1 ? 's' : ''}
 					</p>
 				</Tooltip.Content>

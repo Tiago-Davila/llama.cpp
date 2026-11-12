@@ -33,13 +33,13 @@ export const SIDEBAR_DRAG_HIGHLIGHT_CLASS = 'bg-foreground/6 ring-1 ring-foregro
 /** How long a sidebar chat row takes to slide out of a section, or into one. */
 export const SIDEBAR_ROW_SLIDE_MS = 200;
 
-/** Chats a sidebar section shows before its "Show more" row. */
+/** Chats a sidebar section shows before its "Ver más" row. */
 export const SIDEBAR_SECTION_PREVIEW_COUNT = 6;
 
 /**
- * The "Show less" row of an opened section stays at the bottom of the sidebar
+ * The "Ver menos" row of an opened section stays at the bottom of the sidebar
  * while the section scrolls under it, with room below it and a fade above
- * (see app.css). "Show more" is a plain row.
+ * (see app.css). "Ver más" is a plain row.
  */
 export const SIDEBAR_SHOW_MORE_ROW_CLASS = 'sidebar-show-more sticky bottom-0 z-10 pb-2';
 
@@ -68,15 +68,15 @@ export const UI_DATA_ATTRS = {
 } as const;
 
 export const TOOL_GROUP_LABELS = {
-	[ToolSource.BROWSER]: 'Browser',
+	[ToolSource.BROWSER]: 'Navegador',
 	[ToolSource.CUSTOM]: 'JSON Schema',
-	[ToolSource.SERVER]: 'Server'
+	[ToolSource.SERVER]: 'Servidor'
 } as const;
 
 export const TOOL_SERVER_LABELS = {
-	[ToolSource.BROWSER]: 'Browser Tools',
-	[ToolSource.CUSTOM]: 'Custom Tools',
-	[ToolSource.SERVER]: 'Server Tools'
+	[ToolSource.BROWSER]: 'Herramientas del navegador',
+	[ToolSource.CUSTOM]: 'Herramientas personalizadas',
+	[ToolSource.SERVER]: 'Herramientas del servidor'
 } as const;
 
 export const TOOLTIP_DELAY_DURATION = 500;
@@ -161,9 +161,9 @@ export const SIDEBAR_ACTIONS_ITEMS: DesktopIconStripItem[] = [
 		action: SidebarAction.NEW_CHAT,
 		icon: SquarePen,
 		keys: SHORTCUT_NEW_CHAT,
-		tooltip: 'New chat'
+		tooltip: 'Nuevo chat'
 	},
-	{ action: SidebarAction.SEARCH, icon: Search, keys: SHORTCUT_SEARCH, tooltip: 'Search' }
+	{ action: SidebarAction.SEARCH, icon: Search, keys: SHORTCUT_SEARCH, tooltip: 'Buscar' }
 ];
 
 /** The sidebar's footer: managing the app around the chats. */
@@ -173,7 +173,7 @@ export const SIDEBAR_FOOTER_ITEMS: DesktopIconStripItem[] = [
 		activeRouteId: MODELS_ROUTE_ID,
 		icon: MODEL_ICON,
 		keys: SHORTCUT_MODELS,
-		tooltip: 'Models'
+		tooltip: 'Modelos'
 	},
 	{
 		action: SidebarAction.MCP,
@@ -186,7 +186,7 @@ export const SIDEBAR_FOOTER_ITEMS: DesktopIconStripItem[] = [
 		activeRouteId: SETTINGS_ROUTE_ID,
 		icon: Settings,
 		keys: SHORTCUT_SETTINGS,
-		tooltip: 'Settings'
+		tooltip: 'Configuración'
 	}
 ];
 

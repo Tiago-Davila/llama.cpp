@@ -31,11 +31,11 @@ export async function readFileAsText(file: File): Promise<string> {
 			if (event.target?.result !== null && event.target?.result !== undefined) {
 				resolve(event.target.result as string);
 			} else {
-				reject(new Error('Failed to read file'));
+				reject(new Error('No se pudo leer el archivo'));
 			}
 		};
 
-		reader.onerror = () => reject(new Error('File reading error'));
+		reader.onerror = () => reject(new Error('Error al leer el archivo'));
 
 		reader.readAsText(file);
 	});

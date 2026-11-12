@@ -43,17 +43,17 @@
 	let isLoading = $derived(status === ServerModelStatus.LOADING);
 
 	let statusLabel = $derived.by(() => {
-		if (isDownload) return isDownloadPaused ? 'Paused' : 'Downloading';
+		if (isDownload) return isDownloadPaused ? 'En pausa' : 'Descargando';
 
-		if (status === ServerModelStatus.LOADING) return 'Loading';
+		if (status === ServerModelStatus.LOADING) return 'Cargando';
 
-		if (status === ServerModelStatus.FAILED) return 'Failed to load';
+		if (status === ServerModelStatus.FAILED) return 'Error al cargar';
 
-		if (status === ServerModelStatus.SLEEPING) return 'Sleeping';
+		if (status === ServerModelStatus.SLEEPING) return 'En reposo';
 
-		if (isLoaded) return 'Loaded';
+		if (isLoaded) return 'Cargado';
 
-		return 'Not loaded';
+		return 'No cargado';
 	});
 
 	let statusDot = $derived.by(() => {
@@ -111,7 +111,7 @@
 		<!-- a phone's bottom drawer closes by its handle and overlay, it needs no button -->
 		{#if !isMobile}
 			<Button
-				aria-label="Close details"
+				aria-label="Cerrar detalles"
 				class="h-7 w-7"
 				onclick={onClose}
 				size="icon"

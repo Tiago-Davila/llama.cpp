@@ -171,7 +171,7 @@
 {#if loaded.length > 0}
 	<ModelsSection
 		count={loaded.length}
-		label="Loaded models"
+		label="Modelos cargados"
 		persistKey="loaded"
 		revealChevronOnHover
 		sticky
@@ -188,7 +188,7 @@
 
 {#if favorites.length > 0}
 	<!-- Favorites come first; the sections below skip them -->
-	<ModelsSection label="Favorites" persistKey="favorites" revealChevronOnHover sticky>
+	<ModelsSection label="Favoritos" persistKey="favorites" revealChevronOnHover sticky>
 		{#snippet icon()}
 			<Heart class="h-3.5 w-3.5 shrink-0" />
 		{/snippet}
@@ -200,7 +200,7 @@
 {/if}
 
 {#if downloadEntries.length > 0}
-	<p class={headerClass} style={headerStyle}>Downloading</p>
+	<p class={headerClass} style={headerStyle}>Descargando</p>
 
 	{#each downloadEntries as entry (entry.repoWithTag)}
 		<ModelsSelectorDownloadItem
@@ -224,7 +224,7 @@
 {/snippet}
 
 {#if groups.available.length > 0}
-	<ModelsSection label="Local models" persistKey={LOCAL_BACKEND_ID} revealChevronOnHover sticky>
+	<ModelsSection label="Modelos locales" persistKey={LOCAL_BACKEND_ID} revealChevronOnHover sticky>
 		{#snippet icon()}
 			<Logo class="shrink-0" style="--size: 0.875rem" />
 		{/snippet}

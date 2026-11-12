@@ -22,26 +22,26 @@
 
 	// the same actions as the message's action icons
 	let actions = $derived<MenuAction[]>([
-		{ icon: Copy, label: 'Copy', onclick: messageActions.copy },
-		{ icon: Edit, label: 'Edit', onclick: editCtx.startEdit },
+		{ icon: Copy, label: 'Copiar', onclick: messageActions.copy },
+		{ icon: Edit, label: 'Editar', onclick: editCtx.startEdit },
 		...(role === MessageRole.ASSISTANT && onRegenerate
-			? [{ icon: RefreshCw, label: 'Regenerate', onclick: () => onRegenerate() }]
+			? [{ icon: RefreshCw, label: 'Regenerar', onclick: () => onRegenerate() }]
 			: []),
 		...(role === MessageRole.ASSISTANT && onContinue
-			? [{ icon: ArrowRight, label: 'Continue', onclick: () => onContinue() }]
+			? [{ icon: ArrowRight, label: 'Continuar', onclick: () => onContinue() }]
 			: []),
 		...(messageActions.forkConversation
 			? [
 					{
 						icon: GitBranch,
-						label: 'Fork conversation',
+						label: 'Bifurcar conversación',
 						onclick: () => messageActions.setShowForkDialog(true)
 					}
 				]
 			: []),
 		{
 			icon: Trash2,
-			label: 'Delete',
+			label: 'Eliminar',
 			onclick: messageActions.requestDelete,
 			separator: true,
 			variant: 'destructive'

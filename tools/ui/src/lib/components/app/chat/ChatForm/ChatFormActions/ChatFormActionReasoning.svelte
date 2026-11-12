@@ -19,7 +19,7 @@
 	// a phone picks the level in a drawer, where a thumb reaches it
 	let isMobile = $derived(deviceStore.isMobile);
 
-	const MAX_EFFORT_HINT = 'Maximum reasoning effort with extended context usage';
+	const MAX_EFFORT_HINT = 'Máximo esfuerzo de razonamiento, con mayor uso de contexto';
 
 	function select(level: ReasoningEffortLevel): void {
 		reasoning.select(level);
@@ -72,7 +72,7 @@
 <!-- the level belongs to the chat, not to the model list -->
 {#if isMobile}
 	<Button
-		aria-label="Reasoning effort"
+		aria-label="Esfuerzo de razonamiento"
 		class="h-auto gap-1 rounded-sm bg-transparent! backdrop-blur-none! {isDefault
 			? 'px-1'
 			: 'px-1.75!'} py-1 text-xs max-md:h-8"
@@ -85,7 +85,7 @@
 	<Drawer.Root bind:open={isOpen}>
 		<Drawer.Content>
 			<Drawer.Header>
-				<Drawer.Title>Reasoning effort</Drawer.Title>
+				<Drawer.Title>Esfuerzo de razonamiento</Drawer.Title>
 			</Drawer.Header>
 
 			<div class="flex flex-col px-2 pb-4">
@@ -101,7 +101,7 @@
 			{#snippet child({ props })}
 				<Button
 					{...props}
-					aria-label="Reasoning effort"
+					aria-label="Esfuerzo de razonamiento"
 					class="-mr-px h-6 min-w-6 gap-1 rounded-sm bg-transparent backdrop-blur-none! {isDefault
 						? 'px-1'
 						: 'px-1.75!'} py-0 text-xs hover:bg-muted-foreground/15 data-[state=open]:bg-muted-foreground/15"

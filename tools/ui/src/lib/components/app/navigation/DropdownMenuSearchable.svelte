@@ -33,7 +33,7 @@
 		isEmpty = false,
 		onSearchChange,
 		onSearchKeyDown,
-		placeholder = 'Search...',
+		placeholder = 'Buscar...',
 		searchClass = '',
 		searchValue = $bindable('')
 	}: Props = $props();

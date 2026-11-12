@@ -62,16 +62,16 @@
 						<Plus />
 					</Empty.Media>
 
-					<Empty.Title>Add your first MCP server</Empty.Title>
+					<Empty.Title>Agregá tu primer servidor MCP</Empty.Title>
 
-					<Empty.Description>Connect a remote MCP server by URL.</Empty.Description>
+					<Empty.Description>Conectá un servidor MCP remoto por URL.</Empty.Description>
 				</Empty.Header>
 
 				<Empty.Content>
 					<Button onclick={() => (isAddingServer = true)} size="sm">
 						<Plus />
 
-						Add New Server
+						Agregar servidor
 					</Button>
 				</Empty.Content>
 			</Empty.Root>
@@ -114,16 +114,16 @@
 							<Plus />
 						</Empty.Media>
 
-						<Empty.Title>Add another MCP server</Empty.Title>
+						<Empty.Title>Agregar otro servidor MCP</Empty.Title>
 
-						<Empty.Description>Connect a remote MCP server by URL.</Empty.Description>
+						<Empty.Description>Conectá un servidor MCP remoto por URL.</Empty.Description>
 					</Empty.Header>
 
 					<Empty.Content>
 						<Button onclick={() => (isAddingServer = true)} size="sm">
 							<Plus />
 
-							Add New Server
+							Agregar servidor
 						</Button>
 					</Empty.Content>
 				</Empty.Root>

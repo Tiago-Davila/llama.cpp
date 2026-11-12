@@ -68,17 +68,17 @@
 					<FolderPlus class="h-5 w-5" />
 				{/if}
 
-				{group ? 'Rename group' : 'New group'}
+				{group ? 'Renombrar grupo' : 'Nuevo grupo'}
 			</AlertDialog.Title>
 
 			<AlertDialog.Description>
-				{group ? 'Choose a new name for this group.' : 'Name a group to sort chats into.'}
+				{group ? 'Elegí un nuevo nombre para este grupo.' : 'Poné un nombre al grupo para ordenar tus chats.'}
 			</AlertDialog.Description>
 		</AlertDialog.Header>
 
 		<form class="contents" onsubmit={handleSubmit}>
 			<div class="flex flex-col gap-2">
-				<Label for="group-name">Name</Label>
+				<Label for="group-name">Nombre</Label>
 
 				<Input
 					bind:ref={nameInput}
@@ -86,16 +86,16 @@
 					autocomplete="off"
 					id="group-name"
 					maxlength={GROUP_NAME_MAX_LENGTH}
-					placeholder="e.g. Research"
+					placeholder="por ej. Investigación"
 				/>
 			</div>
 
 			<AlertDialog.Footer>
 				<!-- not a submit button, or Enter in the name field would cancel -->
-				<AlertDialog.Cancel type="button">Cancel</AlertDialog.Cancel>
+				<AlertDialog.Cancel type="button">Cancelar</AlertDialog.Cancel>
 
 				<Button disabled={!canSave} type="submit">
-					{group ? 'Save' : 'Create group'}
+					{group ? 'Guardar' : 'Crear grupo'}
 				</Button>
 			</AlertDialog.Footer>
 		</form>

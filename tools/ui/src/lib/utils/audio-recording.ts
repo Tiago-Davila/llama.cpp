@@ -112,7 +112,7 @@ export class AudioRecorder {
 					}
 				}
 
-				reject(new Error('Recording failed'));
+				reject(new Error('La grabación falló'));
 			};
 
 			recorder.stop();

@@ -10,7 +10,7 @@
 import { UrlProtocol } from '$lib/enums';
 
 export const CWD_CHANGED_PREFIX = 'Set working directory to ';
-export const CWD_CLEARED_TEXT = 'Working directory cleared';
+export const CWD_CLEARED_TEXT = 'Directorio de trabajo quitado';
 
 /** Trailing separator that marks a path as a directory. */
 export const DIRECTORY_PATH_SUFFIX = '/';

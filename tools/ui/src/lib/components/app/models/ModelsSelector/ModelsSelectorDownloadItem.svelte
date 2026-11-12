@@ -32,7 +32,7 @@
 			: null
 	);
 
-	let actionText = $derived(entry.isPaused ? 'Resume downloading' : 'Pause downloading');
+	let actionText = $derived(entry.isPaused ? 'Reanudar descarga' : 'Pausar descarga');
 
 	// the base model org resolves lazily via HF when unknown
 	let orgName = $derived(ModelsService.parseModelId(entry.repoWithTag).orgName);
@@ -71,7 +71,7 @@
 		class="flex items-center gap-2 p-2 text-left text-sm max-md:gap-2.5 max-md:px-2.5 max-md:py-2.5"
 	>
 		<button
-			aria-label="Manage model"
+			aria-label="Administrar modelo"
 			class="flex min-w-0 flex-1 cursor-pointer items-center gap-2 text-left"
 			onclick={() => uiStore.openModelDetails(entry.repoWithTag)}
 			type="button"
@@ -99,7 +99,7 @@
 					{percent}%
 				</span>
 			{:else if entry.isPaused}
-				<span class="ml-auto shrink-0 text-xs text-muted-foreground">Paused</span>
+				<span class="ml-auto shrink-0 text-xs text-muted-foreground">En pausa</span>
 			{/if}
 		</button>
 
@@ -132,12 +132,12 @@
 			icon={Info}
 			iconSize="h-4 w-4"
 			onclick={() => uiStore.openModelDetails(entry.repoWithTag)}
-			tooltip="Manage model"
+			tooltip="Administrar modelo"
 			tooltipAsTitle
 		/>
 
 		<ActionIcon
-			ariaLabel="Cancel downloading"
+			ariaLabel="Cancelar descarga"
 			class="pointer-events-none h-5 w-5 shrink-0 opacity-0 transition-opacity group-hover:pointer-events-auto group-hover:opacity-100 hover:text-destructive [@media(pointer:coarse)]:pointer-events-auto [@media(pointer:coarse)]:opacity-100"
 			icon={X}
 			iconSize="h-4 w-4"

@@ -134,7 +134,7 @@
 				<AlertTriangle class="h-8 w-8 text-destructive" />
 			</div>
 
-			<h2 class="mb-2 text-xl font-semibold">Server Connection Error</h2>
+			<h2 class="mb-2 text-xl font-semibold">Error de conexión con el servidor</h2>
 
 			<p class="mb-4 text-sm text-muted-foreground">
 				{error}
@@ -145,7 +145,7 @@
 			<div in:fly={{ delay: 200, duration: 300, y: 10 }} class="mb-4">
 				<Button class="w-full" onclick={handleShowApiKeyInput} variant="outline">
 					<Key class={ICON_CLASS_DEFAULT} />
-					Enter API Key
+					Ingresar clave de API
 				</Button>
 			</div>
 		{/if}
@@ -153,7 +153,7 @@
 		{#if showApiKeyInput}
 			<div in:fly={{ delay: 200, duration: 300, y: 10 }} class="mb-4 space-y-3 text-left">
 				<div class="space-y-2">
-					<Label class="text-sm font-medium" for="api-key-input">API Key</Label>
+					<Label class="text-sm font-medium" for="api-key-input">Clave de API</Label>
 
 					<div class="relative">
 						<Input
@@ -167,7 +167,7 @@
 							disabled={apiKeyState === 'validating'}
 							id="api-key-input"
 							onkeydown={handleApiKeyKeydown}
-							placeholder="Enter your API key..."
+							placeholder="Ingresá tu clave de API..."
 							type="password"
 						/>
 
@@ -200,7 +200,7 @@
 
 					{#if apiKeyState === 'success'}
 						<p in:fly={{ duration: 200, y: -10 }} class="text-sm text-green-600">
-							✓ API key validated successfully! Connecting...
+							✓ Clave de API validada. Conectando...
 						</p>
 					{/if}
 				</div>
@@ -215,11 +215,11 @@
 					>
 						{#if apiKeyState === 'validating'}
 							<RefreshCw class="{ICON_CLASS_DEFAULT} animate-spin" />
-							Validating...
+							Validando...
 						{:else if apiKeyState === 'success'}
-							Success!
+							¡Listo!
 						{:else}
-							Save & Retry
+							Guardar y reintentar
 						{/if}
 					</Button>
 
@@ -233,7 +233,7 @@
 						}}
 						variant="outline"
 					>
-						Cancel
+						Cancelar
 					</Button>
 				</div>
 			</div>
@@ -245,11 +245,11 @@
 					{#if isServerLoading}
 						<RefreshCw class="{ICON_CLASS_DEFAULT} animate-spin" />
 
-						Connecting...
+						Conectando...
 					{:else}
 						<RefreshCw class={ICON_CLASS_DEFAULT} />
 
-						Retry Connection
+						Reintentar conexión
 					{/if}
 				</Button>
 			</div>
@@ -259,12 +259,12 @@
 			<div in:fly={{ delay: 400, duration: 300, y: 10 }} class="mt-4 text-left">
 				<details class="text-sm">
 					<summary class="cursor-pointer text-muted-foreground hover:text-foreground">
-						Troubleshooting
+						Solución de problemas
 					</summary>
 
 					<div class="mt-2 space-y-3 text-xs text-muted-foreground">
 						<div class="space-y-2">
-							<p class="mb-4 font-medium">Start the llama-server:</p>
+							<p class="mb-4 font-medium">Iniciá el servidor:</p>
 
 							<div class="rounded bg-muted/50 px-2 py-1 font-mono text-xs">
 								<p>llama-server -hf ggml-org/gemma-3-4b-it-GGUF</p>
@@ -278,11 +278,11 @@
 						</div>
 
 						<ul class="list-disc space-y-1 pl-4">
-							<li>Check that the server is accessible at the correct URL</li>
+							<li>Verificá que el servidor sea accesible en la URL correcta</li>
 
-							<li>Verify your network connection</li>
+							<li>Verificá tu conexión de red</li>
 
-							<li>Check server logs for any error messages</li>
+							<li>Revisá los registros del servidor por mensajes de error</li>
 						</ul>
 					</div>
 				</details>

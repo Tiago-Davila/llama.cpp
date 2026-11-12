@@ -13,12 +13,12 @@ export const MEDIA_QUERIES = {
 } as const;
 
 export const THEME_COLORS = {
-	ACCENT_BLUE: '#2563eb',
-	ACCENT_BLUE_HOVER: '#1d4ed8',
-	BACKGROUND_DARK: '#111111',
-	BACKGROUND_LIGHT: 'white',
-	DARK: '#0d0d0d',
-	LIGHT: '#ffffff',
+	ACCENT_BLUE: '#de0035',
+	ACCENT_BLUE_HOVER: '#b8002c',
+	BACKGROUND_DARK: '#222324',
+	BACKGROUND_LIGHT: '#222324',
+	DARK: '#222324',
+	LIGHT: '#222324',
 	TITLE_UPDATE_ALERT: {
 		BG_DARK: 'zinc-800',
 		BG_LIGHT: 'white',
@@ -47,7 +47,7 @@ export const APPLE_ASSETS = {
 
 export const PWA_MANIFEST = {
 	background_color: THEME_COLORS.BACKGROUND_LIGHT,
-	description: 'Local AI chat interface powered by llama.cpp',
+	description: 'Asistente de IA de Ferrovías',
 	display: 'standalone' as const,
 	icons: [
 		{ sizes: '64x64', src: 'pwa-64x64.png', type: 'image/png' },
@@ -225,7 +225,7 @@ export const PWA_GENERATOR_DEVICES = [
 
 // PWA assets generator configuration — used by pwa-assets.config.ts
 // FAVICON_PADDING: fraction (0..1) of the icon reserved as equal margin on
-// each side of the icon PNG/ICO outputs. 0, because llama-brand's favicons
+// each side of the icon PNG/ICO outputs. 0, because the FerroviasIA favicons
 // already carry their margin and optical centring.
 export const PWA_ASSET_GENERATOR = {
 	ADD_MEDIA_SCREEN: true,

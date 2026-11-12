@@ -63,7 +63,7 @@
 	{#snippet trigger()}
 		{#if onBack}
 			<button
-				aria-label="Back to all providers"
+				aria-label="Volver a todos los proveedores"
 				class="-ml-1 inline-flex shrink-0 cursor-pointer items-center rounded-sm p-0.5 text-muted-foreground transition hover:bg-muted/60 hover:text-foreground"
 				onclick={(event) => {
 					// the back control must not collapse the list it is leaving

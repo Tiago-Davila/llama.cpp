@@ -22,7 +22,7 @@
 <ToolCallBlock {isStreaming} meta={grepMeta} {onToggle} {open} {section}>
 	{#snippet titleSnippet()}
 		{#if grepMeta}
-			<span class="text-muted-foreground">Search for&nbsp;</span>
+			<span class="text-muted-foreground">Buscar&nbsp;</span>
 
 			<span class="font-mono">{grepMeta.pattern}</span>
 
@@ -35,7 +35,7 @@
 	{#snippet children(meta, ctx)}
 		{#if ctx.isPending}
 			<div class="rounded bg-muted/20 p-2 text-xs text-muted-foreground/70 italic">
-				Searching...
+				Buscando...
 			</div>
 		{:else if meta?.errorMessage}
 			<div
@@ -63,17 +63,17 @@
 			</div>
 
 			<div class="mt-1.5 text-xs text-muted-foreground/70 italic">
-				Total matches: <span class="font-mono">{meta.totalMatches ?? meta.matches.length}</span>
+				Coincidencias totales: <span class="font-mono">{meta.totalMatches ?? meta.matches.length}</span>
 
 				{#if meta.showLineNumbers}
-					&nbsp;<span class="italic">(with line numbers)</span>
+					&nbsp;<span class="italic">(con números de línea)</span>
 				{/if}
 			</div>
 		{:else}
-			<div class="text-xs text-muted-foreground/70 italic">No matches</div>
+			<div class="text-xs text-muted-foreground/70 italic">Sin coincidencias</div>
 
 			<div class="mt-1.5 text-xs text-muted-foreground/70 italic">
-				Total matches: <span class="font-mono">{meta?.totalMatches ?? 0}</span>
+				Coincidencias totales: <span class="font-mono">{meta?.totalMatches ?? 0}</span>
 			</div>
 		{/if}
 	{/snippet}

@@ -37,7 +37,7 @@
 				if (cancelled) return;
 
 				if (!info) {
-					error = 'Model not found';
+					error = 'Modelo no encontrado';
 
 					return;
 				}
@@ -51,7 +51,7 @@
 			} catch (err) {
 				if (cancelled) return;
 
-				error = err instanceof Error ? err.message : 'Failed to load model';
+				error = err instanceof Error ? err.message : 'No se pudo cargar el modelo';
 			} finally {
 				if (!cancelled) loading = false;
 			}

@@ -33,7 +33,7 @@
 </script>
 
 <div class="mt-3 border-t border-border/50 pt-4">
-	<p class="text-xs text-muted-foreground max-md:text-[13px]">Token usage details</p>
+	<p class="text-xs text-muted-foreground max-md:text-[13px]">Detalle de uso de tokens</p>
 
 	<div class="flex flex-col gap-4 pt-4 text-xs max-md:gap-5 max-md:text-[13px]">
 		{#if hasCumulative}
@@ -41,13 +41,13 @@
 				<h3
 					class="text-[11px] font-medium uppercase tracking-wide text-muted-foreground/70 mb-2 max-md:text-xs"
 				>
-					Across all turns
+					En todos los turnos
 				</h3>
 
 				<div class="flex flex-col gap-2">
 					{#if cumulativeRead > 0}
 						<ContextGaugeDetailRow
-							label="Prompt tokens evaluated"
+							label="Tokens de prompt evaluados"
 							subtitle={cumulativeCacheTotal > 0
 								? `${cumulativeCacheTotal.toLocaleString()} reused from KV cache`
 								: undefined}
@@ -57,7 +57,7 @@
 
 					{#if cumulativeOutput > 0}
 						<ContextGaugeDetailRow
-							label="Tokens generated"
+							label="Tokens generados"
 							value={`${cumulativeOutput.toLocaleString()} tok`}
 						/>
 					{/if}
@@ -70,7 +70,7 @@
 				<h3
 					class="text-[11px] font-medium uppercase tracking-wide text-muted-foreground/70 mb-2 max-md:text-xs"
 				>
-					This turn · KV cache
+					Este turno · caché KV
 				</h3>
 
 				<div class="flex flex-col gap-2">
@@ -86,14 +86,14 @@
 
 					{#if currentOutput > 0}
 						<ContextGaugeDetailRow
-							label="Generated"
+							label="Generados"
 							value={`${currentOutput.toLocaleString()} tok`}
 						/>
 					{/if}
 
 					<div class="pt-1 mt-0.5 border-t border-border/30">
 						<div class="flex justify-between">
-							<span class="text-muted-foreground">KV cache total</span>
+							<span class="text-muted-foreground">Total de caché KV</span>
 
 							<span class="font-mono font-medium">{kvTotal.toLocaleString()} tok</span>
 						</div>
@@ -105,7 +105,7 @@
 		{#if averageTokensPerSecond !== null}
 			<div class="pt-1.5 mt-1 border-t border-border/30">
 				<ContextGaugeDetailRow
-					label="Avg speed"
+					label="Velocidad prom."
 					value={`${averageTokensPerSecond.toFixed(1)}${STATS_UNITS.TOKENS_PER_SECOND}`}
 				/>
 			</div>

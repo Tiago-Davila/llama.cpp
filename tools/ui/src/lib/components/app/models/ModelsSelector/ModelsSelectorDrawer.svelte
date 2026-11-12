@@ -27,7 +27,7 @@
 		onSearchChange,
 		onSearchKeyDown,
 		open = $bindable(false),
-		placeholder = 'Search models...',
+		placeholder = 'Buscar modelos...',
 		searchTerm = ''
 	}: Props = $props();
 </script>

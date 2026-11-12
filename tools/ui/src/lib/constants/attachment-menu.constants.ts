@@ -10,45 +10,45 @@ export const ATTACHMENT_FILE_ITEMS: AttachmentMenuItem[] = [
 	{
 		action: AttachmentAction.FILE_UPLOAD,
 		class: 'images-button',
-		disabledTooltip: 'Image processing requires a vision model',
+		disabledTooltip: 'Procesar imágenes requiere un modelo con visión',
 		enabledWhen: AttachmentItemEnabledWhen.HAS_VISION_MODALITY,
 		icon: FILE_TYPE_ICONS.image,
 		id: AttachmentMenuItemId.IMAGES,
-		label: 'Images'
+		label: 'Imágenes'
 	},
 	{
 		action: AttachmentAction.FILE_UPLOAD,
 		class: 'audio-button',
-		disabledTooltip: 'Audio files processing requires an audio model',
+		disabledTooltip: 'Procesar audio requiere un modelo con audio',
 		enabledWhen: AttachmentItemEnabledWhen.HAS_AUDIO_MODALITY,
 		icon: FILE_TYPE_ICONS.audio,
 		id: AttachmentMenuItemId.AUDIO,
-		label: 'Audio Files'
+		label: 'Archivos de audio'
 	},
 	{
 		action: AttachmentAction.FILE_UPLOAD,
 		class: 'video-button',
-		disabledTooltip: 'Video files processing requires a video model',
+		disabledTooltip: 'Procesar video requiere un modelo con video',
 		enabledWhen: AttachmentItemEnabledWhen.HAS_VIDEO_MODALITY,
 		icon: FILE_TYPE_ICONS.video,
 		id: AttachmentMenuItemId.VIDEO,
-		label: 'Video Files'
+		label: 'Archivos de video'
 	},
 	{
 		action: AttachmentAction.FILE_UPLOAD,
 		enabledWhen: AttachmentItemEnabledWhen.ALWAYS,
 		icon: FILE_TYPE_ICONS.text,
 		id: AttachmentMenuItemId.TEXT,
-		label: 'Text Files'
+		label: 'Archivos de texto'
 	},
 	{
 		action: AttachmentAction.FILE_UPLOAD,
-		disabledTooltip: 'PDFs will be converted to text. Image-based PDFs may not work properly.',
+		disabledTooltip: 'Los PDF se convierten a texto. Los PDF escaneados pueden no funcionar bien.',
 		enabledWhen: AttachmentItemEnabledWhen.ALWAYS,
 		hasEnabledTooltip: true,
 		icon: FILE_TYPE_ICONS.pdf,
 		id: AttachmentMenuItemId.PDF,
-		label: 'PDF Files'
+		label: 'Archivos PDF'
 	}
 ];
 
@@ -56,10 +56,10 @@ export const ATTACHMENT_TOOLTIP_TEXT = 'Add files, prompts, tools or MCP Servers
 
 /** Text shared by the add menu's two surfaces: the desktop dropdown and the mobile drawer. */
 export const ATTACHMENT_MENU_TEXT = {
-	ADD_FILES: 'Add files',
-	ADD_TO_CHAT: 'Add to chat',
-	DESCRIPTION: 'Add files, system prompt or pick the tools the model may call',
-	SYSTEM_MESSAGE: 'System Message',
+	ADD_FILES: 'Agregar archivos',
+	ADD_TO_CHAT: 'Agregar al chat',
+	DESCRIPTION: 'Agregá archivos, un mensaje del sistema o elegí las herramientas que puede usar el modelo',
+	SYSTEM_MESSAGE: 'Mensaje del sistema',
 	TOOLS: 'Tools'
 } as const;
 

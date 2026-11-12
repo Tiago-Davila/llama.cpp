@@ -141,7 +141,7 @@
 	{#if downloadEntries.length > 0}
 		<ModelsSection
 			count={downloadEntries.length}
-			label="Downloading"
+			label="Descargando"
 			persistKey="discover-downloads"
 			sticky
 			stickyClass="sticky z-10 bg-background"
@@ -180,18 +180,18 @@
 				<p class="text-sm text-destructive">{modelsDiscoverStore.error}</p>
 
 				<Button onclick={() => void modelsDiscoverStore.fetch()} size="sm" variant="outline">
-					Retry
+					Reintentar
 				</Button>
 			</div>
 		{:else if !modelsDiscoverStore.loading && !modelsDiscoverStore.searching && modelsDiscoverStore.models.length === 0}
-			<p class="p-4 text-sm text-muted-foreground">No models found</p>
+			<p class="p-4 text-sm text-muted-foreground">No se encontraron modelos</p>
 		{:else}
 			{#if isSearching}
 				{@render catalog()}
 			{:else}
 				<ModelsSection
 					count={modelsDiscoverStore.models.length}
-					label="Suggested models"
+					label="Modelos sugeridos"
 					persistKey="discover-suggested"
 					sticky
 					stickyClass="sticky z-10 bg-background"

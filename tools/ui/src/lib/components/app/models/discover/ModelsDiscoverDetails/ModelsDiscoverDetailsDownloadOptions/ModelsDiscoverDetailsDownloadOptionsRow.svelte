@@ -97,7 +97,7 @@
 				<span
 					class="text-[10px] whitespace-nowrap text-muted-foreground/60 @max-lg:whitespace-normal"
 				>
-					needs at least {totalMemGb}{GIGABYTE_LABEL} memory
+					requiere al menos {totalMemGb}{GIGABYTE_LABEL} memory
 				</span>
 			{/if}
 		</button>

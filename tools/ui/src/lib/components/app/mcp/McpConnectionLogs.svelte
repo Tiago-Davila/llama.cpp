@@ -40,10 +40,10 @@
 					<ChevronRight class="h-3.5 w-3.5" />
 				{/if}
 
-				<span>Connection Log ({logs.length})</span>
+				<span>Registro de conexión ({logs.length})</span>
 
 				{#if connectionTimeMs !== undefined}
-					<span class="ml-1">· Connected in {connectionTimeMs}ms</span>
+					<span class="ml-1">· Conectado en {connectionTimeMs}ms</span>
 				{/if}
 			</Collapsible.Trigger>
 		</div>

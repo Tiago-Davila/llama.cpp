@@ -214,7 +214,7 @@ export class ModelStatusManager {
 	 */
 	async cancelDownload(repoWithTag: string): Promise<boolean> {
 		if (!serverStore.isRouterMode) {
-			toast.error('Model downloads are only available in router mode');
+			toast.error('Las descargas de modelos solo están disponibles en modo router');
 
 			return false;
 		}
@@ -254,7 +254,7 @@ export class ModelStatusManager {
 
 			return ok;
 		} catch (error) {
-			toast.error(`Failed to cancel: ${error instanceof Error ? error.message : 'unknown error'}`);
+			toast.error(`No se pudo cancelar: ${error instanceof Error ? error.message : 'error desconocido'}`);
 
 			return false;
 		}
@@ -271,9 +271,9 @@ export class ModelStatusManager {
 
 		try {
 			await ModelsService.unload(modelId);
-			toast.info(`Load cancelled: ${this.host.toDisplayName(modelId)}`);
+			toast.info(`Carga cancelada: ${this.host.toDisplayName(modelId)}`);
 		} catch (error) {
-			toast.error(`Failed to cancel load: ${this.host.toDisplayName(modelId)}`);
+			toast.error(`No se pudo cancelar la carga: ${this.host.toDisplayName(modelId)}`);
 
 			throw error;
 		}
@@ -293,7 +293,7 @@ export class ModelStatusManager {
 	 */
 	async downloadModel(repoWithTag: string, extraSidecars: ModelSidecar[] = []): Promise<void> {
 		if (!serverStore.isRouterMode) {
-			toast.error('Model downloads are only available in router mode');
+			toast.error('Las descargas de modelos solo están disponibles en modo router');
 
 			return;
 		}
@@ -301,7 +301,7 @@ export class ModelStatusManager {
 		const { model, sidecar } = downloadTarget(repoWithTag);
 
 		if (sidecar && !SERVER_SIDECARS.includes(sidecar)) {
-			toast.error(`The ${sidecar} file is not downloadable from here`);
+			toast.error(`El archivo ${sidecar} no se puede descargar desde acá`);
 
 			return;
 		}
@@ -340,7 +340,7 @@ export class ModelStatusManager {
 			const res = await ModelsService.downloadModel(model, sidecars);
 
 			if (!res.success) {
-				throw new Error(res.error?.message ?? 'Server rejected the download request');
+				throw new Error(res.error?.message ?? 'El servidor rechazó la descarga');
 			}
 
 			// the marker gives way to the live entry, seeded with the last reported
@@ -350,7 +350,7 @@ export class ModelStatusManager {
 			this.failedDownloads.delete(model);
 			this.downloadSidecars.set(model, sidecars);
 
-			toast.success(`Download started: ${this.host.toDisplayName(model)}`);
+			toast.success(`Descarga iniciada: ${this.host.toDisplayName(model)}`);
 		} catch (error) {
 			// the download did not start: the optimistic entry goes, and a resumed one
 			// stays paused rather than dropping off the list
@@ -360,9 +360,9 @@ export class ModelStatusManager {
 				this.setPausedDownload(model, snapshot);
 			}
 
-			const reason = error instanceof Error ? error.message : 'unknown error';
+			const reason = error instanceof Error ? error.message : 'error desconocido';
 
-			toast.error(`Download failed: ${model} (${reason})`);
+			toast.error(`La descarga falló: ${model} (${reason})`);
 
 			throw error;
 		} finally {
@@ -513,11 +513,11 @@ export class ModelStatusManager {
 		try {
 			await ModelsService.load(modelId);
 			await reachedLoaded;
-			toast.success(`Model loaded: ${this.host.toDisplayName(modelId)}`);
+			toast.success(`Modelo cargado: ${this.host.toDisplayName(modelId)}`);
 		} catch (error) {
 			this.rejectStatus(modelId, error instanceof Error ? error : new Error('load failed'));
-			this.host.error = error instanceof Error ? error.message : 'Failed to load model';
-			toast.error(`Failed to load model: ${this.host.toDisplayName(modelId)}`);
+			this.host.error = error instanceof Error ? error.message : 'No se pudo cargar el modelo';
+			toast.error(`No se pudo cargar el modelo: ${this.host.toDisplayName(modelId)}`);
 
 			throw error;
 		} finally {
@@ -533,7 +533,7 @@ export class ModelStatusManager {
 	 */
 	async pauseDownload(repoWithTag: string): Promise<void> {
 		if (!serverStore.isRouterMode) {
-			toast.error('Model downloads are only available in router mode');
+			toast.error('Las descargas de modelos solo están disponibles en modo router');
 
 			return;
 		}
@@ -563,7 +563,7 @@ export class ModelStatusManager {
 				this.downloadProgress.set(model, snapshot ?? emptyDownloadProgress());
 			}
 
-			toast.error(`Failed to pause: ${model}`);
+			toast.error(`No se pudo pausar: ${model}`);
 		}
 	}
 
@@ -625,11 +625,11 @@ export class ModelStatusManager {
 		try {
 			await ModelsService.unload(modelId);
 			await reachedUnloaded;
-			toast.info(`Model unloaded: ${this.host.toDisplayName(modelId)}`);
+			toast.info(`Modelo descargado de memoria: ${this.host.toDisplayName(modelId)}`);
 		} catch (error) {
 			this.rejectStatus(modelId, error instanceof Error ? error : new Error('unload failed'));
-			this.host.error = error instanceof Error ? error.message : 'Failed to unload model';
-			toast.error(`Failed to unload model: ${this.host.toDisplayName(modelId)}`);
+			this.host.error = error instanceof Error ? error.message : 'No se pudo descargar el modelo de memoria';
+			toast.error(`No se pudo descargar de memoria el modelo: ${this.host.toDisplayName(modelId)}`);
 
 			throw error;
 		} finally {
@@ -702,10 +702,10 @@ export class ModelStatusManager {
 			// the quant chips to "downloaded" without waiting for a dialog reopen
 			void this.host.fetchRouterModels();
 
-			toast.success(`Download finished: ${this.host.toDisplayName(event.model)}`);
+			toast.success(`Descarga terminada: ${this.host.toDisplayName(event.model)}`);
 		} else {
 			this.failedDownloads.add(event.model);
-			toast.error(`Download failed: ${this.host.toDisplayName(event.model)}`);
+			toast.error(`La descarga falló: ${this.host.toDisplayName(event.model)}`);
 		}
 	}
 
@@ -771,7 +771,7 @@ export class ModelStatusManager {
 			(status === ServerModelStatus.UNLOADED && (data.exit_code ?? 0) !== 0);
 
 		if (failed) {
-			this.rejectStatus(model, new Error(`Model failed: ${this.host.toDisplayName(model)}`));
+			this.rejectStatus(model, new Error(`El modelo falló: ${this.host.toDisplayName(model)}`));
 
 			return;
 		}
@@ -841,7 +841,7 @@ export class ModelStatusManager {
 		if (idx !== -1) {
 			this.host.routerModels = this.host.routerModels.filter((m) => m.id !== modelId);
 			this.loadProgress.delete(modelId);
-			this.rejectStatus(modelId, new Error(`Model removed: ${this.host.toDisplayName(modelId)}`));
+			this.rejectStatus(modelId, new Error(`Modelo eliminado: ${this.host.toDisplayName(modelId)}`));
 		}
 
 		// refetch even when the row is unknown: the server removed something our

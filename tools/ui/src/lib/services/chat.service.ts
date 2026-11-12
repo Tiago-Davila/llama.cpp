@@ -721,7 +721,7 @@ export class ChatService {
 
 				if (!resumeResp || resumeResp.status !== 200) {
 					onConnectionState?.(StreamConnectionState.LOST);
-					onError?.(new Error('Stream connection lost and could not be resumed'));
+					onError?.(new Error('Se perdió la conexión y no se pudo reanudar'));
 
 					break;
 				}
@@ -1325,20 +1325,20 @@ export class ChatService {
 			if (error instanceof Error) {
 				if (error.name === 'TypeError' && error.message.includes('fetch')) {
 					userFriendlyError = new Error(
-						'Unable to connect to server - please check if the server is running'
+						'No se pudo conectar con el servidor: verificá que esté en ejecución'
 					);
 					userFriendlyError.name = 'NetworkError';
 				} else if (error.message.includes('ECONNREFUSED')) {
-					userFriendlyError = new Error('Connection refused - server may be offline');
+					userFriendlyError = new Error('Conexión rechazada: el servidor puede estar apagado');
 					userFriendlyError.name = 'NetworkError';
 				} else if (error.message.includes('ETIMEDOUT')) {
-					userFriendlyError = new Error('Request timed out - the server took too long to respond');
+					userFriendlyError = new Error('Se agotó el tiempo de espera: el servidor tardó demasiado en responder');
 					userFriendlyError.name = 'TimeoutError';
 				} else {
 					userFriendlyError = error;
 				}
 			} else {
-				userFriendlyError = new Error('Unknown error occurred while sending message');
+				userFriendlyError = new Error('Error desconocido al enviar el mensaje');
 			}
 
 			console.error('Error in sendMessage:', error);
@@ -1491,7 +1491,7 @@ export class ChatService {
 			const responseText = await response.text();
 
 			if (!responseText.trim()) {
-				const noResponseError = new Error('No response received from server. Please try again.');
+				const noResponseError = new Error('No se recibió respuesta del servidor. Intentá de nuevo.');
 
 				throw noResponseError;
 			}
@@ -1522,7 +1522,7 @@ export class ChatService {
 			}
 
 			if (!content.trim() && !serializedToolCalls) {
-				const noResponseError = new Error('No response received from server. Please try again.');
+				const noResponseError = new Error('No se recibió respuesta del servidor. Intentá de nuevo.');
 
 				throw noResponseError;
 			}
@@ -1650,7 +1650,7 @@ export class ChatService {
 			return error;
 		} catch {
 			const fallback = new Error(
-				`Server error (${response.status}): ${response.statusText}`
+				`Error del servidor (${response.status}): ${response.statusText}`
 			) as Error & {
 				contextInfo?: { n_prompt_tokens: number; n_ctx: number };
 			};

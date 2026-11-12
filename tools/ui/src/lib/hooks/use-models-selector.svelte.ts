@@ -112,11 +112,11 @@ export function useModelsSelector(opts: UseModelsSelectorOptions): UseModelsSele
 	const isEmpty = $derived(
 		filteredOptions.length === 0 && favoriteItems.length === 0 && loadedItems.length === 0
 	);
-	const emptyMessage = $derived(searchTerm ? 'No models found.' : 'No models yet.');
+	const emptyMessage = $derived(searchTerm ? 'No se encontraron modelos.' : 'Todavía no hay modelos.');
 
 	onMount(() => {
 		modelsStore.fetch().catch((error) => {
-			console.error('Unable to load models:', error);
+			console.error('No se pudieron cargar los modelos:', error);
 		});
 	});
 
@@ -179,7 +179,7 @@ export function useModelsSelector(opts: UseModelsSelectorOptions): UseModelsSele
 
 			modelsStore.status
 				.load(option.model)
-				.catch((error) => console.error('Failed to load model:', error))
+				.catch((error) => console.error('No se pudo cargar el modelo:', error))
 				.finally(() => (isLoadingModel = false));
 		}
 	}

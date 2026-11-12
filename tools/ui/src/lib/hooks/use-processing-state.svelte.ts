@@ -96,22 +96,22 @@ export function useProcessingState(): UseProcessingStateReturn {
 
 	function getProcessingMessage(): string {
 		if (!processingState) {
-			return 'Processing...';
+			return 'Procesando...';
 		}
 
 		switch (processingState.status) {
 			case 'initializing':
-				return 'Initializing...';
+				return 'Iniciando...';
 			case 'preparing':
 				if (processingState.progressPercent !== undefined) {
 					return `Processing (${processingState.progressPercent}%)`;
 				}
 
-				return 'Preparing response...';
+				return 'Preparando respuesta...';
 			case 'generating':
 				return '';
 			default:
-				return 'Processing...';
+				return 'Procesando...';
 		}
 	}
 
@@ -178,7 +178,7 @@ export function useProcessingState(): UseProcessingStateReturn {
 		}
 
 		if (stateToUse.speculative) {
-			details.push('Speculative decoding enabled');
+			details.push('Decodificación especulativa activada');
 		}
 
 		return details;
@@ -229,7 +229,7 @@ export function useProcessingState(): UseProcessingStateReturn {
 		}
 
 		if (stateToUse.speculative) {
-			details.push('Speculative decoding enabled');
+			details.push('Decodificación especulativa activada');
 		}
 
 		return details;

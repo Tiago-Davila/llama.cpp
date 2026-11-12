@@ -34,10 +34,10 @@
 >
 	<div class="mermaid-preview-controls-inner flex items-center gap-1 rounded-lg bg-muted p-1">
 		<button
-			aria-label="Zoom out"
+			aria-label="Alejar"
 			class="mermaid-preview-btn flex h-8 w-8 cursor-pointer items-center justify-center rounded-md border-0 bg-transparent text-foreground transition-colors hover:bg-muted-foreground/15 active:bg-muted-foreground/25"
 			onclick={onZoomOut}
-			title="Zoom out"
+			title="Alejar"
 		>
 			<ZoomOutIcon class="mermaid-preview-btn-icon {ICON_CLASS_DEFAULT}" />
 		</button>
@@ -48,10 +48,10 @@
 		>
 
 		<button
-			aria-label="Zoom in"
+			aria-label="Acercar"
 			class="mermaid-preview-btn flex h-8 w-8 cursor-pointer items-center justify-center rounded-md border-0 bg-transparent text-foreground transition-colors hover:bg-muted-foreground/15 active:bg-muted-foreground/25"
 			onclick={onZoomIn}
-			title="Zoom in"
+			title="Acercar"
 		>
 			<ZoomInIcon class="mermaid-preview-btn-icon {ICON_CLASS_DEFAULT}" />
 		</button>
@@ -59,10 +59,10 @@
 		<div class="mermaid-preview-controls-separator mx-1 h-5 w-px bg-border/50"></div>
 
 		<button
-			aria-label="Reset view"
+			aria-label="Restablecer vista"
 			class="mermaid-preview-btn flex h-8 w-8 cursor-pointer items-center justify-center rounded-md border-0 bg-transparent text-foreground transition-colors hover:bg-muted-foreground/15 active:bg-muted-foreground/25"
 			onclick={onResetView}
-			title="Reset view"
+			title="Restablecer vista"
 		>
 			<RotateCcwIcon class="mermaid-preview-btn-icon {ICON_CLASS_DEFAULT}" />
 		</button>
@@ -70,10 +70,10 @@
 		<div class="mermaid-preview-controls-separator mx-1 h-5 w-px bg-border/50"></div>
 
 		<button
-			aria-label="Download SVG"
+			aria-label="Descargar SVG"
 			class="mermaid-preview-btn flex h-8 w-8 cursor-pointer items-center justify-center rounded-md border-0 bg-transparent text-foreground transition-colors hover:bg-muted-foreground/15 active:bg-muted-foreground/25"
 			onclick={downloadSvg}
-			title="Download SVG"
+			title="Descargar SVG"
 		>
 			<Download class="mermaid-preview-btn-icon {ICON_CLASS_DEFAULT}" />
 		</button>

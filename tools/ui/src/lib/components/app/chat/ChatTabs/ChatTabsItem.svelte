@@ -89,7 +89,7 @@
 				{#snippet child({ props })}
 					<button
 						{...props}
-						aria-label="Stop generation"
+						aria-label="Detener generación"
 						class="stop-button relative z-10 flex h-5 w-5 shrink-0 cursor-pointer items-center justify-center rounded-sm text-muted-foreground transition-colors hover:text-foreground"
 						onclick={(e) => handleActionClick(e, () => onStop?.(tab.id, e))}
 					>
@@ -105,7 +105,7 @@
 			</Tooltip.Trigger>
 
 			<Tooltip.Content>
-				<p>Stop generation</p>
+				<p>Detener generación</p>
 			</Tooltip.Content>
 		</Tooltip.Root>
 	{/if}
@@ -123,7 +123,7 @@
 			{#snippet child({ props })}
 				<button
 					{...props}
-					aria-label="Close tab"
+					aria-label="Cerrar pestaña"
 					class={cn(
 						'relative z-10 flex h-5 w-5 shrink-0 cursor-pointer items-center justify-center rounded-sm text-muted-foreground transition-opacity hover:bg-foreground/10 hover:text-foreground',
 						contentOpacity
@@ -136,7 +136,7 @@
 		</Tooltip.Trigger>
 
 		<Tooltip.Content>
-			<p>Close tab</p>
+			<p>Cerrar pestaña</p>
 		</Tooltip.Content>
 	</Tooltip.Root>
 </div>

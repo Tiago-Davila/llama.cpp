@@ -41,7 +41,7 @@ export { default as SettingsGroup } from './SettingsGroup.svelte';
 export { default as SettingsFooter } from './SettingsFooter.svelte';
 
 /**
- * "Reset to default" button with confirmation dialog, shown only when the
+ * "Restablecer valor por defecto" button with confirmation dialog, shown only when the
  * saved config differs from the defaults.
  */
 export { default as SettingsResetButton } from './SettingsResetButton.svelte';

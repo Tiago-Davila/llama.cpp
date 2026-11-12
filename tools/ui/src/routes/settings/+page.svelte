@@ -5,7 +5,7 @@
 </script>
 
 <svelte:head>
-	<title>Settings - {APP_NAME}</title>
+	<title>Configuración - {APP_NAME}</title>
 </svelte:head>
 
 <!-- a phone's settings: the page the sidebar opens there, where a desktop or tablet opens the
@@ -16,13 +16,13 @@
 	class="[--settings-tabs-top:calc(var(--corner-control-top)+3rem)] flex w-full flex-col pt-(--page-top) max-md:pb-safe-4 md:pt-6"
 >
 	<div class="flex min-w-0 flex-col gap-1 px-4 pb-2 md:px-8">
-		<h1 class="text-2xl font-semibold tracking-tight">Settings</h1>
+		<h1 class="text-2xl font-semibold tracking-tight">Configuración</h1>
 
-		<p class="text-sm text-muted-foreground">How the app looks, chats and talks to the server.</p>
+		<p class="text-sm text-muted-foreground">Cómo se ve la aplicación, cómo chatea y cómo se comunica con el servidor.</p>
 	</div>
 
 	<SettingsChat
 		mobileHeaderClass="top-(--settings-tabs-top) z-[25] data-stuck:before:absolute data-stuck:before:inset-x-0 data-stuck:before:bottom-full data-stuck:before:h-(--settings-tabs-top) data-stuck:before:bg-background"
-		onClose={() => toast.success('Settings saved')}
+		onClose={() => toast.success('Configuración guardada')}
 	/>
 </div>

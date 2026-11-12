@@ -106,10 +106,10 @@
 			if (content) {
 				templatePreviewContent = content;
 			} else {
-				templatePreviewError = 'Failed to read resource';
+				templatePreviewError = 'No se pudo leer el recurso';
 			}
 		} catch (error) {
-			templatePreviewError = error instanceof Error ? error.message : 'Unknown error';
+			templatePreviewError = error instanceof Error ? error.message : 'Error desconocido';
 		} finally {
 			templatePreviewLoading = false;
 		}
@@ -132,10 +132,10 @@
 					await mcpStore.attachResource(knownResource.uri);
 				}
 
-				toast.success(`Resource attached: ${knownResource.title || knownResource.name}`);
+				toast.success(`Recurso adjuntado: ${knownResource.title || knownResource.name}`);
 			} else {
 				if (mcpStore.resources.isAttached(templatePreviewUri)) {
-					toast.info('Resource already attached');
+					toast.info('El recurso ya está adjuntado');
 					handleOpenChange(false);
 
 					return;
@@ -150,7 +150,7 @@
 
 				mcpStore.resources.updateAttachmentContent(attachment.id, templatePreviewContent);
 
-				toast.success(`Resource attached: ${resourceInfo.name}`);
+				toast.success(`Recurso adjuntado: ${resourceInfo.name}`);
 			}
 
 			handleOpenChange(false);
@@ -260,7 +260,7 @@
 			<Dialog.Title class="flex items-center gap-2">
 				<FolderOpen class="h-5 w-5" />
 
-				<span>MCP Resources</span>
+				<span>Recursos MCP</span>
 
 				{#if totalCount > 0}
 					<span class="text-sm font-normal text-muted-foreground">({totalCount})</span>
@@ -268,7 +268,7 @@
 			</Dialog.Title>
 
 			<Dialog.Description>
-				Browse and attach resources from connected MCP servers to your chat context.
+				Explorá y adjuntá recursos de los servidores MCP conectados al contexto del chat.
 			</Dialog.Description>
 
 			<!-- the body is flush with the dialog, so the corner close needs its own inset -->
@@ -277,7 +277,7 @@
 			>
 				<X class="size-4" />
 
-				<span class="sr-only">Close</span>
+				<span class="sr-only">Cerrar</span>
 			</Dialog.Close>
 		</Dialog.Header>
 
@@ -331,7 +331,7 @@
 									size="sm"
 									variant="outline"
 								>
-									Try again
+									Reintentar
 								</Button>
 							</div>
 						{:else}
@@ -367,14 +367,14 @@
 					</div>
 				{:else}
 					<div class="flex h-full items-center justify-center text-sm text-muted-foreground">
-						Select a resource to preview
+						Seleccioná un recurso para ver la vista previa
 					</div>
 				{/if}
 			</div>
 		</div>
 
 		<Dialog.Footer class="border-t border-border/30 px-6 py-4">
-			<Button onclick={() => handleOpenChange(false)} variant="outline">Cancel</Button>
+			<Button onclick={() => handleOpenChange(false)} variant="outline">Cancelar</Button>
 
 			{#if hasTemplateResult}
 				<Button disabled={isAttaching} onclick={handleAttachTemplateResource}>
@@ -384,7 +384,7 @@
 						<Plus class="mr-2 {ICON_CLASS_DEFAULT}" />
 					{/if}
 
-					Attach Resource
+					Adjuntar recurso
 				</Button>
 			{:else}
 				<Button disabled={selectedResources.size === 0 || isAttaching} onclick={handleAttach}>
@@ -394,7 +394,7 @@
 						<Plus class="mr-2 {ICON_CLASS_DEFAULT}" />
 					{/if}
 
-					Attach {selectedResources.size > 0 ? `(${selectedResources.size})` : 'Resource'}
+					Adjuntar {selectedResources.size > 0 ? `(${selectedResources.size})` : 'recurso'}
 				</Button>
 			{/if}
 		</Dialog.Footer>

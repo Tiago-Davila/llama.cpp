@@ -1,26 +1,26 @@
 import type { RecommendedMCPServer } from '$lib/types';
 
-// Suggested MCP servers shown as opt-in cards in the "Add New Server" dialog.
+// Suggested MCP servers shown as opt-in cards in the "Agregar servidor" dialog.
 // Rendering these cards never reaches the upstream domain - favicons come
 // from local bundles in static/recommended-mcp/ and the URL is only used
 // after the user clicks Add.
 export const RECOMMENDED_MCP_SERVERS: RecommendedMCPServer[] = [
 	{
-		description: 'Search the web and fetch full page content as clean markdown.',
+		description: 'Buscá en la web y obtené el contenido completo de las páginas en markdown.',
 		iconUrl: '/recommended-mcp/exa.ico',
 		id: 'exa',
 		name: 'Exa',
 		url: 'https://mcp.exa.ai/mcp'
 	},
 	{
-		description: 'Search and browse AI models, datasets, spaces, and docs on the Hugging Face Hub.',
+		description: 'Buscá y explorá modelos, datasets, spaces y documentación en Hugging Face Hub.',
 		iconUrl: '/recommended-mcp/huggingface.ico',
 		id: 'huggingface',
 		name: 'Hugging Face',
 		url: 'https://huggingface.co/mcp'
 	},
 	{
-		description: 'Search repositories, issues, pull requests and interact with code on GitHub.',
+		description: 'Buscá repositorios, issues y pull requests, y trabajá con código en GitHub.',
 		iconUrlDark: '/recommended-mcp/github-dark.png',
 		iconUrlLight: '/recommended-mcp/github-light.png',
 		id: 'github',
@@ -29,7 +29,7 @@ export const RECOMMENDED_MCP_SERVERS: RecommendedMCPServer[] = [
 		url: 'https://api.githubcopilot.com/mcp'
 	},
 	{
-		description: 'Browse up-to-date documentation and code examples for libraries and frameworks.',
+		description: 'Consultá documentación actualizada y ejemplos de código de librerías y frameworks.',
 		iconUrl: '/recommended-mcp/context7.png',
 		id: 'context7',
 		name: 'Context7',

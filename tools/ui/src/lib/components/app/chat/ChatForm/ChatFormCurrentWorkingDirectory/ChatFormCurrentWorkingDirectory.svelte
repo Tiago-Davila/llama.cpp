@@ -51,7 +51,7 @@
 	}: Props = $props();
 
 	// File System Access API is opt-in (Chrome / Edge / Opera): the popover
-	// exposes a "Browse" button only when available.
+	// exposes a "Explorar" button only when available.
 	const pickerSupported =
 		typeof window !== 'undefined' && typeof window.showDirectoryPicker === 'function';
 
@@ -68,8 +68,8 @@
 	);
 	const searchUnavailableMessage = $derived(
 		fileSearchKey === null
-			? 'File search is unavailable on this server - type a full path and press Enter'
-			: 'File search is disabled - type a full path and press Enter, or enable "Search files" in Settings > Tools'
+			? 'La búsqueda de archivos no está disponible en este servidor: escribí una ruta completa y presioná Enter'
+			: 'La búsqueda de archivos está desactivada: escribí una ruta completa y presioná Enter, o activá "Buscar archivos" en Configuración > Herramientas'
 	);
 
 	let searchInputRef: HTMLInputElement | null = $state(null);
@@ -330,7 +330,7 @@
 			bind:value={query}
 			class="w-full"
 			onClose={closePicker}
-			placeholder="Choose working directory"
+			placeholder="Elegir directorio de trabajo"
 		/>
 
 		{#if !fileSearchEnabled}
@@ -361,7 +361,7 @@
 			>
 				<FolderOpen class="size-4 shrink-0 text-muted-foreground" />
 
-				<span>Browse</span>
+				<span>Explorar</span>
 			</button>
 		{/if}
 
@@ -378,7 +378,7 @@
 			>
 				<X class="size-4 shrink-0 text-muted-foreground" />
 
-				<span>Clear working directory</span>
+				<span>Quitar directorio de trabajo</span>
 			</button>
 		{/if}
 
@@ -389,7 +389,7 @@
 			></div>
 
 			<span class={['font-mono', inDrawer ? 'px-2 py-2 text-xs' : 'px-2 py-1.5 text-[10px]']}>
-				Searching in:
+				Buscando en:
 
 				<span class="truncate text-muted-foreground/70" title={searchScope}
 					>{abbreviateHome(searchScope, homeBase)}</span
@@ -404,10 +404,10 @@
 	<Drawer.Root onOpenChange={handleOpenChange} open={isOpen}>
 		<Drawer.Content class="gap-0" onkeydown={handleKeydown}>
 			<Drawer.Header>
-				<Drawer.Title>Working directory</Drawer.Title>
+				<Drawer.Title>Directorio de trabajo</Drawer.Title>
 
 				<Drawer.Description class="sr-only"
-					>Choose the directory the chat works in</Drawer.Description
+					>Elegí el directorio en el que trabaja el chat</Drawer.Description
 				>
 			</Drawer.Header>
 
@@ -423,7 +423,7 @@
 			class="pointer-events-none absolute inset-0 opacity-0"
 			tabindex={-1}
 		>
-			<span class="sr-only">Open working directory picker</span>
+			<span class="sr-only">Abrir selector de directorio de trabajo</span>
 		</Popover.Trigger>
 
 		<Popover.Content

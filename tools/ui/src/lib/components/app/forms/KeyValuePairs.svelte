@@ -23,15 +23,15 @@
 	}
 
 	let {
-		addButtonLabel = 'Add',
+		addButtonLabel = 'Agregar',
 		class: className = '',
 		emptyMessage = 'No items configured.',
-		keyPlaceholder = 'Key',
+		keyPlaceholder = 'Clave',
 		onPairsChange,
 		pairs,
 		sectionLabel,
 		sectionLabelOptional = true,
-		valuePlaceholder = 'Value'
+		valuePlaceholder = 'Valor'
 	}: Props = $props();
 
 	// Pre-allocate the ref array so `bind:ref={keyInputRefs[index]}` never reads `undefined`
@@ -152,7 +152,7 @@
 					></textarea>
 
 					<button
-						aria-label="Remove item"
+						aria-label="Quitar elemento"
 						class="mt-1.5 shrink-0 cursor-pointer rounded-md p-1 text-muted-foreground hover:bg-destructive/10 hover:text-destructive"
 						onclick={() => removePair(index)}
 						type="button"

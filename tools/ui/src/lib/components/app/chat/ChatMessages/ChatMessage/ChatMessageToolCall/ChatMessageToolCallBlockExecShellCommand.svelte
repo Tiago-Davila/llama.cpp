@@ -247,13 +247,13 @@
 		{#if (ctx.isPending && !commandStreaming) || (isLive && !section.toolResult)}
 			<div class="flex items-start gap-2 text-xs text-muted-foreground/70">
 				<Loader2 class="h-3 w-3 animate-spin" />
-				Executing command...
+				Ejecutando comando...
 			</div>
 		{:else if ctx.isInterrupted}
 			<div class="flex items-start gap-2 text-xs text-muted-foreground/70 italic">
 				<CircleStop class="mt-0.5 h-3 w-3 shrink-0" />
 
-				<span>Command interrupted before it returned output</span>
+				<span>El comando se interrumpió antes de devolver resultados</span>
 			</div>
 		{:else if execShellError}
 			<div class="flex items-start gap-2 text-xs text-red-600 italic dark:text-red-400">
@@ -286,7 +286,7 @@
 						{#if execShellExitStatus.timedOut}
 							<AlertTriangle class="h-3 w-3" />
 
-							<span>timed out</span>
+							<span>tiempo agotado</span>
 
 							<span class="exit-sep">&middot;</span>
 

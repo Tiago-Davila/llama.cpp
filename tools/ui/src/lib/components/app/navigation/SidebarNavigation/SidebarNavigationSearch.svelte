@@ -11,7 +11,7 @@
 	let {
 		class: className,
 		onInput,
-		placeholder = 'Search conversations...',
+		placeholder = 'Buscar conversaciones...',
 		value = $bindable('')
 	}: Props = $props();
 </script>

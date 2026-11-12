@@ -38,11 +38,11 @@
 			<Dialog.Title class="flex min-h-7 items-center gap-2">
 				<DISCOVER_ICON class="h-5 w-5" />
 
-				<span>Discover</span>
+				<span>Descubrir</span>
 			</Dialog.Title>
 
 			<Dialog.Description class="sr-only">
-				Find models on Hugging Face and download them to the server.
+				Buscá modelos en Hugging Face y descargalos al servidor.
 			</Dialog.Description>
 		</Dialog.Header>
 

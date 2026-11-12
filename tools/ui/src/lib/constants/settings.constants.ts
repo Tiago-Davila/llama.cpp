@@ -13,8 +13,7 @@ import {
 	Monitor,
 	Moon,
 	PencilRuler,
-	SlidersVertical,
-	Sun
+	SlidersVertical
 } from '@lucide/svelte';
 import { SyncableParameterType } from '$lib/enums';
 import { SettingsFieldType } from '$lib/enums/settings.enums';
@@ -29,13 +28,13 @@ import type {
 
 /** Settings sections — slug is the routing identity, title is the display label. */
 export const SETTINGS_SECTIONS = {
-	AGENTIC: { slug: 'agentic', title: 'Agentic' },
-	DEVELOPER: { slug: 'developer', title: 'Developer' },
-	DISPLAY: { slug: 'display', title: 'Display' },
+	AGENTIC: { slug: 'agentic', title: 'Agéntico' },
+	DEVELOPER: { slug: 'developer', title: 'Desarrollador' },
+	DISPLAY: { slug: 'display', title: 'Visualización' },
 	GENERAL: { slug: 'general', title: 'General' },
-	IMPORT_EXPORT: { slug: 'import-export', title: 'Import/Export' },
-	SAMPLING_PENALTIES: { slug: 'sampling-penalties', title: 'Sampling & Penalties' },
-	TOOLS: { slug: 'tools', title: 'Tools' }
+	IMPORT_EXPORT: { slug: 'import-export', title: 'Importar/Exportar' },
+	SAMPLING_PENALTIES: { slug: 'sampling-penalties', title: 'Muestreo y penalizaciones' },
+	TOOLS: { slug: 'tools', title: 'Herramientas' }
 } as const;
 
 export const SETTINGS_SECTION_SLUGS = {
@@ -64,105 +63,101 @@ export const SETTINGS_REGISTRY: SettingsSectionEntry[] = [
 		icon: SlidersVertical,
 		settings: [
 			{
-				defaultValue: ColorMode.SYSTEM,
-				help: 'Choose the color theme for the interface. You can choose between System (follows your device settings), Light, or Dark.',
+				defaultValue: ColorMode.DARK,
+				help: 'Tema de color de la interfaz. FerroviasIA usa el tema corporativo oscuro.',
 				key: SETTINGS_KEYS.THEME,
-				label: 'Theme',
-				options: [
-					{ icon: Monitor, label: 'System', value: ColorMode.SYSTEM },
-					{ icon: Sun, label: 'Light', value: ColorMode.LIGHT },
-					{ icon: Moon, label: 'Dark', value: ColorMode.DARK }
-				],
+				label: 'Tema',
+				options: [{ icon: Moon, label: 'Oscuro (corporativo)', value: ColorMode.DARK }],
 				type: SettingsFieldType.SELECT
 			},
 			{
 				defaultValue: '',
-				help: `Set the API Key if you are using <code> ${CLI_FLAGS.API_KEY} </code> option for the server.`,
+				help: `Configurá la clave de API si el servidor usa la opción <code> ${CLI_FLAGS.API_KEY} </code>.`,
 				isPrivate: true,
 				key: SETTINGS_KEYS.API_KEY,
-				label: 'API Key',
+				label: 'Clave de API',
 				type: SettingsFieldType.INPUT
 			},
 			{
 				defaultValue: '',
-				help: 'The starting message that defines how model should behave.',
+				help: 'Mensaje inicial que define cómo debe comportarse el modelo.',
 				key: SETTINGS_KEYS.SYSTEM_MESSAGE,
-				label: 'System Message',
+				label: 'Mensaje del sistema',
 				type: SettingsFieldType.TEXTAREA
 			},
 			{
 				defaultValue: true,
-				help: 'Display the system message at the top of each conversation.',
+				help: 'Mostrar el mensaje del sistema al principio de cada conversación.',
 				key: SETTINGS_KEYS.SHOW_SYSTEM_MESSAGE,
-				label: 'Show system message',
+				label: 'Mostrar mensaje del sistema',
 				standaloneField: false,
 				type: SettingsFieldType.CHECKBOX
 			},
 			{
 				defaultValue: 2500,
-				help: 'On pasting long text, it will be converted to a file. You can control the file length by setting the value of this parameter. Value 0 means disable.',
+				help: 'Al pegar un texto largo, se convierte en un archivo. Este valor define a partir de qué longitud. 0 lo desactiva.',
 				key: SETTINGS_KEYS.PASTE_LONG_TEXT_TO_FILE_LEN,
-				label: 'Paste long text to file length',
+				label: 'Longitud para convertir texto pegado en archivo',
 				type: SettingsFieldType.INPUT
 			},
 			{
 				defaultValue: true,
-				help: 'Use Enter to send messages, and Shift + Enter or Ctrl/Cmd + Enter for new lines. When disabled, and always on a touch screen, Enter adds a line and Ctrl/Cmd + Enter sends.',
+				help: 'Enter envía el mensaje y Shift + Enter o Ctrl/Cmd + Enter agregan una línea. Si está desactivado, y siempre en pantallas táctiles, Enter agrega una línea y Ctrl/Cmd + Enter envía.',
 				key: SETTINGS_KEYS.SEND_ON_ENTER,
-				label: 'Send message on Enter',
+				label: 'Enviar mensaje con Enter',
 				type: SettingsFieldType.CHECKBOX
 			},
 			{
 				defaultValue: true,
-				help: 'Render the markdown in the message input as you write it: every line but the one you are on shows as it will look in the conversation. When disabled, the input shows the plain markdown text.',
+				help: 'Muestra el markdown del cuadro de mensaje mientras escribís: cada línea, salvo la actual, se ve como quedará en la conversación. Si está desactivado, se muestra el texto markdown plano.',
 				key: SETTINGS_KEYS.LIVE_MARKDOWN_PREVIEW,
-				label: 'Live markdown preview in the message input',
+				label: 'Vista previa de markdown en el cuadro de mensaje',
 				type: SettingsFieldType.CHECKBOX
 			},
 			{
 				defaultValue: true,
-				help: 'Automatically show microphone button instead of send button when textarea is empty for models with audio modality support.',
+				help: 'Mostrar el botón de micrófono en lugar del de enviar cuando el cuadro está vacío, en modelos que admiten audio.',
 				key: SETTINGS_KEYS.AUTO_MIC_ON_EMPTY,
-				label: 'Show microphone on empty input',
+				label: 'Mostrar micrófono con el cuadro vacío',
 				type: SettingsFieldType.CHECKBOX
 			},
 			{
 				defaultValue: false,
-				help: 'Enable "Continue" button for assistant messages, including reasoning models.',
+				help: 'Habilitar el botón "Continuar" en los mensajes del asistente, incluidos los modelos de razonamiento.',
 				isExperimental: true,
 				key: SETTINGS_KEYS.ENABLE_CONTINUE_GENERATION,
-				label: 'Enable "Continue" button',
+				label: 'Habilitar botón "Continuar"',
 				type: SettingsFieldType.CHECKBOX
 			},
 			{
 				defaultValue: false,
-				help: 'Show the Discover Models sidebar action to browse and download HuggingFace GGUF models. Turns the Hugging Face Hub API on while it is enabled. Only available in router mode.',
+				help: 'Muestra la opción Descubrir modelos en la barra lateral para buscar y descargar modelos GGUF de HuggingFace. Activa la API de Hugging Face Hub mientras está habilitada. Solo disponible en modo router.',
 				key: SETTINGS_KEYS.ENABLE_DISCOVER_MODELS,
-				label: 'Enable Discover Models',
+				label: 'Habilitar Descubrir modelos',
 				type: SettingsFieldType.CHECKBOX
 			},
 			{
 				defaultValue: false,
-				help: 'Fetch model display data (avatars, context length, chat template) and everything in the Discover Models view from the Hugging Face Hub API. Locked on while Discover Models is enabled; can be turned on alone for just the display data.',
+				help: 'Obtiene datos de visualización de modelos (avatares, longitud de contexto, plantilla de chat) y todo el contenido de Descubrir modelos desde la API de Hugging Face Hub. Queda activo mientras Descubrir modelos esté habilitado; se puede activar solo para los datos de visualización.',
 				key: SETTINGS_KEYS.USE_HUGGING_FACE_HUB,
-				label: 'Use the Hugging Face Hub API',
+				label: 'Usar la API de Hugging Face Hub',
 				type: SettingsFieldType.CHECKBOX
 			},
 			{
 				defaultValue: true,
-				help: 'Choose how conversation titles are generated. The first non-empty line uses a fast deterministic rule; the LLM option uses a model-generated title from the first message exchange.',
+				help: 'Elegí cómo se generan los títulos de las conversaciones. La primera línea no vacía usa una regla rápida; la opción LLM usa un título generado por el modelo a partir del primer intercambio.',
 				key: SETTINGS_KEYS.TITLE_GENERATION_USE_FIRST_LINE,
-				label: 'Conversation title',
+				label: 'Título de la conversación',
 				radioOptions: [
 					{
 						key: SETTINGS_KEYS.TITLE_GENERATION_USE_FIRST_LINE,
-						label: 'Use first non-empty line for the conversation title',
+						label: 'Usar la primera línea no vacía como título',
 						value: 'firstLine'
 					},
 					{
 						isExperimental: true,
 						key: SETTINGS_KEYS.TITLE_GENERATION_USE_LLM,
-						label: 'Generate title with LLM',
+						label: 'Generar título con el LLM',
 						value: 'llm'
 					}
 				],
@@ -171,53 +166,53 @@ export const SETTINGS_REGISTRY: SettingsSectionEntry[] = [
 			{
 				defaultValue: TITLE_GENERATION.DEFAULT_PROMPT,
 				dependsOn: SETTINGS_KEYS.TITLE_GENERATION_USE_LLM,
-				help: 'Optional template for the title generation prompt. Use {{USER}} for the user message and {{ASSISTANT}} for the assistant message.',
+				help: 'Plantilla opcional para el prompt de generación de títulos. Usá {{USER}} para el mensaje del usuario y {{ASSISTANT}} para el del asistente.',
 				key: SETTINGS_KEYS.TITLE_GENERATION_PROMPT,
-				label: 'LLM title generation prompt',
+				label: 'Prompt de generación de títulos',
 				type: SettingsFieldType.TEXTAREA
 			},
 			{
 				defaultValue: false,
 				help: 'Counterpart of the conversation title radio; stored and synced without a dedicated UI field.',
 				key: SETTINGS_KEYS.TITLE_GENERATION_USE_LLM,
-				label: 'Generate title with LLM',
+				label: 'Generar título con el LLM',
 				standaloneField: false,
 				type: SettingsFieldType.CHECKBOX
 			},
 			{
 				defaultValue: COMPACTION.DEFAULT_PROMPT,
-				help: 'Optional override for the instruction sent to the model when compacting a conversation.',
+				help: 'Instrucción opcional que se envía al modelo al compactar una conversación.',
 				key: SETTINGS_KEYS.COMPACTION_PROMPT,
-				label: 'Compaction prompt',
+				label: 'Prompt de compactación',
 				type: SettingsFieldType.TEXTAREA
 			},
 			{
 				defaultValue: COMPACTION.DEFAULT_PRESERVED_STEPS,
-				help: 'Last steps a compaction keeps as written after the summary: a user message, or an assistant message with its tool results.',
+				help: 'Últimos pasos que la compactación conserva tal cual después del resumen: un mensaje del usuario o un mensaje del asistente con sus resultados de herramientas.',
 				isPositiveInteger: true,
 				key: SETTINGS_KEYS.COMPACTION_PRESERVED_STEPS,
-				label: 'Compaction preserved steps',
+				label: 'Pasos conservados al compactar',
 				type: SettingsFieldType.INPUT
 			},
 			{
 				defaultValue: false,
-				help: 'When copying a message with text attachments, combine them into a single plain text string instead of a special format that can be pasted back as attachments.',
+				help: 'Al copiar un mensaje con adjuntos de texto, unirlos en un solo texto plano en lugar de un formato especial que se puede volver a pegar como adjuntos.',
 				key: SETTINGS_KEYS.COPY_TEXT_ATTACHMENTS_AS_PLAIN_TEXT,
-				label: 'Copy text attachments as plain text',
+				label: 'Copiar adjuntos de texto como texto plano',
 				type: SettingsFieldType.CHECKBOX
 			},
 			{
 				defaultValue: false,
-				help: 'Parse PDF as image instead of text. Automatically falls back to text processing for non-vision models.',
+				help: 'Procesar los PDF como imagen en lugar de texto. En modelos sin visión se usa texto automáticamente.',
 				key: SETTINGS_KEYS.PDF_AS_IMAGE,
-				label: 'Parse PDF as image',
+				label: 'Procesar PDF como imagen',
 				type: SettingsFieldType.CHECKBOX
 			},
 			{
 				defaultValue: 0,
-				help: 'Images larger than this will be resized before sending to server. Set to 0 to disable.',
+				help: 'Las imágenes más grandes se redimensionan antes de enviarse al servidor. 0 lo desactiva.',
 				key: SETTINGS_KEYS.MAX_IMAGE_RESOLUTION,
-				label: 'Maximum image resolution (megapixels)',
+				label: 'Resolución máxima de imagen (megapíxeles)',
 				type: SettingsFieldType.INPUT
 			}
 		],
@@ -230,150 +225,150 @@ export const SETTINGS_REGISTRY: SettingsSectionEntry[] = [
 		settings: [
 			{
 				defaultValue: true,
-				help: 'Display generation statistics (tokens/second, token count, duration) below each assistant message.',
+				help: 'Mostrar estadísticas de generación (tokens/segundo, cantidad de tokens, duración) debajo de cada mensaje del asistente.',
 				key: SETTINGS_KEYS.SHOW_MESSAGE_STATS,
-				label: 'Show message generation statistics',
+				label: 'Mostrar estadísticas de generación',
 				type: SettingsFieldType.CHECKBOX
 			},
 			{
 				defaultValue: false,
 				dependsOn: SETTINGS_KEYS.SHOW_MESSAGE_STATS,
-				help: 'Display per-turn statistics (tokens, duration) under each turn in agentic responses. Shown only when "Show message generation statistics" is enabled.',
+				help: 'Mostrar estadísticas por turno (tokens, duración) en las respuestas agénticas. Solo se ven si "Mostrar estadísticas de generación" está activo.',
 				key: SETTINGS_KEYS.SHOW_AGENTIC_TURN_STATS,
-				label: 'Show statistics for individual agentic turns',
+				label: 'Mostrar estadísticas por turno agéntico',
 				type: SettingsFieldType.CHECKBOX
 			},
 			{
 				defaultValue: true,
-				help: 'Expand thought process by default when generating messages.',
+				help: 'Expandir el razonamiento por defecto mientras se generan los mensajes.',
 				key: SETTINGS_KEYS.SHOW_THOUGHT_IN_PROGRESS,
-				label: 'Show thought in progress',
+				label: 'Mostrar razonamiento en curso',
 				type: SettingsFieldType.CHECKBOX
 			},
 			{
 				defaultValue: true,
-				help: 'Expand tool call details while the call is being generated and executed, and collapse them again once its result is in. Mirrors "Show thought in progress". Tool calls you expand or collapse by hand keep your choice.',
+				help: 'Expandir los detalles de la llamada a herramienta mientras se genera y ejecuta, y contraerlos al recibir el resultado. Igual que "Mostrar razonamiento en curso". Las llamadas que expandas o contraigas a mano conservan tu elección.',
 				key: SETTINGS_KEYS.SHOW_TOOL_CALL_IN_PROGRESS,
-				label: 'Show tool call in progress',
+				label: 'Mostrar llamada a herramienta en curso',
 				type: SettingsFieldType.CHECKBOX
 			},
 			{
 				defaultValue: false,
-				help: 'Keep tool call details expanded after completion. Takes precedence over "Show tool call in progress", which only covers the in-flight phases.',
+				help: 'Mantener expandidos los detalles de la llamada a herramienta al terminar. Tiene prioridad sobre "Mostrar llamada a herramienta en curso", que solo cubre la ejecución.',
 				key: SETTINGS_KEYS.ALWAYS_SHOW_TOOL_CALL_CONTENT,
-				label: 'Always show tool call content',
+				label: 'Mostrar siempre el contenido de las herramientas',
 				type: SettingsFieldType.CHECKBOX
 			},
 			{
 				defaultValue: true,
-				help: 'Render user messages using markdown formatting in the chat. Turn this off to keep a message exactly as typed; @-mention badges show either way.',
+				help: 'Mostrar los mensajes del usuario con formato markdown. Desactivalo para ver el mensaje tal como se escribió; las menciones con @ se muestran igual.',
 				key: SETTINGS_KEYS.RENDER_USER_CONTENT_AS_MARKDOWN,
-				label: 'Render user content as Markdown',
+				label: 'Mostrar mensajes del usuario como Markdown',
 				type: SettingsFieldType.CHECKBOX
 			},
 			{
 				defaultValue: true,
-				help: 'Render the reasoning/thinking block content as formatted Markdown instead of plain text.',
+				help: 'Mostrar el bloque de razonamiento como Markdown con formato en lugar de texto plano.',
 				key: SETTINGS_KEYS.RENDER_THINKING_AS_MARKDOWN,
-				label: 'Render thinking as Markdown',
+				label: 'Mostrar razonamiento como Markdown',
 				type: SettingsFieldType.CHECKBOX
 			},
 			{
 				defaultValue: false,
-				help: 'Always display code blocks at their full natural height, overriding any height limits.',
+				help: 'Mostrar siempre los bloques de código con su altura completa, sin límites.',
 				key: SETTINGS_KEYS.FULL_HEIGHT_CODE_BLOCKS,
-				label: 'Use full height code blocks',
+				label: 'Bloques de código a altura completa',
 				type: SettingsFieldType.CHECKBOX
 			},
 			{
 				defaultValue: false,
-				help: 'Stop the view from following new content while messages stream, so you control the viewport position yourself.',
+				help: 'Evita que la vista siga el contenido nuevo mientras llegan los mensajes, para que controles vos la posición.',
 				key: SETTINGS_KEYS.DISABLE_AUTO_SCROLL,
-				label: 'Disable automatic scroll',
+				label: 'Desactivar desplazamiento automático',
 				type: SettingsFieldType.CHECKBOX
 			},
 			{
 				defaultValue: true,
-				help: 'On desktop, keep a one-line message on the same row as the + button, the model selector and the send button. A second line, or a line too long for the row, brings back the two-row form.',
+				help: 'En escritorio, mantener un mensaje de una línea en la misma fila que el botón +, el selector de modelo y el botón de enviar. Una segunda línea, o una demasiado larga, vuelve al formulario de dos filas.',
 				key: SETTINGS_KEYS.SINGLE_ROW_CHAT_FORM,
-				label: 'Single-row chat form for short messages',
+				label: 'Formulario de una fila para mensajes cortos',
 				type: SettingsFieldType.CHECKBOX
 			},
 			{
 				defaultValue: false,
-				help: 'Always keep the sidebar visible on desktop instead of auto-hiding it.',
+				help: 'Mantener siempre visible la barra lateral en escritorio en lugar de ocultarla.',
 				key: SETTINGS_KEYS.ALWAYS_SHOW_SIDEBAR_ON_DESKTOP,
-				label: 'Always show sidebar on desktop',
+				label: 'Mostrar siempre la barra lateral en escritorio',
 				type: SettingsFieldType.CHECKBOX
 			},
 			{
 				defaultValue: true,
-				help: 'Show open chats as browser-style tabs above the conversation, one per open chat. When disabled, only one chat is shown at a time.',
+				help: 'Mostrar los chats abiertos como pestañas sobre la conversación, una por chat. Si está desactivado, se muestra un chat a la vez.',
 				key: SETTINGS_KEYS.CONVERSATION_TABS,
-				label: 'Conversation tabs',
+				label: 'Pestañas de conversación',
 				type: SettingsFieldType.CHECKBOX
 			},
 			{
 				defaultValue: false,
-				help: 'Display full raw model identifiers (e.g. "ggml-org/GLM-4.7-Flash-GGUF:Q8_0") instead of parsed names with badges.',
+				help: 'Mostrar el identificador completo del modelo (por ej. "ggml-org/GLM-4.7-Flash-GGUF:Q8_0") en lugar del nombre con etiquetas.',
 				key: SETTINGS_KEYS.SHOW_RAW_MODEL_NAMES,
-				label: 'Show raw model names',
+				label: 'Mostrar nombres de modelo sin procesar',
 				type: SettingsFieldType.CHECKBOX
 			},
 			{
 				defaultValue: true,
-				help: 'Display quantization badges (e.g. Q8_0, Q4_K_M) next to model names throughout the interface.',
+				help: 'Mostrar etiquetas de cuantización (por ej. Q8_0, Q4_K_M) junto a los nombres de modelo.',
 				key: SETTINGS_KEYS.SHOW_MODEL_QUANTIZATION,
-				label: 'Show model quantization information',
+				label: 'Mostrar cuantización del modelo',
 				type: SettingsFieldType.CHECKBOX
 			},
 			{
 				defaultValue: true,
-				help: 'Display model tags (e.g. "vision", "reasoning") next to model names throughout the interface.',
+				help: 'Mostrar etiquetas del modelo (por ej. "vision", "reasoning") junto a los nombres de modelo.',
 				key: SETTINGS_KEYS.SHOW_MODEL_TAGS,
-				label: 'Show model tags',
+				label: 'Mostrar etiquetas del modelo',
 				type: SettingsFieldType.CHECKBOX
 			},
 			{
 				defaultValue: false,
-				help: 'Show the modality and capability icons (vision, audio, reasoning, tools) on the models selector rows.',
+				help: 'Mostrar los íconos de modalidades y capacidades (visión, audio, razonamiento, herramientas) en el selector de modelos.',
 				key: SETTINGS_KEYS.SHOW_MODEL_CAPABILITIES_IN_SELECTOR,
-				label: 'Show model modalities & capabilities in models selector',
+				label: 'Mostrar modalidades y capacidades en el selector de modelos',
 				type: SettingsFieldType.CHECKBOX
 			},
 			{
 				defaultValue: true,
-				help: 'Display the organization name alongside model names in the model selector, in the trigger and in the model rows.',
+				help: 'Mostrar el nombre de la organización junto al nombre del modelo en el selector.',
 				key: SETTINGS_KEYS.SHOW_MODEL_ORG_NAME,
-				label: 'Show organization name in model selector',
+				label: 'Mostrar organización en el selector de modelos',
 				type: SettingsFieldType.CHECKBOX
 			},
 			{
 				defaultValue: false,
-				help: 'Keep the organization name on a phone too, where the model selector is narrow. Applies only while the organization name is shown.',
+				help: 'Mostrar la organización también en el celular, donde el selector es angosto. Solo aplica si la organización está visible.',
 				key: SETTINGS_KEYS.SHOW_MODEL_ORG_NAME_ON_MOBILE,
-				label: 'Show organization name on mobile',
+				label: 'Mostrar organización en el celular',
 				type: SettingsFieldType.CHECKBOX
 			},
 			{
 				defaultValue: false,
-				help: 'Display the current build version in the bottom-right corner of the interface.',
+				help: 'Mostrar la versión actual en la esquina inferior derecha.',
 				key: SETTINGS_KEYS.SHOW_BUILD_VERSION,
-				label: 'Show build version information',
+				label: 'Mostrar información de versión',
 				type: SettingsFieldType.CHECKBOX
 			},
 			{
 				defaultValue: false,
-				help: 'Display the full file system path inside file and folder @-mention badges instead of just the file or folder name.',
+				help: 'Mostrar la ruta completa en las menciones con @ de archivos y carpetas en lugar de solo el nombre.',
 				key: SETTINGS_KEYS.SHOW_FULL_PATH_IN_MENTIONS,
-				label: 'Show full path in mentions',
+				label: 'Mostrar ruta completa en menciones',
 				type: SettingsFieldType.CHECKBOX
 			},
 			{
 				defaultValue: true,
-				help: 'Group models into families (e.g. "Qwen") in the model picker and the models manager. Turn it off to list every model on its own.',
+				help: 'Agrupar los modelos por familia (por ej. "Qwen") en el selector y el administrador de modelos. Desactivalo para listar cada modelo por separado.',
 				key: SETTINGS_KEYS.GROUP_MODELS_BY_FAMILY,
-				label: 'Group models by family',
+				label: 'Agrupar modelos por familia',
 				type: SettingsFieldType.CHECKBOX
 			}
 		],
@@ -386,9 +381,9 @@ export const SETTINGS_REGISTRY: SettingsSectionEntry[] = [
 		settings: [
 			{
 				defaultValue: '[]',
-				help: 'Configure MCP servers as a JSON list. Use the form in the MCP Client settings section to edit.',
+				help: 'Configurar los servidores MCP como una lista JSON. Usá el formulario de la sección Cliente MCP para editarlos.',
 				key: SETTINGS_KEYS.MCP_SERVERS,
-				label: 'MCP servers',
+				label: 'Servidores MCP',
 				standaloneField: false,
 				type: SettingsFieldType.INPUT
 			}
@@ -402,26 +397,26 @@ export const SETTINGS_REGISTRY: SettingsSectionEntry[] = [
 		settings: [
 			{
 				defaultValue: DEFAULT_AGENTIC_CONFIG.maxTurns,
-				help: 'Maximum number of tool execution cycles before stopping (prevents infinite loops).',
+				help: 'Cantidad máxima de ciclos de herramientas antes de detenerse (evita bucles infinitos).',
 				isPositiveInteger: true,
 				key: SETTINGS_KEYS.AGENTIC_MAX_TURNS,
-				label: 'Agentic turns',
+				label: 'Turnos agénticos',
 				type: SettingsFieldType.INPUT
 			},
 			{
 				defaultValue: DEFAULT_MCP_CONFIG.requestTimeoutSeconds,
-				help: 'Timeout for individual MCP tool calls.',
+				help: 'Tiempo de espera de cada llamada a herramienta MCP.',
 				isPositiveInteger: true,
 				key: SETTINGS_KEYS.MCP_REQUEST_TIMEOUT_SECONDS,
-				label: 'MCP request timeout (seconds)',
+				label: 'Tiempo de espera MCP (segundos)',
 				type: SettingsFieldType.INPUT
 			},
 			{
 				defaultValue: FILE_GLOB_SEARCH_PICKERS.DEFAULT_SEARCH_DEPTH,
-				help: 'How many directory levels below the working directory the @-mention file search descends. Larger values surface deeply nested files but take longer on large trees.',
+				help: 'Cuántos niveles de carpetas por debajo del directorio de trabajo recorre la búsqueda de archivos con @. Valores altos encuentran archivos más profundos pero tardan más.',
 				isPositiveInteger: true,
 				key: SETTINGS_KEYS.MENTION_SEARCH_MAX_DEPTH,
-				label: 'Mention search depth',
+				label: 'Profundidad de búsqueda de menciones',
 				max: FILE_GLOB_SEARCH_PICKERS.MAX_SEARCH_DEPTH,
 				min: 1,
 				placeholder: `${FILE_GLOB_SEARCH_PICKERS.DEFAULT_SEARCH_DEPTH}`,
@@ -444,9 +439,9 @@ export const SETTINGS_REGISTRY: SettingsSectionEntry[] = [
 		settings: [
 			{
 				defaultValue: undefined,
-				help: 'Controls the randomness of the generated text by affecting the probability distribution of the output tokens. Higher = more random, lower = more focused.',
+				help: 'Controla la aleatoriedad del texto generado modificando la distribución de probabilidad de los tokens. Más alto = más aleatorio, más bajo = más enfocado.',
 				key: SETTINGS_KEYS.TEMPERATURE,
-				label: 'Temperature',
+				label: 'Temperatura',
 				sync: {
 					paramType: SyncableParameterType.NUMBER,
 					serverKey: SETTINGS_KEYS.TEMPERATURE
@@ -455,9 +450,9 @@ export const SETTINGS_REGISTRY: SettingsSectionEntry[] = [
 			},
 			{
 				defaultValue: undefined,
-				help: 'Addon for the temperature sampler. The added value to the range of dynamic temperature, which adjusts probabilities by entropy of tokens.',
+				help: 'Complemento del muestreador de temperatura. Valor que se suma al rango de temperatura dinámica, que ajusta las probabilidades según la entropía de los tokens.',
 				key: SETTINGS_KEYS.DYNATEMP_RANGE,
-				label: 'Dynamic temperature range',
+				label: 'Rango de temperatura dinámica',
 				sync: {
 					paramType: SyncableParameterType.NUMBER,
 					serverKey: SETTINGS_KEYS.DYNATEMP_RANGE
@@ -466,9 +461,9 @@ export const SETTINGS_REGISTRY: SettingsSectionEntry[] = [
 			},
 			{
 				defaultValue: undefined,
-				help: 'Addon for the temperature sampler. Smoothes out the probability redistribution based on the most probable token.',
+				help: 'Complemento del muestreador de temperatura. Suaviza la redistribución de probabilidad según el token más probable.',
 				key: SETTINGS_KEYS.DYNATEMP_EXPONENT,
-				label: 'Dynamic temperature exponent',
+				label: 'Exponente de temperatura dinámica',
 				sync: {
 					paramType: SyncableParameterType.NUMBER,
 					serverKey: SETTINGS_KEYS.DYNATEMP_EXPONENT
@@ -477,7 +472,7 @@ export const SETTINGS_REGISTRY: SettingsSectionEntry[] = [
 			},
 			{
 				defaultValue: undefined,
-				help: 'Keeps only k top tokens.',
+				help: 'Conserva solo los k tokens más probables.',
 				key: SETTINGS_KEYS.TOP_K,
 				label: 'Top K',
 				sync: { paramType: SyncableParameterType.NUMBER, serverKey: SETTINGS_KEYS.TOP_K },
@@ -485,7 +480,7 @@ export const SETTINGS_REGISTRY: SettingsSectionEntry[] = [
 			},
 			{
 				defaultValue: undefined,
-				help: 'Limits tokens to those that together have a cumulative probability of at least p',
+				help: 'Limita los tokens a los que juntos suman una probabilidad acumulada de al menos p',
 				key: SETTINGS_KEYS.TOP_P,
 				label: 'Top P',
 				sync: { paramType: SyncableParameterType.NUMBER, serverKey: SETTINGS_KEYS.TOP_P },
@@ -493,7 +488,7 @@ export const SETTINGS_REGISTRY: SettingsSectionEntry[] = [
 			},
 			{
 				defaultValue: undefined,
-				help: 'Limits tokens based on the minimum probability for a token to be considered, relative to the probability of the most likely token.',
+				help: 'Limita los tokens según la probabilidad mínima para ser considerados, relativa a la del token más probable.',
 				key: SETTINGS_KEYS.MIN_P,
 				label: 'Min P',
 				sync: { paramType: SyncableParameterType.NUMBER, serverKey: SETTINGS_KEYS.MIN_P },
@@ -501,9 +496,9 @@ export const SETTINGS_REGISTRY: SettingsSectionEntry[] = [
 			},
 			{
 				defaultValue: undefined,
-				help: 'XTC sampler cuts out top tokens; this parameter controls the chance of cutting tokens at all. 0 disables XTC.',
+				help: 'El muestreador XTC elimina los tokens más probables; este parámetro controla la probabilidad de hacerlo. 0 desactiva XTC.',
 				key: SETTINGS_KEYS.XTC_PROBABILITY,
-				label: 'XTC probability',
+				label: 'Probabilidad XTC',
 				sync: {
 					paramType: SyncableParameterType.NUMBER,
 					serverKey: SETTINGS_KEYS.XTC_PROBABILITY
@@ -512,9 +507,9 @@ export const SETTINGS_REGISTRY: SettingsSectionEntry[] = [
 			},
 			{
 				defaultValue: undefined,
-				help: 'XTC sampler cuts out top tokens; this parameter controls the token probability that is required to cut that token.',
+				help: 'El muestreador XTC elimina los tokens más probables; este parámetro define la probabilidad mínima para eliminar un token.',
 				key: SETTINGS_KEYS.XTC_THRESHOLD,
-				label: 'XTC threshold',
+				label: 'Umbral XTC',
 				sync: {
 					paramType: SyncableParameterType.NUMBER,
 					serverKey: SETTINGS_KEYS.XTC_THRESHOLD
@@ -523,7 +518,7 @@ export const SETTINGS_REGISTRY: SettingsSectionEntry[] = [
 			},
 			{
 				defaultValue: undefined,
-				help: 'Sorts and limits tokens based on the difference between log-probability and entropy.',
+				help: 'Ordena y limita los tokens según la diferencia entre log-probabilidad y entropía.',
 				key: SETTINGS_KEYS.TYP_P,
 				label: 'Typical P',
 				sync: { paramType: SyncableParameterType.NUMBER, serverKey: SETTINGS_KEYS.TYP_P },
@@ -531,9 +526,9 @@ export const SETTINGS_REGISTRY: SettingsSectionEntry[] = [
 			},
 			{
 				defaultValue: undefined,
-				help: 'The maximum number of token per output. Use -1 for infinite (no limit).',
+				help: 'Cantidad máxima de tokens por respuesta. -1 = sin límite.',
 				key: SETTINGS_KEYS.MAX_TOKENS,
-				label: 'Max tokens',
+				label: 'Tokens máximos',
 				sync: {
 					paramType: SyncableParameterType.NUMBER,
 					serverKey: SETTINGS_KEYS.MAX_TOKENS
@@ -542,24 +537,24 @@ export const SETTINGS_REGISTRY: SettingsSectionEntry[] = [
 			},
 			{
 				defaultValue: '',
-				help: 'The order at which samplers are applied, in simplified way. Default is "top_k;typ_p;top_p;min_p;temperature": top_k->typ_p->top_p->min_p->temperature',
+				help: 'Orden en que se aplican los muestreadores, en forma simplificada. Por defecto es "top_k;typ_p;top_p;min_p;temperature": top_k->typ_p->top_p->min_p->temperature',
 				key: SETTINGS_KEYS.SAMPLERS,
-				label: 'Samplers',
+				label: 'Muestreadores',
 				sync: { paramType: SyncableParameterType.STRING, serverKey: SETTINGS_KEYS.SAMPLERS },
 				type: SettingsFieldType.INPUT
 			},
 			{
 				defaultValue: false,
-				help: 'Enable backend-based samplers. When enabled, supported samplers run on the accelerator backend for faster sampling.',
+				help: 'Habilita los muestreadores en el backend. Los compatibles se ejecutan en el acelerador para muestrear más rápido.',
 				key: SETTINGS_KEYS.BACKEND_SAMPLING,
-				label: 'Backend sampling',
+				label: 'Muestreo en el backend',
 				type: SettingsFieldType.CHECKBOX
 			},
 			{
 				defaultValue: undefined,
-				help: 'Last n tokens to consider for penalizing repetition',
+				help: 'Últimos n tokens a considerar para penalizar la repetición',
 				key: SETTINGS_KEYS.REPEAT_LAST_N,
-				label: 'Repeat last N',
+				label: 'Repetición últimos N',
 				sync: {
 					paramType: SyncableParameterType.NUMBER,
 					serverKey: SETTINGS_KEYS.REPEAT_LAST_N
@@ -568,9 +563,9 @@ export const SETTINGS_REGISTRY: SettingsSectionEntry[] = [
 			},
 			{
 				defaultValue: undefined,
-				help: 'Controls the repetition of token sequences in the generated text',
+				help: 'Controla la repetición de secuencias de tokens en el texto generado',
 				key: SETTINGS_KEYS.REPEAT_PENALTY,
-				label: 'Repeat penalty',
+				label: 'Penalización por repetición',
 				sync: {
 					paramType: SyncableParameterType.NUMBER,
 					serverKey: SETTINGS_KEYS.REPEAT_PENALTY
@@ -579,9 +574,9 @@ export const SETTINGS_REGISTRY: SettingsSectionEntry[] = [
 			},
 			{
 				defaultValue: undefined,
-				help: 'Limits tokens based on whether they appear in the output or not.',
+				help: 'Limita los tokens según si ya aparecen en la respuesta o no.',
 				key: SETTINGS_KEYS.PRESENCE_PENALTY,
-				label: 'Presence penalty',
+				label: 'Penalización por presencia',
 				sync: {
 					paramType: SyncableParameterType.NUMBER,
 					serverKey: SETTINGS_KEYS.PRESENCE_PENALTY
@@ -590,9 +585,9 @@ export const SETTINGS_REGISTRY: SettingsSectionEntry[] = [
 			},
 			{
 				defaultValue: undefined,
-				help: 'Limits tokens based on how often they appear in the output.',
+				help: 'Limita los tokens según cuántas veces aparecen en la respuesta.',
 				key: SETTINGS_KEYS.FREQUENCY_PENALTY,
-				label: 'Frequency penalty',
+				label: 'Penalización por frecuencia',
 				sync: {
 					paramType: SyncableParameterType.NUMBER,
 					serverKey: SETTINGS_KEYS.FREQUENCY_PENALTY
@@ -601,9 +596,9 @@ export const SETTINGS_REGISTRY: SettingsSectionEntry[] = [
 			},
 			{
 				defaultValue: undefined,
-				help: 'DRY sampling reduces repetition in generated text even across long contexts. This parameter sets the DRY sampling multiplier.',
+				help: 'El muestreo DRY reduce la repetición incluso en contextos largos. Este parámetro define el multiplicador DRY.',
 				key: SETTINGS_KEYS.DRY_MULTIPLIER,
-				label: 'DRY multiplier',
+				label: 'Multiplicador DRY',
 				sync: {
 					paramType: SyncableParameterType.NUMBER,
 					serverKey: SETTINGS_KEYS.DRY_MULTIPLIER
@@ -612,17 +607,17 @@ export const SETTINGS_REGISTRY: SettingsSectionEntry[] = [
 			},
 			{
 				defaultValue: undefined,
-				help: 'DRY sampling reduces repetition in generated text even across long contexts. This parameter sets the DRY sampling base value.',
+				help: 'El muestreo DRY reduce la repetición incluso en contextos largos. Este parámetro define el valor base DRY.',
 				key: SETTINGS_KEYS.DRY_BASE,
-				label: 'DRY base',
+				label: 'Base DRY',
 				sync: { paramType: SyncableParameterType.NUMBER, serverKey: SETTINGS_KEYS.DRY_BASE },
 				type: SettingsFieldType.INPUT
 			},
 			{
 				defaultValue: undefined,
-				help: 'DRY sampling reduces repetition in generated text even across long contexts. This parameter sets the allowed length for DRY sampling.',
+				help: 'El muestreo DRY reduce la repetición incluso en contextos largos. Este parámetro define la longitud permitida DRY.',
 				key: SETTINGS_KEYS.DRY_ALLOWED_LENGTH,
-				label: 'DRY allowed length',
+				label: 'Longitud permitida DRY',
 				sync: {
 					paramType: SyncableParameterType.NUMBER,
 					serverKey: SETTINGS_KEYS.DRY_ALLOWED_LENGTH
@@ -631,9 +626,9 @@ export const SETTINGS_REGISTRY: SettingsSectionEntry[] = [
 			},
 			{
 				defaultValue: undefined,
-				help: 'DRY sampling reduces repetition in generated text even across long contexts. This parameter sets DRY penalty for the last n tokens.',
+				help: 'El muestreo DRY reduce la repetición incluso en contextos largos. Este parámetro define la penalización DRY para los últimos n tokens.',
 				key: SETTINGS_KEYS.DRY_PENALTY_LAST_N,
-				label: 'DRY penalty last N',
+				label: 'Penalización DRY últimos N',
 				sync: {
 					paramType: SyncableParameterType.NUMBER,
 					serverKey: SETTINGS_KEYS.DRY_PENALTY_LAST_N
@@ -650,51 +645,51 @@ export const SETTINGS_REGISTRY: SettingsSectionEntry[] = [
 		settings: [
 			{
 				defaultValue: false,
-				help: 'After each response, re-submit the conversation to pre-fill the server KV cache. Makes the next turn faster since the prompt is already encoded while you read the response.',
+				help: 'Después de cada respuesta, reenvía la conversación para precargar la caché KV del servidor. El siguiente turno es más rápido porque el prompt ya está codificado mientras leés.',
 				key: SETTINGS_KEYS.PRE_ENCODE_CONVERSATION,
-				label: 'Pre-fill KV cache after response',
+				label: 'Precargar caché KV después de responder',
 				type: SettingsFieldType.CHECKBOX
 			},
 			{
 				defaultValue: false,
-				help: 'Send reasoning_format=none so the server returns thinking tokens inline instead of extracting them into a separate field.',
+				help: 'Envía reasoning_format=none para que el servidor devuelva el razonamiento dentro del texto en lugar de un campo aparte.',
 				key: SETTINGS_KEYS.DISABLE_REASONING_PARSING,
-				label: 'Disable reasoning content parsing',
+				label: 'Desactivar el análisis del razonamiento',
 				type: SettingsFieldType.CHECKBOX
 			},
 			{
 				defaultValue: false,
-				help: 'Strip thinking from previous messages before sending. When off, thinking is sent back via the reasoning_content field so the model sees its own chain-of-thought across turns.',
+				help: 'Quita el razonamiento de los mensajes anteriores antes de enviar. Si está desactivado, se reenvía en el campo reasoning_content para que el modelo vea su propio razonamiento entre turnos.',
 				key: SETTINGS_KEYS.EXCLUDE_REASONING_FROM_CONTEXT,
-				label: 'Exclude reasoning from context',
+				label: 'Excluir el razonamiento del contexto',
 				type: SettingsFieldType.CHECKBOX
 			},
 			{
 				defaultValue: false,
-				help: 'Show toggle button to display messages as plain text instead of Markdown-formatted content',
+				help: 'Mostrar un botón para ver los mensajes como texto plano en lugar de Markdown',
 				key: SETTINGS_KEYS.SHOW_RAW_OUTPUT_SWITCH,
-				label: 'Enable raw output toggle',
+				label: 'Habilitar vista de texto sin formato',
 				type: SettingsFieldType.CHECKBOX
 			},
 			{
 				defaultValue: false,
-				help: 'Pre-load nerdamer in the run_javascript sandbox for symbolic computation: simplify, diff, integrate, solve, and more.',
+				help: 'Precarga nerdamer en el entorno run_javascript para cálculo simbólico: simplificar, derivar, integrar, resolver y más.',
 				key: SETTINGS_KEYS.SYMBOLIC_MATH_ENABLED,
-				label: 'Symbolic math (nerdamer)',
+				label: 'Matemática simbólica (nerdamer)',
 				type: SettingsFieldType.CHECKBOX
 			},
 			{
 				defaultValue: '',
-				help: 'Custom JSON parameters to send to the API. Must be valid JSON format.',
+				help: 'Parámetros JSON personalizados para enviar a la API. Debe ser JSON válido.',
 				key: SETTINGS_KEYS.CUSTOM_JSON,
-				label: 'Custom JSON',
+				label: 'JSON personalizado',
 				type: SettingsFieldType.TEXTAREA
 			},
 			{
 				defaultValue: '',
-				help: 'CSS injected into the page at runtime. Set it here, or ship it server side via the --ui-config customCss field.',
+				help: 'CSS que se inyecta en la página. Se puede definir acá o desde el servidor con el campo customCss de --ui-config.',
 				key: SETTINGS_KEYS.CUSTOM_CSS,
-				label: 'Custom CSS',
+				label: 'CSS personalizado',
 				type: SettingsFieldType.TEXTAREA
 			}
 		],

@@ -93,7 +93,7 @@
 					value={draftKind}
 				>
 					<Select.Trigger
-						aria-label="Draft type"
+						aria-label="Tipo de borrador"
 						class="border-primary/15 bg-primary/[0.07] font-mono text-foreground hover:bg-primary/15 focus-visible:border-primary/40 focus-visible:ring-0"
 						size="xs"
 					>
@@ -117,7 +117,7 @@
 	</div>
 
 	<button
-		aria-label="Copy command"
+		aria-label="Copiar comando"
 		class="absolute top-1/2 right-2 -translate-y-1/2 cursor-pointer rounded-md p-1.5 text-muted-foreground/70 transition-colors hover:bg-primary/10 hover:text-foreground"
 		onclick={copy}
 		type="button"

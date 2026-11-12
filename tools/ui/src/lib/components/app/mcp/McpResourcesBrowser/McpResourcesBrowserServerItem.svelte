@@ -188,7 +188,7 @@
 					Error: {serverRes.error}
 				</div>
 			{:else if !hasContent}
-				<div class="py-1 text-xs text-muted-foreground">No resources</div>
+				<div class="py-1 text-xs text-muted-foreground">Sin recursos</div>
 			{:else}
 				{#if hasResources}
 					{#each sortTreeChildren( [...resourceTree.children.values()] ) as child (child.resource?.uri || `${serverName}:${child.name}`)}
@@ -204,7 +204,7 @@
 					<div
 						class="py-0.5 text-[11px] font-medium tracking-wide text-muted-foreground/70 uppercase"
 					>
-						Templates
+						Plantillas
 					</div>
 
 					{#each templateInfos as template (template.uriTemplate)}

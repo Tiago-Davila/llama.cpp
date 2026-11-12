@@ -28,7 +28,7 @@
 			<ChevronRight class="h-3.5 w-3.5" />
 		{/if}
 
-		<span>{toolsCount} tools available · Show details</span>
+		<span>{toolsCount} herramientas disponibles · Ver detalles</span>
 	</Collapsible.Trigger>
 
 	<Collapsible.Content class="mt-2">

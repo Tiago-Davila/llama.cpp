@@ -44,7 +44,7 @@
 					) {
 						modelsStore.status
 							.load(model.id)
-							.catch((error) => console.error('Failed to load model:', error));
+							.catch((error) => console.error('No se pudo cargar el modelo:', error));
 					}
 				} catch (error) {
 					console.error('Failed to select model:', error);

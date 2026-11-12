@@ -3,11 +3,11 @@
 import { ModelsTableGroupKind, ServerModelSource } from '$lib/enums';
 
 export const MODELS_TABLE_GROUP_LABELS: Record<ModelsTableGroupKind, string> = {
-	[ModelsTableGroupKind.DOWNLOADING]: 'Downloading',
-	[ModelsTableGroupKind.FAVORITES]: 'Favorites',
-	[ModelsTableGroupKind.HIDDEN]: 'Hidden models',
-	[ModelsTableGroupKind.LOADED]: 'Loaded models',
-	[ModelsTableGroupKind.LOCAL]: 'Local models'
+	[ModelsTableGroupKind.DOWNLOADING]: 'Descargando',
+	[ModelsTableGroupKind.FAVORITES]: 'Favoritos',
+	[ModelsTableGroupKind.HIDDEN]: 'Modelos ocultos',
+	[ModelsTableGroupKind.LOADED]: 'Modelos cargados',
+	[ModelsTableGroupKind.LOCAL]: 'Modelos locales'
 };
 
 /**
@@ -26,9 +26,9 @@ export const MODEL_REMOVE_BLOCKED_REASONS: Record<
 	string
 > = {
 	[ServerModelSource.MODELS_DIR]:
-		'Found in --models-dir: delete the file from that folder to remove it.',
+		'Está en --models-dir: borrá el archivo de esa carpeta para quitarlo.',
 	[ServerModelSource.PRESET]:
-		'Defined in a --models-preset file: remove its section from the preset to delete it.'
+		'Definido en un archivo --models-preset: quitá su sección del preset para eliminarlo.'
 };
 
 /** Fallback when the router refuses removal without saying where the model came from. */

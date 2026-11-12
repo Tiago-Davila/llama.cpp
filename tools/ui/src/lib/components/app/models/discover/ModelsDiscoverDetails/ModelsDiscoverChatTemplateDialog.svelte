@@ -38,10 +38,10 @@
 			class="flex-row items-center gap-2 border-b border-border/40 p-4"
 			showCloseButton={false}
 		>
-			<Dialog.Title class="text-sm font-semibold">Chat template</Dialog.Title>
+			<Dialog.Title class="text-sm font-semibold">Plantilla de chat</Dialog.Title>
 
 			<Button
-				aria-label="Copy chat template"
+				aria-label="Copiar plantilla de chat"
 				class="h-auto gap-1.5 px-2 py-1 text-xs"
 				onclick={() => void copy()}
 				size="sm"
@@ -53,11 +53,11 @@
 					<Copy class="size-3.5" />
 				{/if}
 
-				Copy
+				Copiar
 			</Button>
 
 			<Dialog.Close
-				aria-label="Close"
+				aria-label="Cerrar"
 				class="ml-auto inline-flex cursor-pointer items-center justify-center rounded-md p-1.5 text-muted-foreground/70 transition-colors hover:bg-muted-foreground/10 hover:text-foreground"
 				type="button"
 			>

@@ -85,13 +85,13 @@
 	// the Recent heading's "more actions" dropdown and its right-click menu, and
 	// a right-click anywhere else in the list that no row or heading takes
 	const recentActions: MenuAction[] = [
-		{ icon: FolderPlus, label: 'New group', onclick: () => uiStore.openGroupDialog() }
+		{ icon: FolderPlus, label: 'Nuevo grupo', onclick: () => uiStore.openGroupDialog() }
 	];
 
 	let conversationTree = $derived(buildConversationTree(conversations));
 
 	// beside group sections it holds the chats in none of them
-	let recentLabel = $derived(groupsStore.groups.length > 0 ? 'Ungrouped' : 'Recent conversations');
+	let recentLabel = $derived(groupsStore.groups.length > 0 ? 'Sin grupo' : 'Conversaciones recientes');
 
 	// Every group is a section of its own, between Pinned and Recent. A pinned
 	// chat stays in Pinned; any other chat in a group shows in its section only,
@@ -142,7 +142,7 @@
 		return [...savedSections].sort((a, b) => order.indexOf(a.id) - order.indexOf(b.id));
 	});
 
-	// a section lists its first chats until its "Show more" row opens all of it
+	// a section lists its first chats until its "Ver más" row opens all of it
 	function previewOf<T extends { conversation: DatabaseConversation }>(
 		sectionId: string,
 		items: T[]
@@ -296,7 +296,7 @@
 				<SidebarNavigationSectionHeading
 					dragId={SIDEBAR_SECTION_IDS.PINNED}
 					icon={Pin}
-					label="Pinned"
+					label="Fijados"
 					onToggle={() => uiStore.toggleSidebarSection(SIDEBAR_SECTION_IDS.PINNED)}
 					open={uiStore.isSidebarSectionOpen(SIDEBAR_SECTION_IDS.PINNED)}
 				/>
@@ -364,7 +364,7 @@
 
 				{#if conversations.length === 0}
 					<li class="px-2 py-4 text-center">
-						<p class="mb-4 p-4 text-sm text-muted-foreground">No conversations yet</p>
+						<p class="mb-4 p-4 text-sm text-muted-foreground">Todavía no hay conversaciones</p>
 					</li>
 				{/if}
 

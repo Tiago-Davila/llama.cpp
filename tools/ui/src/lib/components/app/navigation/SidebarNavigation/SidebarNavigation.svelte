@@ -609,10 +609,10 @@
 					     no fill while it is hidden; hover and focus never change the fill -->
 					<ActionIcon
 						ariaLabel={!uiStore.isSidebarExpanded
-							? 'Expand navigation'
+							? 'Expandir navegación'
 							: isLogoToggle
-								? 'Collapse navigation'
-								: 'Go to start'}
+								? 'Contraer navegación'
+								: 'Ir al inicio'}
 						class="pointer-events-auto size-10 rounded-full! md:size-9 {isStripHidden
 							? 'bg-transparent! hover:bg-transparent!'
 							: 'bg-muted/60 border border-border/20 backdrop-blur-sm bg-background! hover:bg-background! dark:bg-muted-foreground/15! dark:hover:bg-muted-foreground/15!'}"
@@ -626,9 +626,9 @@
 						onclick={!uiStore.isSidebarExpanded || isLogoToggle ? toggleExpandedMode : undefined}
 						size="lg"
 						tooltip={!uiStore.isSidebarExpanded
-							? 'Open Sidebar'
+							? 'Abrir barra lateral'
 							: isLogoToggle
-								? 'Close Sidebar'
+								? 'Cerrar barra lateral'
 								: undefined}
 						tooltipSide={TooltipSide.RIGHT}
 					/>
@@ -638,7 +638,7 @@
 				     Search row among the sidebar's actions -->
 				{#if isOnMobile}
 					<ActionIcon
-						ariaLabel="Search"
+						ariaLabel="Buscar"
 						class="bg-muted/60 border border-border/20 backdrop-blur-sm size-10 rounded-full! bg-background! hover:bg-background! dark:bg-muted-foreground/15! dark:hover:bg-muted-foreground/15!"
 						icon={Search}
 						iconSize="size-4.5"
@@ -714,7 +714,7 @@
 				data-slot="sidebar-resize-handle"
 				ondblclick={() => uiStore.setSidebarWidth(null)}
 				onpointerdown={handleResizePointerDown}
-				title="Drag to resize or hide, double-click to reset"
+				title="Arrastrá para cambiar el tamaño u ocultar, doble clic para restablecer"
 			></div>
 
 			<!-- the edge strip is clipped to the sidebar's rounded corners without

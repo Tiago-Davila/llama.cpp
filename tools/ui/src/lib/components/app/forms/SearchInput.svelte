@@ -26,7 +26,7 @@
 		onClose,
 		onInput,
 		onKeyDown,
-		placeholder = 'Search...',
+		placeholder = 'Buscar...',
 		ref = $bindable(null),
 		size = 'default',
 		value = $bindable('')
@@ -73,7 +73,7 @@
 
 	{#if showClearButton}
 		<button
-			aria-label={value ? 'Clear search' : 'Close'}
+			aria-label={value ? 'Limpiar búsqueda' : 'Cerrar'}
 			class="absolute top-1/2 right-3 -translate-y-1/2 transform cursor-pointer text-muted-foreground transition-colors hover:text-foreground"
 			onclick={handleClear}
 			type="button"

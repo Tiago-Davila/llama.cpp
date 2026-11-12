@@ -67,7 +67,7 @@
 				class="rounded-md bg-primary px-4 py-2 text-primary-foreground hover:bg-primary/90"
 				onclick={() => goto(ROUTES.START)}
 			>
-				Go Home
+				Ir al inicio
 			</button>
 		</div>
 	</div>

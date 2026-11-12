@@ -50,7 +50,7 @@
 		if (!messageActions.showForkDialog) return;
 
 		untrack(() => {
-			forkName = `Fork of ${conversationsStore.activeConversation?.name ?? 'Conversation'}`;
+			forkName = `Copia de ${conversationsStore.activeConversation?.name ?? 'Conversación'}`;
 			forkIncludeAttachments = true;
 		});
 	});
@@ -77,33 +77,33 @@
 		<div
 			class="pointer-events-auto inset-0 flex items-center gap-1 opacity-100 transition-all duration-150"
 		>
-			<ActionIcon icon={Copy} onclick={messageActions.copy} tooltip="Copy" />
+			<ActionIcon icon={Copy} onclick={messageActions.copy} tooltip="Copiar" />
 
-			<ActionIcon icon={Edit} onclick={editCtx.startEdit} tooltip="Edit" />
+			<ActionIcon icon={Edit} onclick={editCtx.startEdit} tooltip="Editar" />
 
 			{#if onRegenerate}
-				<ActionIcon icon={RefreshCw} onclick={() => onRegenerate()} tooltip="Regenerate" />
+				<ActionIcon icon={RefreshCw} onclick={() => onRegenerate()} tooltip="Regenerar" />
 			{/if}
 
 			{#if onContinue}
-				<ActionIcon icon={ArrowRight} onclick={onContinue} tooltip="Continue" />
+				<ActionIcon icon={ArrowRight} onclick={onContinue} tooltip="Continuar" />
 			{/if}
 
 			{#if messageActions.forkConversation}
 				<ActionIcon
 					icon={GitBranch}
 					onclick={() => messageActions.setShowForkDialog(true)}
-					tooltip="Fork conversation"
+					tooltip="Bifurcar conversación"
 				/>
 			{/if}
 
-			<ActionIcon icon={Trash2} onclick={messageActions.requestDelete} tooltip="Delete" />
+			<ActionIcon icon={Trash2} onclick={messageActions.requestDelete} tooltip="Eliminar" />
 		</div>
 	</div>
 
 	{#if showRawOutputSwitch}
 		<div class="flex items-center gap-2">
-			<span class="text-xs text-muted-foreground">Show raw output</span>
+			<span class="text-xs text-muted-foreground">Ver texto sin formato</span>
 
 			<Switch
 				checked={rawOutputEnabled}
@@ -114,40 +114,40 @@
 </div>
 
 <DialogConfirmation
-	cancelText="Cancel"
+	cancelText="Cancelar"
 	confirmText={messageActions.deletionInfo && messageActions.deletionInfo.totalCount > 1
-		? `Delete ${messageActions.deletionInfo.totalCount} Messages`
-		: 'Delete'}
+		? `Eliminar ${messageActions.deletionInfo.totalCount} mensajes`
+		: 'Eliminar'}
 	description={messageActions.deletionInfo && messageActions.deletionInfo.totalCount > 1
-		? `This will delete ${messageActions.deletionInfo.totalCount} messages including: ${messageActions.deletionInfo.userMessages} user message${messageActions.deletionInfo.userMessages > 1 ? 's' : ''} and ${messageActions.deletionInfo.assistantMessages} assistant response${messageActions.deletionInfo.assistantMessages > 1 ? 's' : ''}. All messages in this branch and their responses will be permanently removed. This action cannot be undone.`
-		: 'Are you sure you want to delete this message? This action cannot be undone.'}
+		? `Se eliminarán ${messageActions.deletionInfo.totalCount} mensajes: ${messageActions.deletionInfo.userMessages} del usuario y ${messageActions.deletionInfo.assistantMessages} del asistente. Todos los mensajes de esta rama y sus respuestas se borrarán de forma permanente. Esta acción no se puede deshacer.`
+		: '¿Seguro que querés eliminar este mensaje? Esta acción no se puede deshacer.'}
 	icon={Trash2}
 	onCancel={() => messageActions.setShowDeleteDialog(false)}
 	onConfirm={handleConfirmDelete}
 	open={messageActions.showDeleteDialog}
-	title="Delete Message"
+	title="Eliminar mensaje"
 	variant="destructive"
 />
 
 <DialogConfirmation
-	cancelText="Cancel"
-	confirmText="Fork"
-	description="Create a new conversation branching from this message."
+	cancelText="Cancelar"
+	confirmText="Bifurcar"
+	description="Crear una conversación nueva a partir de este mensaje."
 	icon={GitBranch}
 	onCancel={() => messageActions.setShowForkDialog(false)}
 	onConfirm={handleConfirmFork}
 	open={messageActions.showForkDialog}
-	title="Fork Conversation"
+	title="Bifurcar conversación"
 >
 	<div class="flex flex-col gap-4 py-2">
 		<div class="flex flex-col gap-2">
-			<Label for="fork-name">Title</Label>
+			<Label for="fork-name">Título</Label>
 
 			<Input
 				bind:value={forkName}
 				class="text-foreground"
 				id="fork-name"
-				placeholder="Enter fork name"
+				placeholder="Nombre de la nueva conversación"
 				type="text"
 			/>
 		</div>
@@ -162,7 +162,7 @@
 			/>
 
 			<Label class="cursor-pointer text-sm font-normal" for="fork-attachments">
-				Include all attachments
+				Incluir todos los adjuntos
 			</Label>
 		</div>
 	</div>

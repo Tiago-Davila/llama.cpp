@@ -100,7 +100,7 @@
 		if (serverStore.isRouterMode && !modelsStore.isModelLoaded(option.model)) {
 			modelsStore.status
 				.load(option.model)
-				.catch((error) => console.error('Failed to load model:', error));
+				.catch((error) => console.error('No se pudo cargar el modelo:', error));
 		}
 	}
 
@@ -140,10 +140,10 @@
 	<Drawer.Content
 		class="data-[vaul-drawer-direction=bottom]:h-[85dvh] data-[vaul-drawer-direction=bottom]:max-h-[85dvh] data-[vaul-drawer-direction=right]:w-[30rem] data-[vaul-drawer-direction=right]:max-w-[calc(100vw-2rem)] data-[vaul-drawer-direction=right]:sm:max-w-[30rem]"
 	>
-		<Drawer.Title class="sr-only">Model details</Drawer.Title>
+		<Drawer.Title class="sr-only">Detalles del modelo</Drawer.Title>
 
 		<Drawer.Description class="sr-only">
-			Configuration, actions and metadata of the selected model.
+			Configuración, acciones y metadatos del modelo seleccionado.
 		</Drawer.Description>
 
 		<div

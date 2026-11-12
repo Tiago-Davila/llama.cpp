@@ -64,7 +64,7 @@
 	<Drawer.Root bind:open>
 		<Drawer.Content>
 			<Drawer.Header>
-				<Drawer.Title>{triggerTooltip ?? 'Actions'}</Drawer.Title>
+				<Drawer.Title>{triggerTooltip ?? 'Acciones'}</Drawer.Title>
 			</Drawer.Header>
 
 			<div class="flex flex-col px-2 pb-4">

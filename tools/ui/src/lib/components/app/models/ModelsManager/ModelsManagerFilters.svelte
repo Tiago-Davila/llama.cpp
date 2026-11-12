@@ -35,12 +35,12 @@
 	}: Props = $props();
 
 	const CONTEXT_STEPS: { label: string; value: number }[] = [
-		{ label: 'Any context', value: 0 },
-		{ label: '8K or more', value: 8192 },
-		{ label: '32K or more', value: 32768 },
-		{ label: '128K or more', value: 131_072 },
-		{ label: '256K or more', value: 262_144 },
-		{ label: '1M or more', value: 1_048_576 }
+		{ label: 'Cualquier contexto', value: 0 },
+		{ label: '8K o más', value: 8192 },
+		{ label: '32K o más', value: 32768 },
+		{ label: '128K o más', value: 131_072 },
+		{ label: '256K o más', value: 262_144 },
+		{ label: '1M o más', value: 1_048_576 }
 	];
 
 	const CAPABILITY_TOGGLES = [ModelCapability.TOOL_USE, ModelCapability.REASONING].map((value) => ({

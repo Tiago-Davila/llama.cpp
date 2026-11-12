@@ -24,7 +24,7 @@
 <ToolCallBlock {isStreaming} meta={runJsMeta} {onToggle} {open} {section} {title}>
 	{#snippet children(meta, ctx)}
 		{#if ctx.isPending}
-			<div class="rounded bg-muted/20 p-2 text-xs text-muted-foreground/70 italic">Running...</div>
+			<div class="rounded bg-muted/20 p-2 text-xs text-muted-foreground/70 italic">Ejecutando...</div>
 		{:else if meta?.errorMessage}
 			<div
 				class="flex items-start gap-2 rounded bg-red-500/10 p-2 text-xs text-red-600 italic dark:text-red-400"
@@ -53,7 +53,7 @@
 			<div class="mb-2 mt-3 flex items-center gap-2 text-xs text-muted-foreground/70">
 				<Terminal class="h-3 w-3" />
 
-				<span>Console</span>
+				<span>Consola</span>
 
 				{#if meta.timeoutMs != null}
 					<span class="font-mono">&middot;&nbsp;timeout&nbsp;{meta.timeoutMs}&nbsp;ms</span>
@@ -69,7 +69,7 @@
 					/>
 				</div>
 			{:else}
-				<div class="rounded bg-muted/20 p-2 text-xs text-muted-foreground/70 italic">No output</div>
+				<div class="rounded bg-muted/20 p-2 text-xs text-muted-foreground/70 italic">Sin salida</div>
 			{/if}
 		{/if}
 	{/snippet}

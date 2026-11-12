@@ -84,7 +84,7 @@
 			bind:ref={searchInput}
 			bind:value={query}
 			onKeyDown={handleSearchKeydown}
-			placeholder="Search groups"
+			placeholder="Buscar grupos"
 			size="sm"
 		/>
 
@@ -97,7 +97,7 @@
 		>
 			<Plus class={ICON_CLASS_DEFAULT} />
 
-			<span>New group</span>
+			<span>Nuevo grupo</span>
 		</button>
 
 		{#if groups.length > 0}

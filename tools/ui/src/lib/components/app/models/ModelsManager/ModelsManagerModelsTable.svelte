@@ -86,8 +86,8 @@
 
 	/** Noun the show-more row counts in, per unit of the grouped list. */
 	const SHOW_MORE_NOUNS: Record<GroupedListUnit, string> = {
-		[GroupedListUnit.ENTRIES]: 'models',
-		[GroupedListUnit.GROUPS]: 'families'
+		[GroupedListUnit.ENTRIES]: 'modelos',
+		[GroupedListUnit.GROUPS]: 'familias'
 	};
 	let pendingDelete = $state('');
 	let pendingAction = $state(ModelDownloadConfirmAction.DELETE);
@@ -330,7 +330,7 @@
 			onclick={onMore}
 			type="button"
 		>
-			Show {count} more {SHOW_MORE_NOUNS[unit]}
+			Mostrar {count} {SHOW_MORE_NOUNS[unit]} más
 		</button>
 	</div>
 {/snippet}
@@ -354,15 +354,15 @@
 	<div
 		class="{MODEL_ROW_GRID_CLASS} shrink-0 border-b border-border/30 px-2 pb-2 text-xs font-medium text-muted-foreground max-md:px-3 dark:border-border/20"
 	>
-		<span>{@render sortHeader(ModelsTableSortKey.NAME, 'Model')}</span>
+		<span>{@render sortHeader(ModelsTableSortKey.NAME, 'Modelo')}</span>
 
 		<span class="text-right whitespace-nowrap max-md:hidden">
-			{@render sortHeader(ModelsTableSortKey.CONTEXT, 'Context')}
+			{@render sortHeader(ModelsTableSortKey.CONTEXT, 'Contexto')}
 		</span>
 
-		<span class="justify-self-center max-md:hidden">Status</span>
+		<span class="justify-self-center max-md:hidden">Estado</span>
 
-		<span class="text-center max-md:hidden">Actions</span>
+		<span class="text-center max-md:hidden">Acciones</span>
 	</div>
 
 	<div class="mt-2 min-h-0 flex-1 overflow-y-auto">
@@ -424,12 +424,12 @@
 						<MODEL_ICON />
 					</Empty.Media>
 
-					<Empty.Title>{hasFilters ? 'No matching models' : 'No models yet'}</Empty.Title>
+					<Empty.Title>{hasFilters ? 'No hay modelos que coincidan' : 'Todavía no hay modelos'}</Empty.Title>
 
 					<Empty.Description>
 						{hasFilters
-							? 'Try a different search or clear the filters.'
-							: 'Models the server can run show up here.'}
+							? 'Probá otra búsqueda o limpiá los filtros.'
+							: 'Acá aparecen los modelos que el servidor puede ejecutar.'}
 					</Empty.Description>
 				</Empty.Header>
 			</Empty.Root>

@@ -92,15 +92,15 @@
 
 	const sections = $derived<SearchSection[]>(
 		[
-			{ entries: chatEntries, title: needle ? 'Chats' : 'Recents' },
-			{ entries: actionEntries, title: 'Actions' }
+			{ entries: chatEntries, title: needle ? 'Chats' : 'Recientes' },
+			{ entries: actionEntries, title: 'Acciones' }
 		].filter((section) => section.entries.length > 0)
 	);
 
 	const entries = $derived(sections.flatMap((section) => section.entries));
 	const activeIndex = $derived(Math.min(highlighted, entries.length - 1));
 
-	const emptyMessage = $derived(needle ? 'No results found' : 'No chats yet');
+	const emptyMessage = $derived(needle ? 'No se encontraron resultados' : 'Todavía no hay chats');
 
 	/** Closes the search first, so a dialog opened by `next` takes the focus. */
 	function close(next: () => void) {
@@ -174,13 +174,13 @@
 				class="h-10 min-w-0 flex-1 border-0 bg-transparent px-1 text-lg outline-none placeholder:text-muted-foreground focus:outline-none focus-visible:ring-0"
 				oninput={() => (highlighted = 0)}
 				onkeydown={handleKeydown}
-				placeholder="Search"
+				placeholder="Buscar"
 				role="combobox"
 				spellcheck={false}
 			/>
 
 			<ActionIcon
-				ariaLabel="Close search"
+				ariaLabel="Cerrar búsqueda"
 				class="size-8 shrink-0 text-muted-foreground"
 				icon={X}
 				iconSize={ICON_CLASS_DEFAULT}
@@ -222,7 +222,7 @@
 						<span class="min-w-0 flex-1 truncate">{entry.label}</span>
 
 						{#if entry.pinned}
-							<Pin aria-label="Pinned" class="{ICON_CLASS_SM} shrink-0 text-muted-foreground" />
+							<Pin aria-label="Fijados" class="{ICON_CLASS_SM} shrink-0 text-muted-foreground" />
 						{/if}
 
 						{#if entry.meta}
@@ -251,11 +251,11 @@
 	<div
 		class="flex items-center gap-5 border-t border-border/30 px-4 py-2.5 text-xs text-muted-foreground max-md:hidden dark:border-border/20"
 	>
-		{@render hint('Close', ['Esc'])}
+		{@render hint('Cerrar', ['Esc'])}
 
-		{@render hint('Navigate', [ArrowUp, ArrowDown])}
+		{@render hint('Navegar', [ArrowUp, ArrowDown])}
 
-		<span class="ml-auto">{@render hint('Open', [CornerDownLeft])}</span>
+		<span class="ml-auto">{@render hint('Abrir', [CornerDownLeft])}</span>
 	</div>
 {/snippet}
 
@@ -268,7 +268,7 @@
 			inputRef?.focus();
 		}}
 	>
-		<Dialog.Title class="sr-only">Search</Dialog.Title>
+		<Dialog.Title class="sr-only">Buscar</Dialog.Title>
 
 		{@render search()}
 	</Dialog.Content>

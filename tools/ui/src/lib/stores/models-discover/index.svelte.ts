@@ -115,7 +115,7 @@ class ModelsDiscoverStore {
 			// them; succeeded repos are served from the service cache for free
 			this.fetched = failedBuilds.length === 0;
 		} catch (err) {
-			this.error = err instanceof Error ? err.message : 'Failed to fetch models';
+			this.error = err instanceof Error ? err.message : 'No se pudieron obtener los modelos';
 		} finally {
 			this.loading = false;
 		}
@@ -146,7 +146,7 @@ class ModelsDiscoverStore {
 		} catch (err) {
 			if (requestId !== this.searchRequestId) return;
 
-			this.error = err instanceof Error ? err.message : 'Search failed';
+			this.error = err instanceof Error ? err.message : 'La búsqueda falló';
 		} finally {
 			if (requestId === this.searchRequestId) this.searching = false;
 		}

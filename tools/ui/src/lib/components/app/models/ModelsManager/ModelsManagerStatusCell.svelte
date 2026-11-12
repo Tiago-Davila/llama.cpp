@@ -36,7 +36,7 @@
 {:else}
 	<span
 		class="justify-self-center text-sm text-muted-foreground {className}"
-		title="Served by this server"
+		title="Servido por este servidor"
 	>
 		-
 	</span>

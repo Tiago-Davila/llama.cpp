@@ -204,7 +204,7 @@
 				<span
 					class="text-xs text-muted-foreground tabular-nums group-hover:hidden [@media(pointer:coarse)]:hidden"
 				>
-					{percent !== null ? `${percent}%` : state.isPaused ? 'Paused' : 'Downloading'}
+					{percent !== null ? `${percent}%` : state.isPaused ? 'En pausa' : 'Descargando'}
 				</span>
 
 				<span class="hidden items-center gap-0.5 group-hover:flex [@media(pointer:coarse)]:flex">
@@ -213,7 +213,7 @@
 						iconSize="h-4 w-4"
 						onclick={() => void modelsStore.status.toggleDownload(state.repoWithTag)}
 						stopPropagationOnClick
-						tooltip={state.isPaused ? 'Resume downloading' : 'Pause downloading'}
+						tooltip={state.isPaused ? 'Reanudar descarga' : 'Pausar descarga'}
 						tooltipAsTitle
 					/>
 
@@ -223,7 +223,7 @@
 						iconSize="h-4 w-4"
 						onclick={() => state.onRequestCancel?.(state.repoWithTag)}
 						stopPropagationOnClick
-						tooltip="Cancel downloading"
+						tooltip="Cancelar descarga"
 						tooltipAsTitle
 					/>
 				</span>

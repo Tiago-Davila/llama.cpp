@@ -14,7 +14,7 @@ export function getChatCommands(options: ChatCommandsOptions): ChatFormCommand[]
 	return [
 		{
 			action: ChatFormCommandAction.PROMPT,
-			description: 'Insert an MCP prompt',
+			description: 'Insertar un prompt MCP',
 			disabled: !options.hasPrompts(),
 			name: 'prompt'
 		},
@@ -27,13 +27,13 @@ export function getChatCommands(options: ChatCommandsOptions): ChatFormCommand[]
 		},
 		{
 			action: ChatFormCommandAction.MODEL,
-			description: 'Select model',
+			description: 'Seleccionar modelo',
 			disabled: !options.showModelSelector,
 			name: 'model'
 		},
 		{
 			action: ChatFormCommandAction.COMPACT,
-			description: 'Summarize the conversation to free up context',
+			description: 'Resumir la conversación para liberar contexto',
 			disabled: !options.canCompact(),
 			keywords: ['summarize', 'context'],
 			name: 'compact'

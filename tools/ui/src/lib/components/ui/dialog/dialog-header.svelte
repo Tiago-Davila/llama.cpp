@@ -38,7 +38,7 @@
 		>
 			<XIcon />
 
-			<span class="sr-only">Close</span>
+			<span class="sr-only">Cerrar</span>
 		</DialogPrimitive.Close>
 	{/if}
 </div>

@@ -10,7 +10,7 @@
 
 	let {
 		onSearch,
-		placeholder = 'Search models on Hugging Face',
+		placeholder = 'Buscar modelos en Hugging Face',
 		value = $bindable('')
 	}: Props = $props();
 

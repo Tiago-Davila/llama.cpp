@@ -10,7 +10,7 @@
 
 	let { onWorkingDirectoryClick }: Props = $props();
 
-	const title = $derived(conversationsStore.activeConversation?.name || 'New chat');
+	const title = $derived(conversationsStore.activeConversation?.name || 'Nuevo chat');
 	const directory = $derived(
 		conversationsStore.activeConversation?.cwd ?? conversationsStore.preferences.pendingCwd
 	);
