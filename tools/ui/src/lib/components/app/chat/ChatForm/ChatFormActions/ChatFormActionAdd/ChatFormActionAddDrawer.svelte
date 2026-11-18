@@ -3,6 +3,7 @@
 		ChevronDown,
 		ChevronRight,
 		File,
+		FileUp,
 		Folder,
 		Image,
 		MessageSquare,
@@ -125,6 +126,20 @@
 						{/if}
 					</span>
 				</button>
+
+				{#if chatFormActions.onConvertitodoUpload}
+					<button
+						class={itemClass}
+						onclick={() => {
+							drawerOpen = false;
+							chatFormActions.onConvertitodoUpload?.();
+						}}
+						type="button"
+					>
+						<FileUp class="{ICON_CLASS_DEFAULT} shrink-0" />
+						<span>Adjuntar a ConvertiTodo</span>
+					</button>
+				{/if}
 
 				<button
 					class={itemClass}

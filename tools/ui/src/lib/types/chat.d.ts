@@ -354,6 +354,7 @@ export interface ChatFormActionsContext {
 	readonly hasAudioModality: boolean;
 	readonly hasVideoModality: boolean;
 	readonly hasVisionModality: boolean;
+	onConvertitodoUpload?: () => void;
 	onFileUpload?: () => void;
 	onSystemPromptClick?: () => void;
 	/** Opens the working directory picker; set where the + menu offers it. */

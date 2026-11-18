@@ -1,12 +1,21 @@
 <script lang="ts">
-	import { afterNavigate } from '$app/navigation';
+	import ChatFormConvertitodoUpload from '../ChatForm/ChatFormConvertitodoUpload.svelte';
+	import { afterNavigate, beforeNavigate } from '$app/navigation';
 	import { page } from '$app/state';
+	import { File as FileIcon, X } from '@lucide/svelte';
 	import { ChatForm } from '$lib/components/app';
+	import { Button } from '$lib/components/ui/button';
 	import { SETTINGS_KEYS } from '$lib/constants';
 	import { useDraftMessages } from '$lib/hooks/use-draft-messages.svelte';
-	import { deviceStore, settingsStore } from '$lib/stores';
+	import {
+		appendConvertitodoReferences,
+		type ConvertitodoFileReference
+	} from '$lib/services/convertitodo-files.service';
+	import { deviceStore, mcpStore, settingsStore } from '$lib/stores';
+	import type { MCPServerSettingsEntry } from '$lib/types';
 	import { hapticTap } from '$lib/utils';
 	import { onMount, tick } from 'svelte';
+	import { toast } from 'svelte-sonner';
 
 	interface Props {
 		class?: string;
@@ -35,6 +44,11 @@
 	}: Props = $props();
 
 	let chatFormRef: ChatForm | undefined = $state(undefined);
+	let convertitodoUpload: ChatFormConvertitodoUpload | undefined = $state();
+	let convertitodoFiles = $state<ConvertitodoFileReference[]>([]);
+	let pinnedServer = $state<{ id: string; url: string }>();
+	let isSending = $state(false);
+	let composerVersion = 0;
 
 	let formWrapperEl: HTMLDivElement | undefined = $state();
 	let chatId = $derived(page.params.id as string | undefined);
@@ -78,9 +92,37 @@
 		onFileUpload?.(files);
 	}
 
+	function attachConvertitodoFile(file: ConvertitodoFileReference, server: MCPServerSettingsEntry) {
+		pinnedServer = { id: server.id, url: server.url };
+		if (!convertitodoFiles.some((existing) => existing.id === file.id)) {
+			convertitodoFiles = [...convertitodoFiles, file];
+		}
+	}
+
+	function removeConvertitodoFile(id: string) {
+		convertitodoFiles = convertitodoFiles.filter((file) => file.id !== id);
+		if (!convertitodoFiles.length) pinnedServer = undefined;
+	}
+
 	async function handleSubmit() {
-		if ((!message.trim() && uploadedFiles.length === 0) || disabled || hasLoadingAttachments)
+		if (
+			(!message.trim() && !uploadedFiles.length && !convertitodoFiles.length) ||
+			disabled ||
+			isSending ||
+			hasLoadingAttachments
+		) {
 			return;
+		}
+
+		if (pinnedServer) {
+			const server = mcpStore.getServerById(pinnedServer.id);
+			if (!server?.enabled || server.url !== pinnedServer.url) {
+				toast.error(
+					'El servidor ConvertiTodo del adjunto cambió. Quitá los adjuntos y volvé a subirlos.'
+				);
+				return;
+			}
+		}
 
 		if (!chatFormRef?.checkModelSelected()) return;
 
@@ -90,19 +132,36 @@
 
 		const messageToSend = message.trim();
 		const filesToSend = [...uploadedFiles];
+		const referencesToSend = [...convertitodoFiles];
+		const serverForReferences = pinnedServer;
+		const version = composerVersion;
 
+		convertitodoUpload?.close();
 		message = '';
 		uploadedFiles = [];
+		convertitodoFiles = [];
+		pinnedServer = undefined;
+		isSending = true;
 		clearDraft();
 
 		// called in the same task: the page still sees the form as it was sent (expanded or not)
-		const success = await onSend?.(messageToSend, filesToSend);
-
-		if (!success) {
-			message = messageToSend;
-			uploadedFiles = filesToSend;
-			await tick();
-			chatFormRef?.expandForMessage();
+		let success = false;
+		try {
+			success =
+				(await onSend?.(
+					appendConvertitodoReferences(messageToSend, referencesToSend),
+					filesToSend
+				)) ?? false;
+		} finally {
+			isSending = false;
+			if (!success && version === composerVersion) {
+				message = messageToSend;
+				uploadedFiles = filesToSend;
+				convertitodoFiles = referencesToSend;
+				pinnedServer = serverForReferences;
+				await tick();
+				chatFormRef?.expandForMessage();
+			}
 		}
 	}
 
@@ -134,7 +193,18 @@
 		}
 	});
 
+	beforeNavigate((navigation) => {
+		if (navigation.from?.url.pathname !== navigation.to?.url.pathname) {
+			convertitodoUpload?.close();
+		}
+	});
+
 	afterNavigate((navigation) => {
+		if (navigation?.from?.url.pathname !== navigation?.to?.url.pathname) {
+			composerVersion++;
+			convertitodoFiles = [];
+			pinnedServer = undefined;
+		}
 		if (navigation?.from != null && !deviceStore.isMobile) {
 			setTimeout(focusFormUnlessCaptured, 100);
 		}
@@ -157,12 +227,42 @@
 		class="mx-auto max-w-3xl {className}"
 		{disabled}
 		expandable
+		hasConvertitodoAttachments={convertitodoFiles.length > 0}
 		{isLoading}
+		onConvertitodoUpload={isSending ? undefined : () => convertitodoUpload?.show()}
 		onFilesAdd={handleFilesAdd}
 		{onStop}
 		onSubmit={handleSubmit}
 		onSystemPromptClick={handleSystemPromptClick}
 		onUploadedFileRemove={handleUploadedFileRemove}
 		singleRow={settingsStore.config[SETTINGS_KEYS.SINGLE_ROW_CHAT_FORM] !== false}
-	/>
+	>
+		{#snippet convertitodoAttachments()}
+			{#if convertitodoFiles.length > 0}
+				<ul aria-label="Adjuntos de ConvertiTodo" class="flex flex-wrap gap-2 px-4 pt-3">
+					{#each convertitodoFiles as file (file.id)}
+						<li class="flex min-w-0 items-center gap-2 rounded-md border pl-2 text-sm">
+							<FileIcon aria-hidden="true" class="size-4 shrink-0" />
+							<span class="truncate" title={file.nombre}>{file.nombre} · ConvertiTodo</span>
+							<Button
+								aria-label={`Quitar ${file.nombre}`}
+								onclick={() => removeConvertitodoFile(file.id)}
+								size="sm"
+								variant="ghost"
+							>
+								<X />
+							</Button>
+						</li>
+					{/each}
+				</ul>
+			{/if}
+		{/snippet}
+	</ChatForm>
 </div>
+
+<ChatFormConvertitodoUpload
+	bind:this={convertitodoUpload}
+	disabled={disabled || isSending}
+	onAttach={attachConvertitodoFile}
+	{pinnedServer}
+/>
