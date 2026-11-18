@@ -128,6 +128,7 @@ export interface MCPConnection {
 	transport: Transport;
 	tools: Tool[];
 	serverName: string;
+	serverUrl?: string;
 	transportType: MCPTransportType;
 	serverInfo?: MCPServerInfo;
 	serverCapabilities?: ServerCapabilities;
@@ -282,6 +283,13 @@ export interface ToolCallParams {
 
 export interface ToolExecutionResult {
 	content: string;
+	isError: boolean;
+}
+
+export interface MCPToolResultSource {
+	serverId: string;
+	serverName?: string;
+	serverUrl?: string;
 	isError: boolean;
 }
 

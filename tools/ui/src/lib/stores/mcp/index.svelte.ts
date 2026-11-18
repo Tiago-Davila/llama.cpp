@@ -38,6 +38,7 @@ import type {
 	ToolExecutionResult
 } from '$lib/types';
 import type { DatabaseMessageExtraMcpResource } from '$lib/types/database';
+import type { MCPToolResultSource } from '$lib/types/mcp';
 import type { SettingsConfigType } from '$lib/types/settings';
 import {
 	buildProxiedIconUrl,
@@ -338,7 +339,10 @@ class MCPStore implements McpHealthHost {
 		return this.initialize(signature, mcpConfig!);
 	}
 
-	async executeTool(toolCall: MCPToolCall, signal?: AbortSignal): Promise<ToolExecutionResult> {
+	async executeTool(
+		toolCall: MCPToolCall,
+		signal?: AbortSignal
+	): Promise<ToolExecutionResult & { mcpToolResultSource: MCPToolResultSource }> {
 		return this.executeToolByName(
 			toolCall.function.name,
 			this.parseToolArguments(toolCall.function.arguments),
@@ -350,7 +354,7 @@ class MCPStore implements McpHealthHost {
 		toolName: string,
 		args: Record<string, unknown>,
 		signal?: AbortSignal
-	): Promise<ToolExecutionResult> {
+	): Promise<ToolExecutionResult & { mcpToolResultSource: MCPToolResultSource }> {
 		const serverName = this.toolsIndex.get(toolName);
 
 		if (!serverName) throw new Error(`Unknown tool: ${toolName}`);
@@ -359,8 +363,29 @@ class MCPStore implements McpHealthHost {
 
 		if (!connection) throw new Error(`El servidor "${serverName}" no está conectado`);
 
+		const call = async (target: MCPConnection) => {
+			const result = await MCPService.callTool(target, { arguments: args, name: toolName }, signal);
+			const serverUrl = target.serverUrl;
+			const safeEndpoint =
+				target.serverInfo?.name === 'ConvertiTodo' &&
+				serverUrl &&
+				/^https?:\/\/[^\s/@?#\\]+\/mcp\/?$/.test(serverUrl)
+					? serverUrl
+					: undefined;
+
+			return {
+				...result,
+				mcpToolResultSource: {
+					isError: result.isError,
+					serverId: serverName,
+					serverName: target.serverInfo?.name,
+					serverUrl: safeEndpoint
+				}
+			};
+		};
+
 		try {
-			return await MCPService.callTool(connection, { arguments: args, name: toolName }, signal);
+			return await call(connection);
 		} catch (error) {
 			if (MCPService.isSessionExpiredError(error)) {
 				await this.reconnectServer(serverName);
@@ -369,7 +394,7 @@ class MCPStore implements McpHealthHost {
 
 				if (!newConnection) throw new Error(`No se pudo reconectar con "${serverName}"`);
 
-				return MCPService.callTool(newConnection, { arguments: args, name: toolName }, signal);
+				return call(newConnection);
 			}
 
 			throw error;

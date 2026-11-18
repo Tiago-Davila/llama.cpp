@@ -1,6 +1,7 @@
 import { AttachmentType, ReasoningEffort, ToolSource } from '$lib/enums';
 import type { ChatMessageTimings, ChatMessageType, ChatRole } from '$lib/types/chat';
 import type { Group } from '$lib/types/groups';
+import type { MCPToolResultSource } from '$lib/types/mcp';
 
 /**
  * @deprecated Legacy per-conversation MCP server flags. MCP server enabled
@@ -133,6 +134,7 @@ export interface DatabaseMessage {
 	completionId?: string;
 	/** Tool call ID for tool result messages (role: 'tool') */
 	toolCallId?: string;
+	mcpToolResultSource?: MCPToolResultSource;
 	/** Working directory the tool call ran with (sent via the x-tool-cwd header), stored per call so the UI can show it accurately even after the conversation cwd changes */
 	toolCwd?: string;
 	/** Internal flag marking a UI-generated message (e.g. a cwd change). The row is sent to the model as a "user" turn so chat templates accept it; the flag is only read by the renderer. */

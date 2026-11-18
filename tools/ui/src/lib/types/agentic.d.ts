@@ -15,6 +15,7 @@ import type {
 	DatabaseMessageExtraAudioFile,
 	DatabaseMessageExtraImageFile
 } from './database';
+import type { MCPToolResultSource } from './mcp';
 import type { MessageRole, ToolSource } from '$lib/enums';
 import { AgenticSectionType, ContinueIntentKind, ToolCallType } from '$lib/enums';
 
@@ -125,7 +126,8 @@ export interface AgenticFlowCallbacks {
 		toolCallId: string,
 		content: string,
 		extras?: DatabaseMessageExtra[],
-		toolCwd?: string
+		toolCwd?: string,
+		mcpToolResultSource?: MCPToolResultSource
 	) => Promise<DatabaseMessage>;
 	/** Update an already-created tool result message. Used while a streaming
 	 *  tool (e.g. exec_shell_command) accumulates output chunks before its
@@ -205,6 +207,7 @@ export interface AgenticSection {
 	toolArgs?: string;
 	toolResult?: string;
 	toolResultExtras?: DatabaseMessageExtra[];
+	mcpToolResultSource?: MCPToolResultSource;
 	/** Working directory the tool call ran with (from the tool result
 	 *  message), shown by the exec_shell_command renderer. */
 	toolCwd?: string;

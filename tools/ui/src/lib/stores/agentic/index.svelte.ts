@@ -74,7 +74,7 @@ import type {
 	DatabaseMessageExtraAudioFile,
 	DatabaseMessageExtraImageFile
 } from '$lib/types/database';
-import type { OpenAIToolDefinition } from '$lib/types/mcp';
+import type { MCPToolResultSource, OpenAIToolDefinition } from '$lib/types/mcp';
 import {
 	executeBrowserInfoTool,
 	executeGetDatetimeTool,
@@ -764,6 +764,7 @@ class AgenticStore {
 				let result = '';
 				let toolSuccess = true;
 				let createdToolResultMessageId: string | null = null;
+				let mcpToolResultSource: MCPToolResultSource | undefined;
 
 				// Streaming tools (currently only exec_shell_command): mark
 				// the session so the matching renderer can switch to live mode.
@@ -850,6 +851,8 @@ class AgenticStore {
 							const executionResult = await mcpStore.executeTool(mcpCall, signal);
 
 							result = executionResult.content;
+							toolSuccess = !executionResult.isError;
+							mcpToolResultSource = executionResult.mcpToolResultSource;
 						}
 					} catch (error) {
 						if (isAbortError(error)) {
@@ -913,7 +916,9 @@ class AgenticStore {
 					toolResultMessage = await createToolResultMessage(
 						toolCall.id,
 						cleanedResult,
-						attachments.length > 0 ? attachments : undefined
+						attachments.length > 0 ? attachments : undefined,
+						undefined,
+						mcpToolResultSource
 					);
 				}
 
