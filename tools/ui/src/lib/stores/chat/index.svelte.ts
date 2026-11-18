@@ -970,10 +970,7 @@ class ChatStore implements ChatStreamHost, ChatFlowsHost {
 
 		const convId = assistantMessage.convId;
 
-		// Tracks the last message created in this flow. Used as the parent for the next
-		// turn's assistant message so createAssistantMessage does not have to read
-		// conversationsStore.activeMessages, which may belong to a different conversation
-		// after the user navigates while the loop is still running.
+		// Encadena resultados y turnos de esta conversación aunque el usuario cambie de chat.
 		let lastCreatedInFlow = currentMessageId;
 
 		// freeze the POST identity from t0 so a stop cancels with the exact session key,
@@ -1057,10 +1054,11 @@ class ChatStore implements ChatStreamHost, ChatFlowsHost {
 				return msg;
 			},
 			createToolResultMessage: async (
-				toolCallId: string,
-				content: string,
-				extras?: DatabaseMessageExtra[],
-				toolCwd?: string
+				toolCallId,
+				content,
+				extras,
+				toolCwd,
+				mcpToolResultSource
 			) => {
 				const msg = await DatabaseService.createMessageBranch(
 					{
@@ -1068,6 +1066,7 @@ class ChatStore implements ChatStreamHost, ChatFlowsHost {
 						content,
 						convId,
 						extra: extras,
+						mcpToolResultSource,
 						role: MessageRole.TOOL,
 						timestamp: Date.now(),
 						toolCallId,
@@ -1075,7 +1074,7 @@ class ChatStore implements ChatStreamHost, ChatFlowsHost {
 						toolCwd,
 						type: MessageType.TEXT
 					},
-					currentMessageId
+					lastCreatedInFlow
 				);
 
 				// mirror into the active store and move the node pointer only when this

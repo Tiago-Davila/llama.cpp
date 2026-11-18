@@ -80,6 +80,7 @@ function deriveSingleTurnSections(
 
 		sections.push({
 			content: resultMsg?.content || '',
+			mcpToolResultSource: resultMsg?.mcpToolResultSource,
 			toolArgs: tc.function?.arguments,
 			toolCallId: tc.id,
 			toolCwd: resultMsg?.toolCwd,
@@ -117,6 +118,7 @@ interface TurnSectionsCacheEntry {
 	toolMessageContents: (string | undefined)[];
 	toolMessageExtras: (DatabaseMessageExtra[] | undefined)[];
 	toolMessages: DatabaseMessage[];
+	toolResultSources: AgenticSection['mcpToolResultSource'][];
 	sections: AgenticSection[];
 }
 
@@ -144,6 +146,8 @@ function isTurnCacheValid(
 		if (entry.toolMessageContents[i] !== toolMessages[i].content) return false;
 
 		if (entry.toolMessageExtras[i] !== toolMessages[i].extra) return false;
+
+		if (entry.toolResultSources[i] !== toolMessages[i].mcpToolResultSource) return false;
 	}
 
 	return true;
@@ -186,7 +190,8 @@ function deriveTurnSections(
 		toolCalls: message.toolCalls,
 		toolMessageContents: toolMessages.map((tm) => tm.content),
 		toolMessageExtras: toolMessages.map((tm) => tm.extra),
-		toolMessages
+		toolMessages,
+		toolResultSources: toolMessages.map((tm) => tm.mcpToolResultSource)
 	});
 
 	return sections;
