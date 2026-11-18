@@ -83,7 +83,9 @@ export function filterByLeafNodeId(
 		currentNode = nodeMap.get(currentNode.parent);
 	}
 
-	// Sort: system messages first, then by timestamp
+	// Conserva el orden padre-hijo cuando dos mensajes tienen la misma marca de tiempo.
+	result.reverse();
+
 	result.sort((a, b) => {
 		if (a.role === MessageRole.SYSTEM && b.role !== MessageRole.SYSTEM) return -1;
 

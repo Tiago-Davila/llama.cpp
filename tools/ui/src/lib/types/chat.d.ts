@@ -1,5 +1,6 @@
 import type { ApiChatCompletionToolCall } from './api';
 import type { DatabaseMessage, DatabaseMessageExtra } from './database';
+import type { MCPToolResultSource } from './mcp';
 import type {
 	AttachmentAction,
 	AttachmentItemEnabledWhen,
@@ -155,7 +156,8 @@ export interface ChatStreamCallbacks {
 		toolCallId: string,
 		content: string,
 		extras?: DatabaseMessageExtra[],
-		toolCwd?: string
+		toolCwd?: string,
+		mcpToolResultSource?: MCPToolResultSource
 	) => Promise<DatabaseMessage>;
 	updateToolResultMessage?: (
 		messageId: string,
@@ -354,6 +356,7 @@ export interface ChatFormActionsContext {
 	readonly hasAudioModality: boolean;
 	readonly hasVideoModality: boolean;
 	readonly hasVisionModality: boolean;
+	onConvertitodoUpload?: () => void;
 	onFileUpload?: () => void;
 	onSystemPromptClick?: () => void;
 	/** Opens the working directory picker; set where the + menu offers it. */

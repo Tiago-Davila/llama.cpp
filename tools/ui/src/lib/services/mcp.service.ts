@@ -307,7 +307,11 @@ export class MCPService {
 			const handshakeDeadline = new Promise<never>((_, reject) => {
 				handshakeTimer = setTimeout(() => {
 					void transport.close().catch(() => {});
-					reject(new Error(`Se agotó el tiempo de conexión después de ${Math.round(handshakeTimeoutMs / 1000)}s`));
+					reject(
+						new Error(
+							`Se agotó el tiempo de conexión después de ${Math.round(handshakeTimeoutMs / 1000)}s`
+						)
+					);
 				}, handshakeTimeoutMs);
 			});
 
@@ -435,6 +439,7 @@ export class MCPService {
 			serverCapabilities,
 			serverInfo,
 			serverName,
+			serverUrl: serverConfig.url,
 			tools,
 			transport,
 			transportType

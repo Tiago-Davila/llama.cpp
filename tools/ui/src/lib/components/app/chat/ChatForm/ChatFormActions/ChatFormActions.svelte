@@ -34,6 +34,7 @@
 		uploadedFiles?: ChatUploadedFile[];
 		/** The chat's working directory, which the + menu names. */
 		workingDirectory?: string | null;
+		onConvertitodoUpload?: () => void;
 		onFileUpload?: () => void;
 		onMicClick?: () => void;
 		onStop?: () => void;
@@ -50,6 +51,7 @@
 		isReasoning = false,
 		isRecording = false,
 		micWarning = null,
+		onConvertitodoUpload,
 		onFileUpload,
 		onMicClick,
 		onStop,
@@ -110,6 +112,9 @@
 		},
 		get hasVisionModality() {
 			return hasVisionModality;
+		},
+		get onConvertitodoUpload() {
+			return onConvertitodoUpload;
 		},
 		get onFileUpload() {
 			return onFileUpload;

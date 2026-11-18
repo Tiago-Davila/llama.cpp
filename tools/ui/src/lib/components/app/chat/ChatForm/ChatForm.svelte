@@ -67,12 +67,15 @@
 		microphoneUnavailableReason
 	} from '$lib/utils/browser-only';
 	import { onMount, untrack } from 'svelte';
+	import type { Snippet } from 'svelte';
 	import type { ClassValue } from 'svelte/elements';
 	import { toast } from 'svelte-sonner';
 
 	interface Props {
 		// Data
 		attachments?: DatabaseMessageExtra[];
+		convertitodoAttachments?: Snippet;
+		hasConvertitodoAttachments?: boolean;
 		uploadedFiles?: ChatUploadedFile[];
 		value?: string;
 
@@ -90,6 +93,7 @@
 
 		// Event Handlers
 		onAttachmentRemove?: (index: number) => void;
+		onConvertitodoUpload?: () => void;
 		onFilesAdd?: (files: File[]) => void;
 		onStop?: () => void;
 		onSubmit?: () => void;
@@ -102,10 +106,13 @@
 	let {
 		attachments = [],
 		class: className = '',
+		convertitodoAttachments,
 		disabled = false,
 		expandable = false,
+		hasConvertitodoAttachments = false,
 		isLoading = false,
 		onAttachmentRemove,
+		onConvertitodoUpload,
 		onFilesAdd,
 		onStop,
 		onSubmit,
@@ -232,7 +239,7 @@
 	);
 	let hasLoadingAttachments = $derived(uploadedFiles.some((f) => f.isLoading));
 	let hasAttachments = $derived(
-		(attachments && attachments.length > 0) || (uploadedFiles && uploadedFiles.length > 0)
+		hasConvertitodoAttachments || attachments.length > 0 || uploadedFiles.length > 0
 	);
 	let canSubmit = $derived(value.trim().length > 0 || hasAttachments);
 
@@ -722,6 +729,8 @@
 			/>
 		{/if}
 
+		{@render convertitodoAttachments?.()}
+
 		<ChatAttachmentsList
 			bind:uploadedFiles
 			activeModelId={activeModelId ?? undefined}
@@ -786,6 +795,7 @@
 					isReasoning={chatStore.isReasoning}
 					{isRecording}
 					micWarning={micUnavailableReason ?? micError}
+					{onConvertitodoUpload}
 					onFileUpload={handleFileUpload}
 					onMicClick={handleMicClick}
 					{onStop}
