@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { File, Folder, Image, MessageSquare, Mic, Plus, Video } from '@lucide/svelte';
+	import { File, FileUp, Folder, Image, MessageSquare, Mic, Plus, Video } from '@lucide/svelte';
 	import { ChatFormActionAddToolsSubmenu } from '$lib/components/app';
 	import { buttonVariants } from '$lib/components/ui/button';
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
@@ -130,6 +130,20 @@
 					{/if}
 				</span>
 			</DropdownMenu.Item>
+
+			{#if chatFormActions.onConvertitodoUpload}
+				<DropdownMenu.Item
+					class="flex cursor-pointer items-center gap-2"
+					onclick={() => {
+						suppressCloseAutoFocus = true;
+						dropdownOpen = false;
+						chatFormActions.onConvertitodoUpload?.();
+					}}
+				>
+					<FileUp class={ICON_CLASS_DEFAULT} />
+					<span>Adjuntar a ConvertiTodo</span>
+				</DropdownMenu.Item>
+			{/if}
 
 			<DropdownMenu.Item
 				class="flex cursor-pointer items-center gap-2"
