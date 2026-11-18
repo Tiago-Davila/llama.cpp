@@ -11,7 +11,14 @@
 	import ChatMessageToolCallBlockRunJavascript from './ChatMessageToolCallBlockRunJavascript.svelte';
 	import ChatMessageToolCallBlockSearchResults from './ChatMessageToolCallBlockSearchResults.svelte';
 	import ChatMessageToolCallBlockWriteFile from './ChatMessageToolCallBlockWriteFile.svelte';
-	import { BuiltInTool } from '$lib/enums';
+	import ChatMessageToolCallDownload from './ChatMessageToolCallDownload.svelte';
+	import {
+		type ConvertitodoResultSource,
+		extractConvertitodoFiles
+	} from './parsers/convertitodo-files';
+	import { AgenticSectionType, BuiltInTool } from '$lib/enums';
+	import { getConvertitodoFileServer } from '$lib/services/convertitodo-files.service';
+	import { mcpStore } from '$lib/stores';
 	import type { AgenticSection, DatabaseMessageExtra } from '$lib/types';
 	import {
 		extractSearchQuery,
@@ -21,7 +28,7 @@
 	} from '$lib/utils';
 
 	interface Props {
-		section: AgenticSection;
+		section: AgenticSection & { mcpToolResultSource?: ConvertitodoResultSource };
 		attachments?: DatabaseMessageExtra[];
 		conversationCwd?: string;
 		open: boolean;
@@ -32,6 +39,21 @@
 
 	let { attachments, conversationCwd, isExecuting, isStreaming, onToggle, open, section }: Props =
 		$props();
+	const resultSource = $derived(
+		section.type === AgenticSectionType.TOOL_CALL ? section.mcpToolResultSource : undefined
+	);
+	const generatedFiles = $derived(
+		extractConvertitodoFiles(resultSource, section.toolName, section.toolResult)
+	);
+	const downloadServer = $derived.by(() => {
+		if (!resultSource || generatedFiles.length === 0) return undefined;
+
+		// Usá las credenciales actuales solo si la configuración conserva el endpoint ejecutado.
+		const entry = mcpStore.getServerById(resultSource.serverId);
+		if (!entry?.enabled || entry.url !== resultSource.serverUrl) return undefined;
+
+		return getConvertitodoFileServer(entry);
+	});
 
 	// Runs for every tool block on mount, before the body renders: the cheap
 	// content prefilter and the tool-name allow-list come first so blobs from
@@ -77,4 +99,14 @@
 	<ChatMessageToolCallBlockRunJavascript {isStreaming} {onToggle} {open} {section} />
 {:else}
 	<ChatMessageToolCallBlockDefault {attachments} {isStreaming} {onToggle} {open} {section} />
+{/if}
+
+{#if downloadServer}
+	{#key downloadServer}
+		<div class="grid gap-2">
+			{#each generatedFiles as file (file.id)}
+				<ChatMessageToolCallDownload {file} server={downloadServer} />
+			{/each}
+		</div>
+	{/key}
 {/if}
